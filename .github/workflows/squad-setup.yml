@@ -1,6 +1,13 @@
 # Bootstrap Squad from https://github.com/PavelK2254/squad (clone, build CLI, `squad init`).
 # Matches upstream README: https://github.com/PavelK2254/squad — `squad init` scaffolds `.squad/`.
 #
+# Interactive “open squad and describe the project” (README quick start) is meant for
+# `copilot --agent squad` (or a TTY session). Bare `squad` with no args launches the Ink shell,
+# which requires a TTY and is deprecated upstream — it will not run in GitHub Actions. This
+# workflow uses CI-safe CLI commands (`squad status`, `squad cast`) after init and again after
+# preset + seed, and seeds the same README-style prompt text
+# (Jira title / what you're building) via squad-seed-bootstrap.mjs.
+#
 # Jira-driven description (not a preset name): `building` + optional `issue_key` are written to
 # `.squad/.init-prompt` and **Building:** / `identity/now.md` via squad-seed-bootstrap.mjs
 # (README-style “what I'm building” text for coordinator casting).
@@ -121,6 +128,16 @@ jobs:
           # so the process can exit before preset agents are installed. Apply preset in the next step.
           squad init "${extra[@]}"
 
+      # Non-interactive CLI only: bare `squad` needs a TTY (see upstream shell + README).
+      - name: Squad CLI — status after init (CI-safe)
+        env:
+          NO_COLOR: "1"
+        shell: bash
+        run: |
+          set -euo pipefail
+          squad status
+          squad cast
+
       - name: Apply Squad preset (awaited)
         env:
           APPLY_PRESET: ${{ env.APPLY_PRESET }}
@@ -139,6 +156,15 @@ jobs:
           # After preset apply, team.md may already list scribe/ralph — force full roster from disk.
           BOOTSTRAP_FORCE_MEMBERS_SYNC: ${{ env.APPLY_PRESET }}
         run: node .github/scripts/squad-seed-bootstrap.mjs
+
+      - name: Squad CLI — status after preset + seed
+        env:
+          NO_COLOR: "1"
+        shell: bash
+        run: |
+          set -euo pipefail
+          squad status
+          squad cast
 
       - name: Verify with squad doctor
         env:
