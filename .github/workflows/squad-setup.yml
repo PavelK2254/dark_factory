@@ -1,10 +1,14 @@
 # Bootstrap Squad from https://github.com/PavelK2254/squad (clone, build CLI, `squad init`).
-# Matches upstream README: https://github.com/PavelK2254/squad — `squad init` scaffolds `.squad/`;
-# this workflow also applies `--preset default` (starter agents: lead, reviewer, devrel, security, docs)
-# when `apply_preset` is true, then syncs `team.md` roster from agent charters and seeds Jira context.
+# Matches upstream README: https://github.com/PavelK2254/squad — `squad init` scaffolds `.squad/`.
+#
+# Jira-driven description (not a preset name): `building` + optional `issue_key` are written to
+# `.squad/.init-prompt` and **Building:** / `identity/now.md` via squad-seed-bootstrap.mjs
+# (README-style “what I'm building” text for coordinator casting).
+#
+# Agent pack: when `apply_preset` is true, applies the SDK built-in preset `default` (fixed id —
+# cannot be the ticket title). Ticket wording only drives `.init-prompt`, not `--preset`.
 #
 # Optional ref: `squad_git_ref` / `client_payload.squad_ref` (default `dev`).
-# Optional Jira: `issue_key` + `building` (summary) → combined **Building:** line and identity focus.
 #
 # Local use (README quick start): Copilot / Squad agent —
 #   I'm starting a new project. Set up the team.
@@ -29,7 +33,7 @@ on:
         default: false
         type: boolean
       building:
-        description: "What you're building (e.g. Jira issue summary). Optional; seeds **Building:** and identity."
+        description: "Jira issue summary / what you're building. Drives `.squad/.init-prompt` + **Building:** (not `--preset`)."
         required: false
         default: ""
         type: string
@@ -39,15 +43,10 @@ on:
         default: ""
         type: string
       apply_preset:
-        description: "Apply built-in `default` preset after init (installs starter specialist agents)."
+        description: "After init, apply SDK preset `default` (starter specialist agents). Ticket text uses `.init-prompt`, not this id."
         required: false
         default: true
         type: boolean
-      squad_preset:
-        description: "Preset name when apply_preset is true (Squad SDK built-in preset name)."
-        required: false
-        default: "default"
-        type: string
 
 permissions:
   contents: write
@@ -64,7 +63,6 @@ jobs:
       SQUAD_GIT_REF: ${{ github.event.client_payload.squad_ref || github.event.inputs.squad_git_ref || 'dev' }}
       BOOTSTRAP_BUILDING: ${{ github.event.client_payload.building || github.event.inputs.building || '' }}
       BOOTSTRAP_ISSUE_KEY: ${{ github.event.client_payload.issue_key || github.event.inputs.issue_key || '' }}
-      SQUAD_PRESET: ${{ github.event.client_payload.squad_preset || github.event.inputs.squad_preset || 'default' }}
 
     steps:
       - name: Checkout
@@ -102,7 +100,6 @@ jobs:
           CI: "true"
           NO_COLOR: "1"
           INCLUDE_WORKFLOWS: ${{ github.event.client_payload.include_workflows || github.event.inputs.include_workflows || 'false' }}
-          SQUAD_PRESET: ${{ env.SQUAD_PRESET }}
         shell: bash
         run: |
           set -euo pipefail
@@ -117,8 +114,8 @@ jobs:
           if [[ "${INCLUDE_WORKFLOWS}" != "true" ]]; then
             extra+=(--no-workflows)
           fi
-          if [[ "${APPLY_PRESET}" == "true" ]] && [[ -n "${SQUAD_PRESET}" ]]; then
-            extra+=(--preset "${SQUAD_PRESET}")
+          if [[ "${APPLY_PRESET}" == "true" ]]; then
+            extra+=(--preset default)
           fi
           squad init "${extra[@]}"
 

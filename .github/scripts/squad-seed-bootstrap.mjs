@@ -1,6 +1,7 @@
 /**
- * After squad init (+ optional --preset default), align Squad state with CI inputs:
- * - Optional Jira key + build summary -> **Building:** and .squad/identity/now.md
+ * After squad init (+ optional --preset default for agent pack), align Squad state with CI inputs:
+ * - Jira key + summary -> Squad README-style text in .squad/.init-prompt (SDK casting description)
+ * - Same text reflected in **Building:** and .squad/identity/now.md
  * - When ## Members has no roster rows, populate from each .squad/agents/<agent>/charter.md
  */
 import { readdir, readFile, writeFile, stat } from "node:fs/promises";
@@ -125,7 +126,21 @@ async function syncRosterFromAgents(teamPath) {
   console.log("Synced team.md ## Members (" + rows.length + " agents).");
 }
 
+/** Squad README quick-start shape; stored as .init-prompt for coordinator / REPL casting. */
+function readmeQuickStartPrompt(building) {
+  return ["I'm starting a new project. Set up the team.", "Here's what I'm building: " + building].join("\n");
+}
+
+async function writeInitPrompt(building) {
+  const promptPath = path.join(".squad", ".init-prompt");
+  const body = readmeQuickStartPrompt(building);
+  await writeFile(promptPath, body + "\n", "utf8");
+  console.log("Wrote " + promptPath + " (Jira-driven project description).");
+}
+
 async function seedBuildingAndIdentity(building) {
+  await writeInitPrompt(building);
+
   const teamPath = ".squad/team.md";
   let team;
   try {
@@ -164,7 +179,7 @@ async function seedBuildingAndIdentity(building) {
   now = now.replace(/^updated_at:.*$/m, "updated_at: " + iso);
   now = now.replace(/^focus_area:.*$/m, "focus_area: " + yamlDoubleQuotedOneLine(focusLine));
 
-  const readmeAligned = ["I'm starting a new project. Set up the team.", "Here's what I'm building: " + building].join("\n");
+  const readmeAligned = readmeQuickStartPrompt(building);
 
   const section = ["# What We're Focused On", "", readmeAligned, "", "(Seeded from CI; see Squad README quick start at github.com/PavelK2254/squad)", ""].join("\n");
 
