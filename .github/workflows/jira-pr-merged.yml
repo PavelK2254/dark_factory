@@ -44,6 +44,18 @@ jobs:
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
         run: node .github/scripts/jira-dispatch.mjs transition-done
 
+      - name: Advance epic chain
+        if: steps.extract.outputs.should_run == 'true'
+        env:
+          MERGED_ISSUE_KEY: ${{ env.ISSUE_KEY }}
+          JIRA_BASE_URL:    ${{ secrets.JIRA_BASE_URL }}
+          JIRA_EMAIL:       ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN:   ${{ secrets.JIRA_API_TOKEN }}
+          DISPATCH_PAT:     ${{ secrets.DISPATCH_PAT }}
+          REPO_OWNER:       ${{ github.repository_owner }}
+          REPO_NAME:        ${{ github.event.repository.name }}
+        run: node .github/scripts/epic-runner.mjs advance
+
       - name: Delete head branch
         if: steps.extract.outputs.should_run == 'true'
         env:

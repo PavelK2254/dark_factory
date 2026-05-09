@@ -1,0 +1,39 @@
+name: Run Epic Tasks Sequentially
+
+on:
+  repository_dispatch:
+    types: [jira_epic_kickoff]
+  workflow_dispatch:
+    inputs:
+      epic_key:
+        description: "Jira epic key (e.g. KAN-42) for manual run"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: epic-runner-${{ github.event.client_payload.epic_key || github.event.inputs.epic_key }}
+  cancel-in-progress: false
+
+jobs:
+  kickoff:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      EPIC_KEY: ${{ github.event.client_payload.epic_key || github.event.inputs.epic_key }}
+      JIRA_BASE_URL:  ${{ secrets.JIRA_BASE_URL }}
+      JIRA_EMAIL:     ${{ secrets.JIRA_EMAIL }}
+      JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+      DISPATCH_PAT:   ${{ secrets.DISPATCH_PAT }}
+      REPO_OWNER:     ${{ github.repository_owner }}
+      REPO_NAME:      ${{ github.event.repository.name }}
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Run epic kickoff
+        run: node .github/scripts/epic-runner.mjs kickoff

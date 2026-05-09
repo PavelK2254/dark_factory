@@ -4,22 +4,25 @@ import { execSync } from "node:child_process";
 // JSON.stringify is used as a safe shell-arg quoter for known-shape strings
 // like Jira branch names; treat any string passed to execSync that way.
 
-const mode = process.argv[2];
-if (!mode) {
-  throw new Error("Usage: jira-dispatch.mjs <prepare-dispatch|record-run|commit-changes|ensure-pr|comment-result|transition-done>");
-}
-
 const env = process.env;
 
 let jiraBaseUrl;
 let jiraHeaders;
 
-run().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+const isMain = import.meta.url === `file://${process.argv[1]}`;
+if (isMain) {
+  const mode = process.argv[2];
+  if (!mode) {
+    console.error("Usage: jira-dispatch.mjs <prepare-dispatch|record-run|commit-changes|ensure-pr|comment-result|transition-done>");
+    process.exit(1);
+  }
+  run(mode).catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
 
-async function run() {
+async function run(mode) {
   if (mode === "prepare-dispatch") return prepareDispatch();
   if (mode === "record-run") return recordRun();
   if (mode === "commit-changes") return commitChanges();
@@ -778,3 +781,18 @@ function applyMarks(text, marks) {
     }
   }, text);
 }
+
+function getJiraContext() {
+  if (!jiraBaseUrl || !jiraHeaders) {
+    throw new Error("getJiraContext called before initJira");
+  }
+  return { baseUrl: jiraBaseUrl, headers: jiraHeaders };
+}
+
+export {
+  initJira,
+  fetchJson,
+  transitionToCategory,
+  transitionToInProgress,
+  getJiraContext,
+};
