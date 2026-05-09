@@ -1,0 +1,101 @@
+# Bootstrap Squad from https://github.com/PavelK2254/squad (clone, build CLI, squad init).
+# Optional ref: workflow input `squad_git_ref` or dispatch `client_payload.squad_ref` (default branch `dev`).
+# Run once (or when you want to refresh scaffold); idempotent — existing files are skipped.
+name: Squad Setup
+
+on:
+  repository_dispatch:
+    types: [squad_setup]
+  workflow_dispatch:
+    inputs:
+      squad_git_ref:
+        description: "Git ref on PavelK2254/squad (branch or tag)"
+        required: false
+        default: dev
+        type: string
+      include_workflows:
+        description: "Let squad init install its GitHub workflow templates (may add/change .github/workflows)"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: squad-setup-${{ github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      SQUAD_GIT_REF: ${{ github.event.client_payload.squad_ref || github.event.inputs.squad_git_ref || 'dev' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Build and install Squad CLI from fork
+        shell: bash
+        run: |
+          set -euo pipefail
+          dest="${RUNNER_TEMP}/squad-fork"
+          rm -rf "$dest"
+          git clone --depth 1 --single-branch --branch "${SQUAD_GIT_REF}" \
+            https://github.com/PavelK2254/squad.git "$dest"
+          cd "$dest"
+          npm ci
+          npm run build
+          npm install -g ./packages/squad-cli
+          squad --version || true
+
+      - name: Squad init (non-interactive)
+        env:
+          CI: "true"
+          NO_COLOR: "1"
+          INCLUDE_WORKFLOWS: ${{ github.event.client_payload.include_workflows || github.event.inputs.include_workflows || 'false' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "${INCLUDE_WORKFLOWS}" == "true" ]]; then
+            squad init
+          else
+            squad init --no-workflows
+          fi
+
+      - name: Verify with squad doctor
+        env:
+          NO_COLOR: "1"
+        run: squad doctor || true
+
+      - name: Commit Squad scaffold when changed
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -d .squad ]]; then git add -A .squad; fi
+          if [[ -d .github/agents ]]; then git add -A .github/agents; fi
+          if [[ -f squad.config.ts ]]; then git add squad.config.ts; fi
+          if git diff --cached --quiet; then
+            echo "No Squad scaffold changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(squad): bootstrap Squad workspace (run ${GITHUB_RUN_ID})"
+          git push origin HEAD:main
+          echo "Pushed Squad scaffold to main."

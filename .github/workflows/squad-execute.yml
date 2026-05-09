@@ -1,0 +1,142 @@
+# Jira-driven execution with Squad team context (https://github.com/PavelK2254/squad).
+# Requires `.squad/` from the "Squad Setup" workflow.
+name: Squad Execute
+
+on:
+  repository_dispatch:
+    types: [squad_execute]
+  workflow_dispatch:
+    inputs:
+      issue_key:
+        description: "Jira issue key (e.g., TDS-7)"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: squad-exec-${{ github.event.client_payload.issue_key || github.event.inputs.issue_key }}
+  cancel-in-progress: false
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      ISSUE_KEY: ${{ github.event.client_payload.issue_key || github.event.inputs.issue_key }}
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Require Squad workspace
+        run: |
+          if [[ ! -d .squad ]]; then
+            echo "::error::Missing .squad/. Run the \"Squad Setup\" workflow first."
+            exit 1
+          fi
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Prepare ticket context
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        run: node .github/scripts/jira-dispatch.mjs prepare-dispatch
+
+      - name: Setup Node (Squad CLI)
+        if: env.SHOULD_RUN == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install Squad CLI
+        if: env.SHOULD_RUN == 'true'
+        run: npm install -g @bradygaster/squad-cli@latest
+
+      - name: Squad status
+        if: env.SHOULD_RUN == 'true'
+        env:
+          NO_COLOR: "1"
+        run: squad status || true
+
+      - name: Merge Jira prompt with Squad context
+        if: env.SHOULD_RUN == 'true'
+        run: node .github/scripts/squad-merge-prompt.mjs
+
+      - name: Restore Claude session cache
+        if: env.SHOULD_RUN == 'true'
+        id: cache-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.claude/projects
+          key: tdf-claude-${{ env.ISSUE_KEY }}-${{ github.run_id }}
+          restore-keys: |
+            tdf-claude-${{ env.ISSUE_KEY }}-
+
+      - name: Show cache restore result
+        if: env.SHOULD_RUN == 'true'
+        run: |
+          echo "cache-hit: ${{ steps.cache-restore.outputs.cache-hit }}"
+          echo "matched-key: ${{ steps.cache-restore.outputs.cache-matched-key }}"
+          ls -la "$HOME/.claude/projects" || true
+
+      - name: Run Claude Code (Squad-aware prompt)
+        if: env.SHOULD_RUN == 'true'
+        id: claude
+        uses: anthropics/claude-code-base-action@main
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          settings: |
+            { "model": "opus", "effortLevel": "high" }
+          prompt_file: ${{ env.SQUAD_PROMPT_FILE }}
+          claude_args: ${{ env.CLAUDE_ARGS }}
+
+      - name: Record run outputs
+        if: env.SHOULD_RUN == 'true'
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          ACTION_SESSION_ID: ${{ steps.claude.outputs.session_id }}
+          CONCLUSION: ${{ steps.claude.outputs.conclusion }}
+          EXECUTION_FILE: ${{ steps.claude.outputs.execution_file }}
+        run: node .github/scripts/jira-dispatch.mjs record-run
+
+      - name: Save Claude session cache
+        if: env.SHOULD_RUN == 'true' && env.NEW_SESSION_ID != ''
+        uses: actions/cache/save@v4
+        with:
+          path: ~/.claude/projects
+          key: tdf-claude-${{ env.ISSUE_KEY }}-${{ github.run_id }}
+
+      - name: Commit changes
+        if: env.SHOULD_RUN == 'true'
+        env:
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: node .github/scripts/jira-dispatch.mjs commit-changes
+
+      - name: Ensure pull request (PR mode)
+        if: env.SHOULD_RUN == 'true' && env.KIND == 'pr'
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GH_TOKEN: ${{ github.token }}
+        run: node .github/scripts/jira-dispatch.mjs ensure-pr
+
+      - name: Comment back on Jira
+        if: env.SHOULD_RUN == 'true'
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        run: node .github/scripts/jira-dispatch.mjs comment-result
