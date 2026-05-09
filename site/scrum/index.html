@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scrum at a glance — a two-minute introduction</title>
+<meta name="description" content="A short, accurate introduction to Scrum: what it is, when it helps, the three accountabilities, the five events, the artifacts, and the Sprint.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f5f7fa;
+    --border: #d6dbe2;
+    --text: #14181f;        /* > 16:1 on white */
+    --muted: #4a5260;       /* > 7:1 on white */
+    --accent: #0b4f8b;      /* > 7:1 on white  */
+    --accent-soft: #e6eff7;
+    --focus: #0b4f8b;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: clamp(1rem, 0.95rem + 0.2vw, 1.0625rem);
+    line-height: 1.6;
+    -webkit-text-size-adjust: 100%;
+  }
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  .skip-link:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    background: var(--accent);
+    color: #fff;
+  }
+  .container {
+    width: min(72rem, 100% - 2rem);
+    margin-inline: auto;
+  }
+  header.site {
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+  header.site .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
+    padding-block: 0.75rem;
+  }
+  .brand {
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  nav.primary ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+  }
+  nav.primary a {
+    display: inline-block;
+    padding: 0.625rem 0.75rem; /* >= 44px tap target with line-height */
+    text-decoration: none;
+    border-radius: 6px;
+    color: var(--accent);
+  }
+  nav.primary a:hover { background: var(--accent-soft); }
+
+  .hero {
+    padding-block: clamp(2rem, 4vw, 4rem);
+    background: linear-gradient(180deg, var(--accent-soft), var(--bg));
+  }
+  .hero h1 {
+    font-size: clamp(1.75rem, 1.2rem + 2.4vw, 2.75rem);
+    line-height: 1.15;
+    margin: 0 0 0.5rem;
+    color: var(--text);
+  }
+  .hero p.lede {
+    font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem);
+    color: var(--muted);
+    max-width: 50ch;
+    margin: 0;
+  }
+
+  main { padding-block: clamp(1.5rem, 3vw, 3rem); }
+  section { padding-block: clamp(1.25rem, 2.5vw, 2.25rem); }
+  section + section { border-top: 1px solid var(--border); }
+  h2 {
+    font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.625rem);
+    line-height: 1.25;
+    margin: 0 0 0.75rem;
+    color: var(--text);
+  }
+  h3 {
+    font-size: 1.0625rem;
+    line-height: 1.3;
+    margin: 0 0 0.25rem;
+    color: var(--text);
+  }
+  p, ul, ol { margin-block: 0.5rem; }
+  ul.plain { list-style: none; padding: 0; }
+
+  .grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 40rem) { .grid.cols-3 { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 48rem) { .grid.cols-2 { grid-template-columns: repeat(2, 1fr); } }
+
+  .card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.125rem;
+    background: var(--surface);
+  }
+  .card p { color: var(--muted); margin: 0; }
+
+  /* Visual summary diagram */
+  .diagram {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  .diagram svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+  .diagram figcaption {
+    margin-top: 0.5rem;
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+
+  /* FAQ */
+  details.faq {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    background: var(--surface);
+  }
+  details.faq + details.faq { margin-top: 0.5rem; }
+  details.faq summary {
+    cursor: pointer;
+    font-weight: 600;
+    list-style: revert;
+    padding-block: 0.25rem;
+  }
+  details.faq[open] summary { margin-bottom: 0.5rem; }
+  details.faq p { margin: 0; color: var(--muted); }
+
+  footer.site {
+    border-top: 1px solid var(--border);
+    margin-top: 1rem;
+    padding-block: 1.25rem;
+    color: var(--muted);
+    font-size: 0.9375rem;
+  }
+  footer.site .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  /* Print */
+  @media print {
+    :root { --bg: #fff; --surface: #fff; --border: #aaa; --accent: #000; --accent-soft: #fff; --muted: #222; }
+    nav.primary, .skip-link, .hero { display: none !important; }
+    a { color: inherit; text-decoration: underline; }
+    body { font-size: 11pt; line-height: 1.45; }
+    section { break-inside: avoid; page-break-inside: avoid; padding-block: 0.5rem; }
+    section + section { border-top: 1px solid #ccc; }
+    .card, details.faq, .diagram { break-inside: avoid; page-break-inside: avoid; border-color: #ccc; }
+    details.faq { padding: 0.4rem 0.6rem; }
+    details.faq[open] > summary, details.faq > summary { list-style: none; }
+    details.faq:not([open]) > *:not(summary) { display: revert; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="container">
+    <a class="brand" href="#top">Scrum at a glance</a>
+    <nav class="primary" aria-label="Sections">
+      <ul>
+        <li><a href="#what">What</a></li>
+        <li><a href="#when">When</a></li>
+        <li><a href="#roles">Roles</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#artifacts">Artifacts</a></li>
+        <li><a href="#sprint">Sprint</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="container">
+    <h1 id="hero-title">A two-minute introduction to Scrum</h1>
+    <p class="lede">Scrum is a lightweight framework for delivering complex products through short, inspect-and-adapt cycles. This page summarises the parts that matter most.</p>
+  </div>
+</section>
+
+<main id="main" class="container">
+
+  <section id="what" aria-labelledby="what-h">
+    <h2 id="what-h">What Scrum is</h2>
+    <p>
+      Scrum is a lightweight framework for developing, delivering, and sustaining complex products.
+      It is built on <strong>empirical process control</strong>: progress comes from
+      <em>transparency</em>, regular <em>inspection</em>, and timely <em>adaptation</em>.
+      Scrum does not prescribe how to engineer a product; it provides the structure within which teams
+      learn quickly and adjust. For the canonical definition, see the
+      <a href="https://scrumguides.org/" rel="noopener">Scrum Guide</a>.
+    </p>
+  </section>
+
+  <section id="when" aria-labelledby="when-h">
+    <h2 id="when-h">When it helps</h2>
+    <p>
+      Scrum is most useful when work is <strong>complex</strong> — the requirements, the technology, or both
+      are likely to change as the team learns. It creates fast feedback loops so teams can adjust direction.
+      It is not a guarantee of success, and it is a poor fit for purely repetitive or fully predictable work,
+      which other approaches handle better.
+    </p>
+  </section>
+
+  <section id="overview" aria-labelledby="overview-h">
+    <h2 id="overview-h">Visual summary</h2>
+    <figure class="diagram">
+      <svg viewBox="0 0 720 240" role="img" aria-labelledby="diagram-title diagram-desc" xmlns="http://www.w3.org/2000/svg">
+        <title id="diagram-title">Scrum at a glance: roles, events, and artifacts</title>
+        <desc id="diagram-desc">Three columns: roles (Product Owner, Scrum Master, Developers) feed into events (Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective) which produce artifacts (Product Backlog, Sprint Backlog, Increment with Definition of Done). All happen inside a Sprint.</desc>
+        <defs>
+          <style>
+            .col { fill: #f5f7fa; stroke: #d6dbe2; }
+            .hd  { fill: #0b4f8b; }
+            .hdt { fill: #ffffff; font: 600 14px sans-serif; }
+            .lbl { fill: #14181f; font: 13px sans-serif; }
+            .arr { stroke: #0b4f8b; stroke-width: 2; fill: none; }
+            .sprint { fill: none; stroke: #0b4f8b; stroke-dasharray: 6 4; stroke-width: 2; }
+            .stitle { fill: #0b4f8b; font: 600 13px sans-serif; }
+          </style>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="#0b4f8b"/>
+          </marker>
+        </defs>
+
+        <!-- Sprint container -->
+        <rect class="sprint" x="10" y="20" width="700" height="210" rx="10"/>
+        <text class="stitle" x="22" y="40">Sprint (time-boxed, ≤ 1 month)</text>
+
+        <!-- Column: Roles -->
+        <rect class="col" x="30" y="55" width="200" height="160" rx="8"/>
+        <rect class="hd"  x="30" y="55" width="200" height="28" rx="8"/>
+        <text class="hdt" x="130" y="74" text-anchor="middle">Accountabilities</text>
+        <text class="lbl" x="50" y="108">• Product Owner</text>
+        <text class="lbl" x="50" y="138">• Scrum Master</text>
+        <text class="lbl" x="50" y="168">• Developers</text>
+
+        <!-- Column: Events -->
+        <rect class="col" x="260" y="55" width="200" height="160" rx="8"/>
+        <rect class="hd"  x="260" y="55" width="200" height="28" rx="8"/>
+        <text class="hdt" x="360" y="74" text-anchor="middle">Events</text>
+        <text class="lbl" x="280" y="105">• Sprint Planning</text>
+        <text class="lbl" x="280" y="128">• Daily Scrum</text>
+        <text class="lbl" x="280" y="151">• Sprint Review</text>
+        <text class="lbl" x="280" y="174">• Sprint Retrospective</text>
+
+        <!-- Column: Artifacts -->
+        <rect class="col" x="490" y="55" width="200" height="160" rx="8"/>
+        <rect class="hd"  x="490" y="55" width="200" height="28" rx="8"/>
+        <text class="hdt" x="590" y="74" text-anchor="middle">Artifacts</text>
+        <text class="lbl" x="510" y="108">• Product Backlog</text>
+        <text class="lbl" x="510" y="138">• Sprint Backlog</text>
+        <text class="lbl" x="510" y="168">• Increment (DoD)</text>
+
+        <!-- Arrows -->
+        <path class="arr" d="M230,135 L260,135" marker-end="url(#arrow)"/>
+        <path class="arr" d="M460,135 L490,135" marker-end="url(#arrow)"/>
+      </svg>
+      <figcaption>Roles produce work through Events that yield Artifacts — all within a Sprint.</figcaption>
+    </figure>
+  </section>
+
+  <section id="roles" aria-labelledby="roles-h">
+    <h2 id="roles-h">Accountabilities (roles)</h2>
+    <div class="grid cols-3">
+      <article class="card" aria-labelledby="role-po">
+        <h3 id="role-po">Product Owner</h3>
+        <p>Maximises the value of the product by managing the Product Backlog and ordering its items.</p>
+      </article>
+      <article class="card" aria-labelledby="role-sm">
+        <h3 id="role-sm">Scrum Master</h3>
+        <p>Establishes Scrum and helps the team and organisation be effective with it.</p>
+      </article>
+      <article class="card" aria-labelledby="role-dev">
+        <h3 id="role-dev">Developers</h3>
+        <p>Create a usable Increment each Sprint that meets the Definition of Done.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="events" aria-labelledby="events-h">
+    <h2 id="events-h">Events</h2>
+    <div class="grid cols-2">
+      <article class="card">
+        <h3>Sprint</h3>
+        <p>A fixed-length container (usually one to four weeks) in which all other events occur and an Increment is produced.</p>
+      </article>
+      <article class="card">
+        <h3>Sprint Planning</h3>
+        <p>The team agrees a Sprint Goal and selects the work it believes can be done to meet it.</p>
+      </article>
+      <article class="card">
+        <h3>Daily Scrum</h3>
+        <p>A short check-in for Developers to inspect progress toward the Sprint Goal and adjust the plan.</p>
+      </article>
+      <article class="card">
+        <h3>Sprint Review</h3>
+        <p>The team and stakeholders inspect the Increment and adapt the Product Backlog based on what was learned.</p>
+      </article>
+      <article class="card">
+        <h3>Sprint Retrospective</h3>
+        <p>The team inspects how the Sprint went and decides on improvements for the next one.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="artifacts" aria-labelledby="artifacts-h">
+    <h2 id="artifacts-h">Artifacts</h2>
+    <div class="grid cols-3">
+      <article class="card">
+        <h3>Product Backlog</h3>
+        <p>An ordered list of what is needed to improve the product. Its commitment is the <strong>Product Goal</strong>.</p>
+      </article>
+      <article class="card">
+        <h3>Sprint Backlog</h3>
+        <p>The Sprint Goal plus the items selected for the Sprint and a plan for delivering them.</p>
+      </article>
+      <article class="card">
+        <h3>Increment</h3>
+        <p>A concrete step toward the Product Goal. Its quality commitment is the <strong>Definition of Done</strong>.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="sprint" aria-labelledby="sprint-h">
+    <h2 id="sprint-h">The Sprint</h2>
+    <p>
+      The Sprint is the heartbeat of Scrum: a time-boxed period — typically one to four weeks — that contains all other events.
+      Its outcome is a usable Increment that meets the Definition of Done. A new Sprint starts immediately after the previous one ends,
+      keeping work moving and feedback frequent.
+    </p>
+  </section>
+
+  <section id="myths" aria-labelledby="myths-h">
+    <h2 id="myths-h">Common myths</h2>
+    <ul>
+      <li><strong>“Scrum is a methodology with fixed scope.”</strong> Scrum is a framework, not a methodology, and scope is expected to evolve as the team learns.</li>
+      <li><strong>“The Daily Scrum is a status report to a manager.”</strong> It is a planning event for Developers to adjust their work toward the Sprint Goal.</li>
+      <li><strong>“The Scrum Master assigns tasks to the team.”</strong> Developers self-manage who does what; the Scrum Master coaches and removes impediments.</li>
+      <li><strong>“Sprints can be extended if work is not finished.”</strong> The Sprint length is fixed; unfinished items return to the Product Backlog.</li>
+    </ul>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-h">
+    <h2 id="faq-h">Frequently asked questions</h2>
+
+    <details class="faq">
+      <summary>How does Scrum relate to Agile?</summary>
+      <p>Agile is a set of values and principles. Scrum is one framework that helps teams work in line with those values, but it is not the only one.</p>
+    </details>
+
+    <details class="faq">
+      <summary>What is the difference from Kanban at a glance?</summary>
+      <p>Scrum organises work into time-boxed Sprints with defined events and accountabilities. Kanban focuses on visualising flow and limiting work in progress, without prescribing roles or fixed iterations. Teams sometimes combine both.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Who decides what gets built?</summary>
+      <p>The Product Owner is accountable for the Product Backlog and decides what is most valuable next. Stakeholders provide input; Developers decide how much can be done in a Sprint.</p>
+    </details>
+
+    <details class="faq">
+      <summary>How long should a Sprint be?</summary>
+      <p>One month or less. Many teams choose two weeks. Shorter Sprints give faster feedback; longer Sprints carry more risk between inspections.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Where can I learn more?</summary>
+      <p>Read the official <a href="https://scrumguides.org/" rel="noopener">Scrum Guide</a> — it is short and authoritative. This page is a summary, not a replacement.</p>
+    </details>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="container">
+    <p>Source: the official <a href="https://scrumguides.org/" rel="noopener">Scrum Guide</a>. This page is a non-authoritative summary.</p>
+    <p>Last updated: <time datetime="2026-05-09">2026-05-09</time></p>
+  </div>
+</footer>
+
+</body>
+</html>
