@@ -16,4 +16,5 @@
 ## Project Context
 
 - **Project:** dark_factory
+- **Building:** kan-124
 - **Created:** 2026-05-09
