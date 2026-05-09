@@ -1,13 +1,16 @@
-# Bootstrap Squad from https://github.com/PavelK2254/squad (clone, build CLI, squad init).
-# Optional ref: workflow input `squad_git_ref` or dispatch `client_payload.squad_ref` (default branch `dev`).
-# Optional new-project line: input `building` or `client_payload.building` (e.g. Jira ticket title) → seeds
-# `.squad/team.md` (**Building:**) and `.squad/identity/now.md` after init.
+# Bootstrap Squad from https://github.com/PavelK2254/squad (clone, build CLI, `squad init`).
+# Matches upstream README: https://github.com/PavelK2254/squad — `squad init` scaffolds `.squad/`;
+# this workflow also applies `--preset default` (starter agents: lead, reviewer, devrel, security, docs)
+# when `apply_preset` is true, then syncs `team.md` roster from agent charters and seeds Jira context.
 #
-# Local Cursor: open the **Squad** agent and send:
-#   squad => I'm starting a new project. Set up the team. I'm building: [Jira ticket title]
-# (Coordinator runs Init Mode from `.github/agents/squad.agent.md` until the roster is confirmed.)
+# Optional ref: `squad_git_ref` / `client_payload.squad_ref` (default `dev`).
+# Optional Jira: `issue_key` + `building` (summary) → combined **Building:** line and identity focus.
 #
-# Run once (or when you want to refresh scaffold); idempotent — existing files are skipped.
+# Local use (README quick start): Copilot / Squad agent —
+#   I'm starting a new project. Set up the team.
+#   Here's what I'm building: …
+#
+# Run once (or when refreshing scaffold); init is idempotent.
 name: Squad Setup
 
 on:
@@ -26,9 +29,24 @@ on:
         default: false
         type: boolean
       building:
-        description: "What you're building (e.g. Jira issue title). Optional; seeds Squad project context after init."
+        description: "What you're building (e.g. Jira issue summary). Optional; seeds **Building:** and identity."
         required: false
         default: ""
+        type: string
+      issue_key:
+        description: "Jira issue key (e.g. TDS-7). Optional; prefixed to **Building:** when combined with summary."
+        required: false
+        default: ""
+        type: string
+      apply_preset:
+        description: "Apply built-in `default` preset after init (installs starter specialist agents)."
+        required: false
+        default: true
+        type: boolean
+      squad_preset:
+        description: "Preset name when apply_preset is true (Squad SDK built-in preset name)."
+        required: false
+        default: "default"
         type: string
 
 permissions:
@@ -45,6 +63,8 @@ jobs:
     env:
       SQUAD_GIT_REF: ${{ github.event.client_payload.squad_ref || github.event.inputs.squad_git_ref || 'dev' }}
       BOOTSTRAP_BUILDING: ${{ github.event.client_payload.building || github.event.inputs.building || '' }}
+      BOOTSTRAP_ISSUE_KEY: ${{ github.event.client_payload.issue_key || github.event.inputs.issue_key || '' }}
+      SQUAD_PRESET: ${{ github.event.client_payload.squad_preset || github.event.inputs.squad_preset || 'default' }}
 
     steps:
       - name: Checkout
@@ -82,14 +102,25 @@ jobs:
           CI: "true"
           NO_COLOR: "1"
           INCLUDE_WORKFLOWS: ${{ github.event.client_payload.include_workflows || github.event.inputs.include_workflows || 'false' }}
+          SQUAD_PRESET: ${{ env.SQUAD_PRESET }}
         shell: bash
         run: |
           set -euo pipefail
-          if [[ "${INCLUDE_WORKFLOWS}" == "true" ]]; then
-            squad init "website for latvian painters"
-          else
-            squad init "website for latvian painters" --no-workflows
+          APPLY_PRESET=true
+          if [[ "${{ github.event_name }}" == "repository_dispatch" ]] && [[ "${{ github.event.client_payload.apply_preset }}" == "false" ]]; then
+            APPLY_PRESET=false
           fi
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]] && [[ "${{ github.event.inputs.apply_preset }}" == "false" ]]; then
+            APPLY_PRESET=false
+          fi
+          extra=()
+          if [[ "${INCLUDE_WORKFLOWS}" != "true" ]]; then
+            extra+=(--no-workflows)
+          fi
+          if [[ "${APPLY_PRESET}" == "true" ]] && [[ -n "${SQUAD_PRESET}" ]]; then
+            extra+=(--preset "${SQUAD_PRESET}")
+          fi
+          squad init "${extra[@]}"
 
       - name: Seed new-project context (optional)
         run: node .github/scripts/squad-seed-bootstrap.mjs
