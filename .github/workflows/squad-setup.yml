@@ -88,7 +88,7 @@ jobs:
           if [[ "${INCLUDE_WORKFLOWS}" == "true" ]]; then
             squad init "website for latvian painters"
           else
-            squad init --no-workflows
+            squad init "website for latvian painters" --no-workflows
           fi
 
       - name: Seed new-project context (optional)
