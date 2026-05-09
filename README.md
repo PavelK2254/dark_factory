@@ -31,28 +31,31 @@ cd dark_factory
 npm install
 ```
 
-## CLI flow
+## Flow
 
-Generate a structured plan from markdown requirements:
+### 1 — Generate plan (Claude Code does this, triggered from Jira)
+
+Click the "Requirements To Jira Plan" button on a Jira ticket.
+The workflow (`jira-requirements-dispatch.yml`) does:
+1. **Fetch** the ticket from Jira → `output/requirements-from-jira.md`
+2. **Build prompt** for Claude Code (`jira-plan-prepare.mjs`)
+3. **Claude Code** reads the spec, reasons about scope, and writes `output/generated-plan.json`
+4. **Validate** the JSON against `schemas/jira-plan.schema.json`
+5. **Preflight** (dry run) or **apply** to Jira if `apply_approve=true`
+6. **Comment** plan summary back to the Jira ticket
+
+### 2 — Apply an existing plan (deterministic, CLI)
 
 ```bash
-npx tsx scripts/dark-factory.ts plan specs/product-requirements.md --out output/generated-plan.json
-```
-
-Equivalent helper entrypoint:
-
-```bash
-npx tsx scripts/generate-jira-plan.ts specs/product-requirements.md --out output/generated-plan.json
-```
-
-Review and then apply to Jira (writes happen only with `--approve`):
-
-```bash
+# Preflight — print summary, no writes
 npx tsx scripts/dark-factory.ts apply output/generated-plan.json --project KAN
-npx tsx scripts/dark-factory.ts apply output/generated-plan.json --project KAN --approve --out output/applied-issues.json
+
+# Apply — create Epics, Tasks, Subtasks in Jira
+npx tsx scripts/dark-factory.ts apply output/generated-plan.json \
+  --project KAN --approve --out output/applied-issues.json
 ```
 
-Plan/apply behavior includes one generated `E2E: <Epic title>` task per epic, with idempotent reuse on reruns.
+Apply is idempotent: SHA-256 fingerprints prevent duplicate issues on reruns.
 
 Required env vars for Jira apply:
 

@@ -41,12 +41,6 @@ type JiraPlan = {
   epics: PlanEpic[];
 };
 
-type Section = {
-  heading: string;
-  level: number;
-  content: string[];
-};
-
 type JiraCredentials = {
   baseUrl: string;
   authHeader: string;
@@ -61,7 +55,6 @@ type CreatedIssue = {
   fingerprint: string;
 };
 
-const DEFAULT_SOURCE = "specs/product-requirements.md";
 const DEFAULT_PLAN_OUTPUT = "output/generated-plan.json";
 const DEFAULT_LEDGER_OUTPUT = "output/applied-issues.json";
 const SCHEMA_PATH = "schemas/jira-plan.schema.json";
@@ -74,14 +67,17 @@ async function main() {
     process.exit(0);
   }
 
-  if (command === "plan") {
-    await runPlanCommand(args);
-    return;
-  }
-
   if (command === "apply") {
     await runApplyCommand(args);
     return;
+  }
+
+  if (command === "plan") {
+    console.error(
+      "The 'plan' command has been removed. Plan generation is now done by Claude Code.\n" +
+        "See .github/workflows/jira-requirements-dispatch.yml for the new flow.",
+    );
+    process.exit(1);
   }
 
   throw new Error(`Unknown command: ${command}`);
@@ -93,11 +89,12 @@ function printHelp() {
       "dark-factory CLI",
       "",
       "Commands:",
-      "  dark-factory plan [source.md] [--out output/generated-plan.json]",
       "  dark-factory apply [output/generated-plan.json] --project KAN [--approve] [--out output/applied-issues.json]",
       "",
       "Environment for apply:",
       "  JIRA_BASE_URL, JIRA_EMAIL, JIRA_API_TOKEN",
+      "",
+      "Note: plan generation is now handled by Claude Code (see jira-requirements-dispatch.yml).",
     ].join("\n"),
   );
 }
@@ -129,19 +126,6 @@ function firstPositional(args: string[]): string | undefined {
   return positionals[0];
 }
 
-async function runPlanCommand(args: string[]) {
-  const source = firstPositional(args) ?? DEFAULT_SOURCE;
-  const outputPath = readArgValue(args, "--out") ?? DEFAULT_PLAN_OUTPUT;
-  const schema = await readJson(SCHEMA_PATH);
-  const markdown = await readText(source);
-  const plan = buildPlanFromMarkdown(markdown, source);
-  validatePlan(plan, schema);
-
-  await mkdir(path.dirname(outputPath), { recursive: true });
-  await writeFile(outputPath, `${JSON.stringify(plan, null, 2)}\n`, "utf8");
-  console.log(`Generated plan: ${outputPath}`);
-  console.log(`Epics: ${plan.epics.length}, Open questions: ${plan.open_questions.length}`);
-}
 
 async function runApplyCommand(args: string[]) {
   const inputPlan = firstPositional(args) ?? DEFAULT_PLAN_OUTPUT;
@@ -258,216 +242,6 @@ function summarizePlan(plan: JiraPlan): string {
   ].join("\n");
 }
 
-function buildPlanFromMarkdown(markdown: string, sourceFile: string): JiraPlan {
-  const sections = parseSections(markdown);
-  const title = firstHeading(markdown) ?? "Product requirements";
-  const areaSections = sections.filter((s) => s.level === 3);
-  const openQuestions = extractOpenQuestions(sections);
-  const epics = buildEpics(areaSections, sections);
-
-  return {
-    source_file: sourceFile,
-    summary: `Generated from ${title}.`,
-    open_questions: openQuestions,
-    epics,
-  };
-}
-
-function parseSections(markdown: string): Section[] {
-  const lines = markdown.split(/\r?\n/);
-  const sections: Section[] = [];
-  let current: Section | null = null;
-
-  for (const line of lines) {
-    const headingMatch = /^(#{1,6})\s+(.+)$/.exec(line.trim());
-    if (headingMatch) {
-      if (current) sections.push(current);
-      current = {
-        heading: headingMatch[2].trim(),
-        level: headingMatch[1].length,
-        content: [],
-      };
-      continue;
-    }
-
-    if (!current) {
-      current = { heading: "Document", level: 1, content: [] };
-    }
-    current.content.push(line);
-  }
-
-  if (current) sections.push(current);
-  return sections;
-}
-
-function firstHeading(markdown: string): string | null {
-  const match = markdown.match(/^#\s+(.+)$/m);
-  return match ? match[1].trim() : null;
-}
-
-function extractOpenQuestions(sections: Section[]): string[] {
-  const items: string[] = [];
-
-  for (const section of sections) {
-    if (!section.heading.toLowerCase().includes("open question")) continue;
-    for (const line of section.content) {
-      const bullet = normalizeBullet(line);
-      if (bullet) items.push(bullet);
-    }
-  }
-
-  return items;
-}
-
-function buildEpics(areaSections: Section[], allSections: Section[]): PlanEpic[] {
-  if (areaSections.length === 0) {
-    const fallbackTitle = "Requirements Delivery";
-    return [
-      {
-        title: fallbackTitle,
-        description: "Primary implementation area derived from product requirements.",
-        source_sections: ["Document"],
-        tasks: ensureE2ETask(fallbackTitle, [defaultTask()]),
-      },
-    ];
-  }
-
-  return areaSections.map((section) => {
-    const bullets = section.content.map(normalizeBullet).filter(Boolean) as string[];
-    const acceptance = findAcceptanceCriteriaForArea(section.heading, allSections);
-    const taskSourceSections = [section.heading];
-
-    const tasksFromBullets: PlanTask[] = bullets.length
-      ? bullets.map((bullet) => {
-          const complexity = inferComplexity(bullet);
-          return {
-            title: capitalizeSentence(bullet),
-            description: `Implement requirement: ${bullet}`,
-            acceptance_criteria: acceptance.length ? acceptance : [`Requirement implemented: ${bullet}`],
-            dependencies: [],
-            priority: "medium",
-            complexity,
-            source_sections: taskSourceSections,
-            subtasks: [
-              {
-                title: `Implement ${trimSentence(bullet, 40)}`,
-                description: `Deliver code and configuration for: ${bullet}`,
-                acceptance_criteria: [`Implementation complete for ${bullet}`],
-                source_sections: taskSourceSections,
-              },
-              {
-                title: `Validate ${trimSentence(bullet, 40)}`,
-                description: `Validate behavior and quality for: ${bullet}`,
-                acceptance_criteria: ["Verification checks pass."],
-                source_sections: taskSourceSections,
-              },
-            ],
-          };
-        })
-      : [defaultTask(section.heading)];
-
-    const tasks = ensureE2ETask(section.heading, tasksFromBullets);
-
-    return {
-      title: section.heading,
-      description: `Delivery for product area: ${section.heading}`,
-      source_sections: [section.heading],
-      tasks,
-    };
-  });
-}
-
-function findAcceptanceCriteriaForArea(areaHeading: string, sections: Section[]): string[] {
-  const normalizedArea = areaHeading.toLowerCase();
-  const criteria: string[] = [];
-
-  for (const section of sections) {
-    if (section.level < 3) continue;
-    const heading = section.heading.toLowerCase();
-    if (!heading.includes("acceptance")) continue;
-    const relates = section.content.join("\n").toLowerCase().includes(normalizedArea) || heading.includes(normalizedArea);
-    if (!relates) continue;
-    for (const line of section.content) {
-      const bullet = normalizeBullet(line);
-      if (bullet) criteria.push(bullet);
-    }
-  }
-
-  return criteria;
-}
-
-function defaultTask(sourceSection = "Document"): PlanTask {
-  return {
-    title: "Break down requirements into implementation tasks",
-    description: "Create actionable implementation tasks from remaining requirements content.",
-    acceptance_criteria: ["Requirements are mapped to executable Jira tasks."],
-    dependencies: [],
-    priority: "medium",
-    complexity: "medium",
-    source_sections: [sourceSection],
-    subtasks: [
-      {
-        title: "Implement breakdown",
-        description: "Create initial implementation task decomposition.",
-        acceptance_criteria: ["Task decomposition exists."],
-        source_sections: [sourceSection],
-      },
-      {
-        title: "Validate breakdown",
-        description: "Validate decomposition quality with acceptance criteria.",
-        acceptance_criteria: ["Decomposition reviewed for completeness."],
-        source_sections: [sourceSection],
-      },
-    ],
-  };
-}
-
-function buildE2ETask(epicTitle: string, sourceSections: string[]): PlanTask {
-  return {
-    title: `E2E: ${epicTitle}`,
-    description: `Execute end-to-end validation for epic "${epicTitle}" across integrated flows.`,
-    acceptance_criteria: [
-      `Critical user flows for "${epicTitle}" pass in end-to-end testing.`,
-      "Integration behavior and regressions are verified.",
-      "E2E evidence and outcomes are attached to the task.",
-    ],
-    dependencies: [],
-    priority: "medium",
-    complexity: "medium",
-    source_sections: sourceSections,
-    subtasks: [],
-  };
-}
-
-function ensureE2ETask(epicTitle: string, tasks: PlanTask[]): PlanTask[] {
-  const expectedTitle = `e2e: ${epicTitle}`.toLowerCase();
-  const alreadyExists = tasks.some((task) => task.title.trim().toLowerCase() === expectedTitle);
-  if (alreadyExists) return tasks;
-  return [...tasks, buildE2ETask(epicTitle, [epicTitle])];
-}
-
-function inferComplexity(text: string): Complexity {
-  const t = text.toLowerCase();
-  if (t.includes("integrat") || t.includes("orchestrat") || t.includes("multi")) return "large";
-  if (t.includes("support") || t.includes("allow") || t.includes("create")) return "medium";
-  return "small";
-}
-
-function normalizeBullet(line: string): string | null {
-  const match = /^\s*[-*]\s+(.+)$/.exec(line);
-  if (!match) return null;
-  return match[1].trim();
-}
-
-function capitalizeSentence(value: string): string {
-  if (!value) return value;
-  return value[0].toUpperCase() + value.slice(1);
-}
-
-function trimSentence(value: string, max: number): string {
-  if (value.length <= max) return value;
-  return `${value.slice(0, max - 3)}...`;
-}
 
 function validatePlan(plan: JiraPlan, schema: unknown) {
   const ajv = new Ajv({ allErrors: true, strict: false });

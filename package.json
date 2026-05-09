@@ -7,7 +7,6 @@
     "dark-factory": "./scripts/dark-factory.ts"
   },
   "scripts": {
-    "plan": "tsx scripts/dark-factory.ts plan",
     "apply": "tsx scripts/dark-factory.ts apply",
     "test": "node --test tests/*.test.mjs",
     "typecheck": "tsc --noEmit"

@@ -1,12 +1,14 @@
 #!/usr/bin/env node
-import { spawn } from "node:child_process";
-
-const args = process.argv.slice(2);
-const child = spawn("node", ["--import", "tsx", "scripts/dark-factory.ts", "plan", ...args], {
-  stdio: "inherit",
-  shell: process.platform === "win32",
-});
-
-child.on("exit", (code) => {
-  process.exit(code ?? 1);
-});
+/**
+ * generate-jira-plan.ts
+ *
+ * Previously a thin shim around `dark-factory.ts plan`.
+ * Plan generation is now done by Claude Code via jira-requirements-dispatch.yml.
+ * This file is kept as a placeholder so existing references don't break.
+ */
+console.error(
+  "Plan generation has moved to Claude Code.\n" +
+    "Trigger the workflow: .github/workflows/jira-requirements-dispatch.yml\n" +
+    "or use: dark-factory apply <plan.json> --project <KEY> to apply an existing plan.",
+);
+process.exit(1);
