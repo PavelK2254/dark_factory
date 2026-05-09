@@ -1,8 +1,8 @@
 import {
   initJira,
   fetchJson,
-  transitionToCategory,
   transitionToInProgress,
+  transitionToInReview,
   getJiraContext,
 } from "./jira-dispatch.mjs";
 
@@ -171,15 +171,6 @@ async function fetchIssue(key, fields) {
   const { baseUrl, headers } = getJiraContext();
   const url = `${baseUrl}/rest/api/3/issue/${encodeURIComponent(key)}?fields=${encodeURIComponent(fields)}`;
   return fetchJson(url, { headers });
-}
-
-async function transitionToInReview(key, issue) {
-  return transitionToCategory(key, issue, {
-    skipCategories: [],
-    categoryKey: "__no_category_match__",
-    nameMatchers: ["in review", "code review", "review", "ready for review"],
-    label: "In Review",
-  });
 }
 
 async function postJiraComment(key, text) {
