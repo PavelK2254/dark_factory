@@ -125,6 +125,59 @@ async function transitionToDone(key, issue) {
   });
 }
 
+async function transitionToInReview(key, issue) {
+  return transitionToCategory(key, issue, {
+    skipCategories: ["done"],
+    categoryKey: "__no_category_match__",
+    nameMatchers: ["in review", "code review", "review", "ready for review"],
+    label: "In Review",
+  });
+}
+
+async function postRunStartedComment(key, kind) {
+  const repo = env.GITHUB_REPOSITORY;
+  const runId = env.GITHUB_RUN_ID;
+  const runNumber = env.GITHUB_RUN_NUMBER;
+  const runAttempt = env.GITHUB_RUN_ATTEMPT;
+  if (!repo || !runId) {
+    return;
+  }
+  const url = `https://github.com/${repo}/actions/runs/${runId}`;
+  const kindLabel = kind === "answer" ? "answer run" : "PR run";
+  const attemptLabel = runAttempt && runAttempt !== "1" ? ` (attempt ${runAttempt})` : "";
+  const adf = {
+    body: {
+      type: "doc",
+      version: 1,
+      content: [
+        {
+          type: "paragraph",
+          content: [
+            { type: "text", text: `🤖 Dark Factory ${kindLabel} started · ` },
+            {
+              type: "text",
+              text: `watch live (run #${runNumber || runId}${attemptLabel})`,
+              marks: [{ type: "link", attrs: { href: url } }],
+            },
+          ],
+        },
+      ],
+    },
+  };
+  try {
+    const response = await fetch(
+      `${jiraBaseUrl}/rest/api/3/issue/${encodeURIComponent(key)}/comment`,
+      { method: "POST", headers: jiraHeaders, body: JSON.stringify(adf) },
+    );
+    if (!response.ok) {
+      const body = await response.text().catch(() => "");
+      console.warn(`Failed to post run-started comment on ${key}: HTTP ${response.status} ${body}`);
+    }
+  } catch (err) {
+    console.warn(`Failed to post run-started comment on ${key}: ${err.message}`);
+  }
+}
+
 async function transitionDone() {
   initJira();
   const key = normalizeIssueKey(requireEnv("ISSUE_KEY"));
@@ -220,6 +273,8 @@ async function prepareDispatch() {
   const summary = fields.summary || key;
   const kind = determineKind(issue);
   const branchName = `tdf/${key.toLowerCase()}`;
+
+  await postRunStartedComment(key, kind);
 
   // For PR mode, switch to the existing PR branch if one exists on origin so
   // that prior state.json, plan.md, transcript.md, and any code changes are
@@ -574,6 +629,20 @@ async function commentResult() {
     body: JSON.stringify({ body: { type: "doc", version: 1, content } }),
   });
   console.log(`Posted comment to ${issueKey}`);
+
+  if (kind === "pr") {
+    let issue;
+    try {
+      issue = await fetchJson(
+        `${jiraBaseUrl}/rest/api/3/issue/${encodeURIComponent(issueKey)}?fields=status`,
+        { headers: jiraHeaders },
+      );
+    } catch (err) {
+      console.warn(`Failed to fetch ${issueKey} for In Review transition: ${err.message}`);
+      return;
+    }
+    await transitionToInReview(issueKey, issue);
+  }
 }
 
 function paragraph(text) {
@@ -794,5 +863,6 @@ export {
   fetchJson,
   transitionToCategory,
   transitionToInProgress,
+  transitionToInReview,
   getJiraContext,
 };
