@@ -1,0 +1,58 @@
+{
+  "startedAt": "2026-05-09T18:26:41.714Z",
+  "baseUrl": "http://127.0.0.1:8765/",
+  "desktop": {
+    "title": "Scrum Overview — Roles, Events, Artifacts",
+    "h1Count": 1,
+    "metaDescription": "A concise, plain-language overview of Scrum: roles (Product Owner, Scrum Master, Developers), the five events, artifacts including the Definition of Done, and the Sprint as a time-boxed container.",
+    "scrollWidth": 1280,
+    "clientWidth": 1280,
+    "hasHero": true,
+    "hasFlow": true,
+    "hasFooter": true,
+    "scrumGuideLinkText": "The Scrum Guide on scrumguides.org"
+  },
+  "mobile": {
+    "scrollWidth": 375,
+    "clientWidth": 375,
+    "bodyScrollWidth": 375,
+    "minTapTargetPx": 44
+  },
+  "anchors": {
+    "roles": {
+      "hash": "#roles",
+      "targetRectTop": -0.171875,
+      "inView": true
+    },
+    "events": {
+      "hash": "#events",
+      "targetRectTop": 0.03125,
+      "inView": true
+    },
+    "artifacts": {
+      "hash": "#artifacts",
+      "targetRectTop": 0.453125,
+      "inView": true
+    },
+    "sprint": {
+      "hash": "#sprint",
+      "targetRectTop": -0.125,
+      "inView": true
+    }
+  },
+  "axe": {
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "impact": "serious",
+        "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+        "nodes": 17
+      }
+    ],
+    "passCount": 36,
+    "criticalCount": 0,
+    "seriousCount": 0
+  },
+  "completedAt": "2026-05-09T18:26:50.575Z"
+}

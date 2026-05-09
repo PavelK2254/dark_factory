@@ -95,19 +95,10 @@ jobs:
           claude_args: "--max-turns 10 --permission-mode bypassPermissions"
 
       # ── 5. DETERMINISTIC: validate the JSON Claude produced ───────────────
+      #     Hard gate: every Epic MUST have an E2E task. If Claude forgets,
+      #     fail here so no Jira issues get created.
       - name: Validate generated plan
-        run: |
-          if [ ! -f "$PLAN_OUT" ]; then
-            echo "ERROR: Claude did not write a plan to $PLAN_OUT"
-            exit 1
-          fi
-          python3 -m json.tool "$PLAN_OUT" > /dev/null
-          echo "Plan is valid JSON."
-          node -e "
-            import { readFileSync } from 'fs';
-            const p = JSON.parse(readFileSync(process.env.PLAN_OUT, 'utf8'));
-            console.log('Epics:', p.epics.length, '| Tasks:', p.epics.reduce((s,e)=>s+(e.tasks?.length??0),0));
-          " --input-type=module
+        run: node .github/scripts/jira-plan-validate.mjs
 
       # ── 6. DETERMINISTIC: commit the plan file for audit trail ───────────
       - name: Commit generated plan

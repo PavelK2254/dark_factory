@@ -1,0 +1,1326 @@
+[
+  {
+    "type": "system",
+    "subtype": "init",
+    "cwd": "/home/runner/work/dark_factory/dark_factory",
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "tools": [
+      "Task",
+      "AskUserQuestion",
+      "Bash",
+      "CronCreate",
+      "CronDelete",
+      "CronList",
+      "Edit",
+      "EnterPlanMode",
+      "EnterWorktree",
+      "ExitPlanMode",
+      "ExitWorktree",
+      "Monitor",
+      "NotebookEdit",
+      "PushNotification",
+      "Read",
+      "RemoteTrigger",
+      "ScheduleWakeup",
+      "Skill",
+      "TaskOutput",
+      "TaskStop",
+      "TodoWrite",
+      "ToolSearch",
+      "WebFetch",
+      "WebSearch",
+      "Write"
+    ],
+    "mcp_servers": [],
+    "model": "claude-opus-4-7",
+    "permissionMode": "bypassPermissions",
+    "slash_commands": [
+      "update-config",
+      "debug",
+      "simplify",
+      "batch",
+      "fewer-permission-prompts",
+      "loop",
+      "claude-api",
+      "clear",
+      "compact",
+      "context",
+      "heapdump",
+      "init",
+      "review",
+      "security-review",
+      "usage",
+      "insights",
+      "team-onboarding"
+    ],
+    "apiKeySource": "none",
+    "claude_code_version": "2.1.138",
+    "output_style": "default",
+    "agents": [
+      "claude-code-guide",
+      "Explore",
+      "general-purpose",
+      "Plan",
+      "statusline-setup"
+    ],
+    "skills": [
+      "update-config",
+      "debug",
+      "simplify",
+      "batch",
+      "fewer-permission-prompts",
+      "loop",
+      "schedule",
+      "claude-api"
+    ],
+    "plugins": [],
+    "analytics_disabled": false,
+    "uuid": "2aa6f807-4ebb-4cf5-8aea-c0c4a05a8c32",
+    "memory_paths": {
+      "auto": "/home/runner/.claude/projects/-home-runner-work-dark-factory-dark-factory/memory/"
+    },
+    "fast_mode_state": "off"
+  },
+  {
+    "type": "rate_limit_event",
+    "rate_limit_info": {
+      "status": "allowed",
+      "resetsAt": 1778362200,
+      "rateLimitType": "five_hour",
+      "overageStatus": "allowed",
+      "overageResetsAt": 1778350800,
+      "isUsingOverage": false
+    },
+    "uuid": "b41c2430-500c-4b78-a353-81f15683a090",
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14"
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_01TZY34wco8MQJbzLg1fvShf",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "EokCClkIDRgCKkBazPC6ZMI9q74v51+hjW3b+5FUUe3hoqoAbe5jy0f+qK1l+8RoHERzqsPMoEJQRw5AiBCIvHAfSmIdjKOMja/zMg9jbGF1ZGUtb3B1cy00LTc4ABIM/NMWqry9r56DwLEdGgxm/H56DOpIfemRCM0iMGEFrWGKl9L/K4rGKawAXB9WnQ/ZiEJWxLxofNU2WcYyzwzsLjmXbCclFGSj2dfskypezeIipXCXAbIRLf4/2k9oX73wh8FONvwFNRdzXbNOgf/uAkv70P6cYYzGYCD2eu+8hcUGLDdP8yQ2SFaaldRZdozfj6YWkIJspcGZHca/iSNKxcpUkExfTNd5NpAQ0xgB"
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 5,
+        "cache_creation_input_tokens": 9380,
+        "cache_read_input_tokens": 16550,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9380
+        },
+        "output_tokens": 0,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "8b5d85b8-cdcb-43d5-a46a-f437180000e5"
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_01TZY34wco8MQJbzLg1fvShf",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_012jE7py7ebT9rWaekbpNXkA",
+          "name": "Read",
+          "input": {
+            "file_path": "/home/runner/work/dark_factory/dark_factory/spec/KAN-132/spec.md"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 5,
+        "cache_creation_input_tokens": 9380,
+        "cache_read_input_tokens": 16550,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 9380
+        },
+        "output_tokens": 0,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "098ef9c6-e4e8-4e5a-9cd7-2ccc726bbc84"
+  },
+  {
+    "type": "user",
+    "message": {
+      "role": "user",
+      "content": [
+        {
+          "tool_use_id": "toolu_012jE7py7ebT9rWaekbpNXkA",
+          "type": "tool_result",
+          "content": "1\t# KAN-132: Add Myths and FAQ sections to Scrum landing page\n2\t\n3\tGenerated from Jira on 2026-05-09T18:20:04.145Z.\n4\t\n5\t## Issue Details\n6\t\n7\t| Field | Value |\n8\t|---|---|\n9\t| Key | KAN-132 |\n10\t| Title | Add Myths and FAQ sections to Scrum landing page |\n11\t| Type | Task |\n12\t| Status | To Do |\n13\t| Priority | Medium |\n14\t| Assignee | - |\n15\t| Reporter | Roland Abou Younes |\n16\t| Labels | dark-factory-generated, dfp-8f96dba0eece |\n17\t| Components | - |\n18\t| Created | 2026-05-09T20:04:32.713+0300 |\n19\t| Updated | 2026-05-09T20:04:32.859+0300 |\n20\t\n21\t## Description\n22\t\n23\tImplement the §3.2 nice-to-have content: a short Myths block (e.g. 'Scrum is not a methodology with fixed scope agreed up front') and a FAQ section with three to five items covering the relationship between Scrum and Agile, the difference from Kanban at a glance, and who decides what is built. Content must use plain language consistent with the Scrum Guide. New sections should slot into the existing page structure without breaking anchor navigation or heading hierarchy.\n24\t\n25\t### Acceptance Criteria\n26\t\n27\t- Myths block contains at least two myth-busting statements consistent with the Scrum Guide.\n28\t- FAQ section contains three to five items including: Scrum vs. Agile, Scrum vs. Kanban, and who decides what is built (the Product Owner).\n29\t- New sections are reachable via updated anchor navigation or a new nav entry without breaking existing anchors.\n30\t- No statement in Myths or FAQ contradicts the Scrum Guide.\n31\t\n32\t### Source Reference\n33\t\n34\t- 3.2 Nice to have\n35\t\n36\t### Dependencies\n37\t\n38\t- Build Scrum landing page: scaffold, core content sections, and visual summary\n39\t\n40\tSuggested priority: low\n41\t\n42\tEstimated complexity: small\n43\t\n44\t## Comments (0)\n45\t\n46\t_No comments._\n47\t"
+        }
+      ]
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "7e613b78-3be2-4aec-a24d-1e495e2bf771",
+    "timestamp": "2026-05-09T18:20:29.959Z",
+    "tool_use_result": {
+      "type": "text",
+      "file": {
+        "filePath": "/home/runner/work/dark_factory/dark_factory/spec/KAN-132/spec.md",
+        "content": "# KAN-132: Add Myths and FAQ sections to Scrum landing page\n\nGenerated from Jira on 2026-05-09T18:20:04.145Z.\n\n## Issue Details\n\n| Field | Value |\n|---|---|\n| Key | KAN-132 |\n| Title | Add Myths and FAQ sections to Scrum landing page |\n| Type | Task |\n| Status | To Do |\n| Priority | Medium |\n| Assignee | - |\n| Reporter | Roland Abou Younes |\n| Labels | dark-factory-generated, dfp-8f96dba0eece |\n| Components | - |\n| Created | 2026-05-09T20:04:32.713+0300 |\n| Updated | 2026-05-09T20:04:32.859+0300 |\n\n## Description\n\nImplement the §3.2 nice-to-have content: a short Myths block (e.g. 'Scrum is not a methodology with fixed scope agreed up front') and a FAQ section with three to five items covering the relationship between Scrum and Agile, the difference from Kanban at a glance, and who decides what is built. Content must use plain language consistent with the Scrum Guide. New sections should slot into the existing page structure without breaking anchor navigation or heading hierarchy.\n\n### Acceptance Criteria\n\n- Myths block contains at least two myth-busting statements consistent with the Scrum Guide.\n- FAQ section contains three to five items including: Scrum vs. Agile, Scrum vs. Kanban, and who decides what is built (the Product Owner).\n- New sections are reachable via updated anchor navigation or a new nav entry without breaking existing anchors.\n- No statement in Myths or FAQ contradicts the Scrum Guide.\n\n### Source Reference\n\n- 3.2 Nice to have\n\n### Dependencies\n\n- Build Scrum landing page: scaffold, core content sections, and visual summary\n\nSuggested priority: low\n\nEstimated complexity: small\n\n## Comments (0)\n\n_No comments._\n",
+        "numLines": 47,
+        "startLine": 1,
+        "totalLines": 47
+      }
+    }
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_01G9TL9MYNWx4engp2jf9rgv",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01SVjpaYw1QDyunNGoyYUsAW",
+          "name": "Bash",
+          "input": {
+            "command": "ls -la /home/runner/work/dark_factory/dark_factory/",
+            "description": "List repository root"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 916,
+        "cache_read_input_tokens": 25930,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 916
+        },
+        "output_tokens": 67,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "d1317ab8-54cf-4873-826b-80a19534b416"
+  },
+  {
+    "type": "user",
+    "message": {
+      "role": "user",
+      "content": [
+        {
+          "tool_use_id": "toolu_01SVjpaYw1QDyunNGoyYUsAW",
+          "type": "tool_result",
+          "content": "total 148\ndrwxr-xr-x 13 runner runner  4096 May  9 18:20 .\ndrwxr-xr-x  3 runner runner  4096 May  9 18:19 ..\ndrwxr-xr-x  7 runner runner  4096 May  9 18:20 .git\ndrwxr-xr-x  4 runner runner  4096 May  9 18:20 .github\n-rw-r--r--  1 runner runner   850 May  9 18:20 .gitignore\n-rw-r--r--  1 runner runner  4007 May  9 18:20 CLAUDE.md\n-rw-r--r--  1 runner runner  2025 May  9 18:20 README.md\n-rw-r--r--  1 runner runner 34071 May  9 18:20 architecture.md\ndrwxr-xr-x  2 runner runner  4096 May  9 18:20 benchmarks\ndrwxr-xr-x  5 runner runner  4096 May  9 18:20 docs\n-rw-r--r--  1 runner runner 17685 May  9 18:20 github_actions_claude_spec.md\ndrwxr-xr-x  2 runner runner  4096 May  9 18:20 output\n-rw-r--r--  1 runner runner 19855 May  9 18:20 package-lock.json\n-rw-r--r--  1 runner runner   453 May  9 18:20 package.json\ndrwxr-xr-x  2 runner runner  4096 May  9 18:20 prompts\ndrwxr-xr-x  2 runner runner  4096 May  9 18:20 schemas\ndrwxr-xr-x  2 runner runner  4096 May  9 18:20 scripts\ndrwxr-xr-x  8 runner runner  4096 May  9 18:20 spec\ndrwxr-xr-x  2 runner runner  4096 May  9 18:20 specs\ndrwxr-xr-x  3 runner runner  4096 May  9 18:20 tests\n-rw-r--r--  1 runner runner   268 May  9 18:20 tsconfig.json",
+          "is_error": false
+        }
+      ]
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "8cce45ed-e177-4c5e-96aa-7ff4031f87b2",
+    "timestamp": "2026-05-09T18:20:36.538Z",
+    "tool_use_result": {
+      "stdout": "total 148\ndrwxr-xr-x 13 runner runner  4096 May  9 18:20 .\ndrwxr-xr-x  3 runner runner  4096 May  9 18:19 ..\ndrwxr-xr-x  7 runner runner  4096 May  9 18:20 .git\ndrwxr-xr-x  4 runner runner  4096 May  9 18:20 .github\n-rw-r--r--  1 runner runner   850 May  9 18:20 .gitignore\n-rw-r--r--  1 runner runner  4007 May  9 18:20 CLAUDE.md\n-rw-r--r--  1 runner runner  2025 May  9 18:20 README.md\n-rw-r--r--  1 runner runner 34071 May  9 18:20 architecture.md\ndrwxr-xr-x  2 runner runner  4096 May  9 18:20 benchmarks\ndrwxr-xr-x  5 runner runner  4096 May  9 18:20 docs\n-rw-r--r--  1 runner runner 17685 May  9 18:20 github_actions_claude_spec.md\ndrwxr-xr-x  2 runner runner  4096 May  9 18:20 output\n-rw-r--r--  1 runner runner 19855 May  9 18:20 package-lock.json\n-rw-r--r--  1 runner runner   453 May  9 18:20 package.json\ndrwxr-xr-x  2 runner runner  4096 May  9 18:20 prompts\ndrwxr-xr-x  2 runner runner  4096 May  9 18:20 schemas\ndrwxr-xr-x  2 runner runner  4096 May  9 18:20 scripts\ndrwxr-xr-x  8 runner runner  4096 May  9 18:20 spec\ndrwxr-xr-x  2 runner runner  4096 May  9 18:20 specs\ndrwxr-xr-x  3 runner runner  4096 May  9 18:20 tests\n-rw-r--r--  1 runner runner   268 May  9 18:20 tsconfig.json",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false,
+      "noOutputExpected": false
+    }
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_01A2fkRQNht1Q5VyXsbrkhZU",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_018EYEsi7AAtBFJ3AbwAjtkY",
+          "name": "Bash",
+          "input": {
+            "command": "ls /home/runner/work/dark_factory/dark_factory/spec/ /home/runner/work/dark_factory/dark_factory/docs/ /home/runner/work/dark_factory/dark_factory/output/",
+            "description": "Check spec, docs, output"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 802,
+        "cache_read_input_tokens": 26846,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 802
+        },
+        "output_tokens": 61,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "6da28b0c-b8f0-4629-8f90-5d3033359562"
+  },
+  {
+    "type": "user",
+    "message": {
+      "role": "user",
+      "content": [
+        {
+          "tool_use_id": "toolu_018EYEsi7AAtBFJ3AbwAjtkY",
+          "type": "tool_result",
+          "content": "/home/runner/work/dark_factory/dark_factory/docs/:\nchain-test\nscrum\nsmoke\nworkflows.md\n\n/home/runner/work/dark_factory/dark_factory/output/:\ngenerated-plan.json\nplanning-prompt.md\nrequirements-from-jira.md\n\n/home/runner/work/dark_factory/dark_factory/spec/:\nKAN-130\nKAN-131\nKAN-132\nKAN-135\nKAN-136\nKAN-7",
+          "is_error": false
+        }
+      ]
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "c28c04a8-459e-4c2a-8087-dbbf585f5a3c",
+    "timestamp": "2026-05-09T18:20:39.834Z",
+    "tool_use_result": {
+      "stdout": "/home/runner/work/dark_factory/dark_factory/docs/:\nchain-test\nscrum\nsmoke\nworkflows.md\n\n/home/runner/work/dark_factory/dark_factory/output/:\ngenerated-plan.json\nplanning-prompt.md\nrequirements-from-jira.md\n\n/home/runner/work/dark_factory/dark_factory/spec/:\nKAN-130\nKAN-131\nKAN-132\nKAN-135\nKAN-136\nKAN-7",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false,
+      "noOutputExpected": false
+    }
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_01CdN9pbBoBrecRTn3wjmTSm",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_014a1zYT4ffMdqZf1gsaqawo",
+          "name": "Bash",
+          "input": {
+            "command": "ls /home/runner/work/dark_factory/dark_factory/docs/scrum/",
+            "description": "List scrum docs"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 331,
+        "cache_read_input_tokens": 27648,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 331
+        },
+        "output_tokens": 64,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "7e9ca2a3-7c42-4c89-8aac-4ab71ef821dd"
+  },
+  {
+    "type": "user",
+    "message": {
+      "role": "user",
+      "content": [
+        {
+          "tool_use_id": "toolu_014a1zYT4ffMdqZf1gsaqawo",
+          "type": "tool_result",
+          "content": "index.html",
+          "is_error": false
+        }
+      ]
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "33d5bcd1-e655-4499-a04a-eec1cca4f8e9",
+    "timestamp": "2026-05-09T18:20:46.007Z",
+    "tool_use_result": {
+      "stdout": "index.html",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false,
+      "noOutputExpected": false
+    }
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_01BFjDybTQQu8MULo9nCpCH6",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01Kdw7FFga8tcRAy5wFxoHEc",
+          "name": "Read",
+          "input": {
+            "file_path": "/home/runner/work/dark_factory/dark_factory/docs/scrum/index.html"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 132,
+        "cache_read_input_tokens": 27979,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 132
+        },
+        "output_tokens": 66,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "8e34dae9-18f0-478d-ad5c-73de91312c5f"
+  },
+  {
+    "type": "user",
+    "message": {
+      "role": "user",
+      "content": [
+        {
+          "tool_use_id": "toolu_01Kdw7FFga8tcRAy5wFxoHEc",
+          "type": "tool_result",
+          "content": "1\t<!DOCTYPE html>\n2\t<html lang=\"en\">\n3\t<head>\n4\t  <meta charset=\"utf-8\" />\n5\t  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n6\t  <meta name=\"color-scheme\" content=\"light\" />\n7\t  <meta name=\"theme-color\" content=\"#1a5fb4\" />\n8\t  <meta name=\"robots\" content=\"index,follow\" />\n9\t  <title>Scrum Overview — Roles, Events, Artifacts</title>\n10\t  <meta name=\"description\" content=\"A concise, plain-language overview of Scrum: roles (Product Owner, Scrum Master, Developers), the five events, artifacts including the Definition of Done, and the Sprint as a time-boxed container.\" />\n11\t  <meta property=\"og:title\" content=\"Scrum Overview — Roles, Events, Artifacts\" />\n12\t  <meta property=\"og:description\" content=\"A concise, plain-language overview of Scrum: roles, the five events, artifacts including the Definition of Done, and the Sprint as a time-boxed container.\" />\n13\t  <meta property=\"og:type\" content=\"article\" />\n14\t  <meta property=\"og:locale\" content=\"en_US\" />\n15\t  <meta name=\"twitter:card\" content=\"summary\" />\n16\t  <style>\n17\t    :root {\n18\t      --bg: #fdfdfc;\n19\t      --surface: #ffffff;\n20\t      --ink: #1d1d1f;\n21\t      --muted: #555;\n22\t      --accent: #1a5fb4;\n23\t      --accent-soft: #eaf2fb;\n24\t      --line: #e5e5e3;\n25\t      --radius: 10px;\n26\t      --maxw: 920px;\n27\t    }\n28\t    * { box-sizing: border-box; }\n29\t    html { scroll-behavior: smooth; }\n30\t    body {\n31\t      margin: 0;\n32\t      font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif;\n33\t      color: var(--ink);\n34\t      background: var(--bg);\n35\t      line-height: 1.55;\n36\t    }\n37\t    a { color: var(--accent); }\n38\t    a:hover { text-decoration: underline; }\n39\t    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }\n40\t\n41\t    header.hero {\n42\t      background: linear-gradient(180deg, var(--accent-soft), var(--bg));\n43\t      padding: 3.5rem 0 2rem;\n44\t      border-bottom: 1px solid var(--line);\n45\t    }\n46\t    h1 {\n47\t      font-size: clamp(1.75rem, 4vw, 2.5rem);\n48\t      margin: 0 0 0.5rem;\n49\t      letter-spacing: -0.01em;\n50\t    }\n51\t    .subhead {\n52\t      font-size: 1.125rem;\n53\t      color: var(--muted);\n54\t      margin: 0;\n55\t      max-width: 60ch;\n56\t    }\n57\t\n58\t    nav.anchors {\n59\t      position: sticky;\n60\t      top: 0;\n61\t      z-index: 5;\n62\t      background: var(--surface);\n63\t      border-bottom: 1px solid var(--line);\n64\t    }\n65\t    nav.anchors ul {\n66\t      list-style: none;\n67\t      display: flex;\n68\t      flex-wrap: wrap;\n69\t      gap: 0.25rem 0.5rem;\n70\t      padding: 0.5rem 1.25rem;\n71\t      max-width: var(--maxw);\n72\t      margin: 0 auto;\n73\t    }\n74\t    nav.anchors a {\n75\t      display: inline-flex;\n76\t      align-items: center;\n77\t      min-height: 44px;\n78\t      padding: 0.5rem 0.75rem;\n79\t      border-radius: 6px;\n80\t      text-decoration: none;\n81\t      font-weight: 500;\n82\t    }\n83\t    nav.anchors a:hover { background: var(--accent-soft); }\n84\t    a:focus-visible {\n85\t      outline: 2px solid var(--accent);\n86\t      outline-offset: 2px;\n87\t      border-radius: 4px;\n88\t    }\n89\t\n90\t    .skip-link {\n91\t      position: absolute;\n92\t      left: -9999px;\n93\t      top: 0;\n94\t      background: var(--ink);\n95\t      color: #fff;\n96\t      padding: 0.75rem 1rem;\n97\t      font-weight: 600;\n98\t      text-decoration: none;\n99\t      z-index: 100;\n100\t      border-radius: 0 0 6px 6px;\n101\t    }\n102\t    .skip-link:focus {\n103\t      left: 1rem;\n104\t      outline: 2px solid var(--accent);\n105\t      outline-offset: 2px;\n106\t    }\n107\t\n108\t    @media (prefers-reduced-motion: reduce) {\n109\t      html { scroll-behavior: auto; }\n110\t    }\n111\t\n112\t    main { padding: 2rem 0 3rem; }\n113\t    section { padding: 2rem 0; border-bottom: 1px solid var(--line); }\n114\t    section:last-of-type { border-bottom: none; }\n115\t    h2 {\n116\t      font-size: 1.5rem;\n117\t      margin: 0 0 0.75rem;\n118\t      letter-spacing: -0.005em;\n119\t    }\n120\t    h3 {\n121\t      font-size: 1.05rem;\n122\t      margin: 1.25rem 0 0.25rem;\n123\t    }\n124\t    p { margin: 0.5rem 0; }\n125\t    .grid {\n126\t      display: grid;\n127\t      gap: 1rem;\n128\t      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));\n129\t      margin-top: 1rem;\n130\t    }\n131\t    .card {\n132\t      background: var(--surface);\n133\t      border: 1px solid var(--line);\n134\t      border-radius: var(--radius);\n135\t      padding: 1rem 1.1rem;\n136\t    }\n137\t    .card h3 { margin-top: 0; }\n138\t    .lede { color: var(--muted); }\n139\t\n140\t    figure.flow {\n141\t      margin: 1.25rem 0 0;\n142\t      padding: 1rem;\n143\t      background: var(--surface);\n144\t      border: 1px solid var(--line);\n145\t      border-radius: var(--radius);\n146\t    }\n147\t    figure.flow svg { width: 100%; height: auto; display: block; }\n148\t    figcaption {\n149\t      margin-top: 0.5rem;\n150\t      color: var(--muted);\n151\t      font-size: 0.9rem;\n152\t    }\n153\t\n154\t    footer {\n155\t      border-top: 1px solid var(--line);\n156\t      padding: 1.5rem 0 2.5rem;\n157\t      color: var(--muted);\n158\t      font-size: 0.95rem;\n159\t    }\n160\t    footer .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; justify-content: space-between; }\n161\t\n162\t    @media print {\n163\t      html { scroll-behavior: auto; }\n164\t      body { background: #fff; color: #000; }\n165\t      .skip-link, nav.anchors { display: none !important; }\n166\t      header.hero {\n167\t        background: none;\n168\t        padding: 1rem 0;\n169\t        border-bottom: 1px solid #000;\n170\t      }\n171\t      main { padding: 0; }\n172\t      section {\n173\t        padding: 0.75rem 0;\n174\t        border-bottom: 1px solid #ccc;\n175\t        break-inside: avoid;\n176\t        page-break-inside: avoid;\n177\t      }\n178\t      .card,\n179\t      figure.flow {\n180\t        background: #fff;\n181\t        border-color: #999;\n182\t        break-inside: avoid;\n183\t        page-break-inside: avoid;\n184\t      }\n185\t      figure.flow svg { max-width: 100%; }\n186\t      a { color: #000; text-decoration: underline; }\n187\t      a[href^=\"http\"]::after {\n188\t        content: \" (\" attr(href) \")\";\n189\t        font-size: 0.85em;\n190\t        word-break: break-all;\n191\t      }\n192\t      footer {\n193\t        border-top: 1px solid #000;\n194\t        padding: 0.75rem 0;\n195\t      }\n196\t    }\n197\t  </style>\n198\t</head>\n199\t<body>\n200\t  <a class=\"skip-link\" href=\"#main\">Skip to main content</a>\n201\t  <header class=\"hero\">\n202\t    <div class=\"wrap\">\n203\t      <h1>Scrum, in one page</h1>\n204\t      <p class=\"subhead\">A plain-language overview of Scrum — the roles, the five events, the artifacts, and the Sprint that holds them together. Aligned with the current Scrum Guide.</p>\n205\t    </div>\n206\t  </header>\n207\t\n208\t  <nav class=\"anchors\" aria-label=\"Section navigation\">\n209\t    <ul>\n210\t      <li><a href=\"#roles\">Roles</a></li>\n211\t      <li><a href=\"#events\">Events</a></li>\n212\t      <li><a href=\"#artifacts\">Artifacts</a></li>\n213\t      <li><a href=\"#sprint\">Sprint</a></li>\n214\t    </ul>\n215\t  </nav>\n216\t\n217\t  <main id=\"main\" class=\"wrap\">\n218\t    <section id=\"what\">\n219\t      <h2>What Scrum is</h2>\n220\t      <p>Scrum is a lightweight framework that helps teams deliver value through iterative work, frequent inspection, and adaptation. It defines a small set of accountabilities, events, and artifacts — and leaves the details of how the work gets done to the team.</p>\n221\t    </section>\n222\t\n223\t    <section id=\"when\">\n224\t      <h2>When it helps</h2>\n225\t      <p>Scrum fits complex problems where requirements and solutions are uncertain and need to be discovered through delivery. It helps when a team needs a steady cadence to ship something useful, learn from it, and adjust — rather than committing up front to a fixed plan.</p>\n226\t    </section>\n227\t\n228\t    <section id=\"roles\">\n229\t      <h2>Roles (accountabilities)</h2>\n230\t      <p class=\"lede\">A Scrum Team has three accountabilities — together they own delivering value each Sprint.</p>\n231\t      <div class=\"grid\">\n232\t        <article class=\"card\">\n233\t          <h3>Product Owner</h3>\n234\t          <p>Accountable for maximizing the value of the product by managing the Product Backlog.</p>\n235\t        </article>\n236\t        <article class=\"card\">\n237\t          <h3>Scrum Master</h3>\n238\t          <p>Accountable for the team's effectiveness and for establishing Scrum as defined in the Scrum Guide.</p>\n239\t        </article>\n240\t        <article class=\"card\">\n241\t          <h3>Developers</h3>\n242\t          <p>Accountable for creating a usable Increment that meets the Definition of Done every Sprint.</p>\n243\t        </article>\n244\t      </div>\n245\t    </section>\n246\t\n247\t    <section id=\"events\">\n248\t      <h2>Events</h2>\n249\t      <p class=\"lede\">Five time-boxed events create regularity and remove the need for other meetings.</p>\n250\t      <div class=\"grid\">\n251\t        <article class=\"card\">\n252\t          <h3>Sprint</h3>\n253\t          <p>A fixed, time-boxed container (one month or less) inside which all the other Scrum events happen and an Increment is created.</p>\n254\t        </article>\n255\t        <article class=\"card\">\n256\t          <h3>Sprint Planning</h3>\n257\t          <p>Initiates the Sprint by defining why it is valuable, what can be done, and how the chosen work will get done.</p>\n258\t        </article>\n259\t        <article class=\"card\">\n260\t          <h3>Daily Scrum</h3>\n261\t          <p>A 15-minute event for Developers to inspect progress toward the Sprint Goal and adapt the plan for the next day.</p>\n262\t        </article>\n263\t        <article class=\"card\">\n264\t          <h3>Sprint Review</h3>\n265\t          <p>Inspects the outcome of the Sprint with stakeholders and determines future adaptations to the Product Backlog.</p>\n266\t        </article>\n267\t        <article class=\"card\">\n268\t          <h3>Sprint Retrospective</h3>\n269\t          <p>Closes the Sprint by planning ways to increase quality and effectiveness in how the team works together.</p>\n270\t        </article>\n271\t      </div>\n272\t    </section>\n273\t\n274\t    <section id=\"artifacts\">\n275\t      <h2>Artifacts</h2>\n276\t      <p class=\"lede\">Each artifact represents work or value, and each has a commitment that gives it focus.</p>\n277\t      <div class=\"grid\">\n278\t        <article class=\"card\">\n279\t          <h3>Product Backlog</h3>\n280\t          <p>An ordered list of what is needed to improve the product. Its commitment is the Product Goal.</p>\n281\t        </article>\n282\t        <article class=\"card\">\n283\t          <h3>Sprint Backlog</h3>\n284\t          <p>The plan by and for the Developers — the Sprint Goal, the selected Product Backlog items, and how to deliver them.</p>\n285\t        </article>\n286\t        <article class=\"card\">\n287\t          <h3>Increment</h3>\n288\t          <p>A concrete step toward the Product Goal. Each Increment is additive to all prior Increments and must be usable.</p>\n289\t        </article>\n290\t        <article class=\"card\">\n291\t          <h3>Definition of Done</h3>\n292\t          <p>The shared standard of quality an Increment must meet to be considered complete and releasable.</p>\n293\t        </article>\n294\t      </div>\n295\t    </section>\n296\t\n297\t    <section id=\"sprint\">\n298\t      <h2>The Sprint: a time-boxed container</h2>\n299\t      <p>The Sprint is the heartbeat of Scrum. It is a fixed-length cycle, one month or less, during which the team turns ideas into a usable Increment. Sprint Planning opens it, the Daily Scrum keeps it on track, and the Sprint Review and Retrospective close it — same length, same rhythm, every time.</p>\n300\t\n301\t      <figure class=\"flow\" aria-labelledby=\"flow-caption\">\n302\t        <svg viewBox=\"0 0 720 260\" role=\"img\" aria-label=\"Diagram showing how Scrum Roles drive Events to produce Artifacts\">\n303\t          <defs>\n304\t            <marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"8\" markerHeight=\"8\" orient=\"auto-start-reverse\">\n305\t              <path d=\"M0,0 L10,5 L0,10 z\" fill=\"#1a5fb4\" />\n306\t            </marker>\n307\t            <style>\n308\t              .col-title { font: 600 14px -apple-system, \"Segoe UI\", Roboto, sans-serif; fill: #1d1d1f; }\n309\t              .item { font: 500 12px -apple-system, \"Segoe UI\", Roboto, sans-serif; fill: #1d1d1f; }\n310\t              .box { fill: #ffffff; stroke: #1a5fb4; stroke-width: 1.25; }\n311\t              .lane { fill: #eaf2fb; stroke: #c7dcf3; stroke-width: 1; }\n312\t              .conn { stroke: #1a5fb4; stroke-width: 1.5; fill: none; }\n313\t            </style>\n314\t          </defs>\n315\t\n316\t          <rect class=\"lane\" x=\"10\"  y=\"20\" width=\"220\" height=\"220\" rx=\"8\" />\n317\t          <rect class=\"lane\" x=\"250\" y=\"20\" width=\"220\" height=\"220\" rx=\"8\" />\n318\t          <rect class=\"lane\" x=\"490\" y=\"20\" width=\"220\" height=\"220\" rx=\"8\" />\n319\t\n320\t          <text class=\"col-title\" x=\"120\" y=\"42\" text-anchor=\"middle\">Roles</text>\n321\t          <text class=\"col-title\" x=\"360\" y=\"42\" text-anchor=\"middle\">Events</text>\n322\t          <text class=\"col-title\" x=\"600\" y=\"42\" text-anchor=\"middle\">Artifacts</text>\n323\t\n324\t          <rect class=\"box\" x=\"30\"  y=\"60\"  width=\"180\" height=\"32\" rx=\"6\" />\n325\t          <text class=\"item\" x=\"120\" y=\"80\" text-anchor=\"middle\">Product Owner</text>\n326\t          <rect class=\"box\" x=\"30\"  y=\"104\" width=\"180\" height=\"32\" rx=\"6\" />\n327\t          <text class=\"item\" x=\"120\" y=\"124\" text-anchor=\"middle\">Scrum Master</text>\n328\t          <rect class=\"box\" x=\"30\"  y=\"148\" width=\"180\" height=\"32\" rx=\"6\" />\n329\t          <text class=\"item\" x=\"120\" y=\"168\" text-anchor=\"middle\">Developers</text>\n330\t\n331\t          <rect class=\"box\" x=\"270\" y=\"60\"  width=\"180\" height=\"28\" rx=\"6\" />\n332\t          <text class=\"item\" x=\"360\" y=\"78\" text-anchor=\"middle\">Sprint Planning</text>\n333\t          <rect class=\"box\" x=\"270\" y=\"94\"  width=\"180\" height=\"28\" rx=\"6\" />\n334\t          <text class=\"item\" x=\"360\" y=\"112\" text-anchor=\"middle\">Daily Scrum</text>\n335\t          <rect class=\"box\" x=\"270\" y=\"128\" width=\"180\" height=\"28\" rx=\"6\" />\n336\t          <text class=\"item\" x=\"360\" y=\"146\" text-anchor=\"middle\">Sprint Review</text>\n337\t          <rect class=\"box\" x=\"270\" y=\"162\" width=\"180\" height=\"28\" rx=\"6\" />\n338\t          <text class=\"item\" x=\"360\" y=\"180\" text-anchor=\"middle\">Sprint Retrospective</text>\n339\t          <rect class=\"box\" x=\"270\" y=\"196\" width=\"180\" height=\"28\" rx=\"6\" />\n340\t          <text class=\"item\" x=\"360\" y=\"214\" text-anchor=\"middle\">(within the Sprint)</text>\n341\t\n342\t          <rect class=\"box\" x=\"510\" y=\"60\"  width=\"180\" height=\"28\" rx=\"6\" />\n343\t          <text class=\"item\" x=\"600\" y=\"78\" text-anchor=\"middle\">Product Backlog</text>\n344\t          <rect class=\"box\" x=\"510\" y=\"94\"  width=\"180\" height=\"28\" rx=\"6\" />\n345\t          <text class=\"item\" x=\"600\" y=\"112\" text-anchor=\"middle\">Sprint Backlog</text>\n346\t          <rect class=\"box\" x=\"510\" y=\"128\" width=\"180\" height=\"28\" rx=\"6\" />\n347\t          <text class=\"item\" x=\"600\" y=\"146\" text-anchor=\"middle\">Increment</text>\n348\t          <rect class=\"box\" x=\"510\" y=\"162\" width=\"180\" height=\"28\" rx=\"6\" />\n349\t          <text class=\"item\" x=\"600\" y=\"180\" text-anchor=\"middle\">Definition of Done</text>\n350\t\n351\t          <path class=\"conn\" d=\"M210,124 C235,124 245,124 270,124\" marker-end=\"url(#arrow)\" />\n352\t          <path class=\"conn\" d=\"M450,124 C475,124 485,124 510,124\" marker-end=\"url(#arrow)\" />\n353\t        </svg>\n354\t        <figcaption id=\"flow-caption\">Roles run the Events; the Events shape and produce the Artifacts. The Sprint is the time-boxed container around all of it.</figcaption>\n355\t      </figure>\n356\t    </section>\n357\t  </main>\n358\t\n359\t  <footer>\n360\t    <div class=\"wrap\">\n361\t      <span>Read the source: <a href=\"https://scrumguides.org/\" rel=\"noopener external\">The Scrum Guide on scrumguides.org</a></span>\n362\t      <span>Last updated <time datetime=\"2026-05-09\">May 9, 2026</time></span>\n363\t    </div>\n364\t  </footer>\n365\t</body>\n366\t</html>\n367\t"
+        }
+      ]
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "adc992c8-38c3-4aa2-9aaf-de8033b0329a",
+    "timestamp": "2026-05-09T18:20:48.018Z",
+    "tool_use_result": {
+      "type": "text",
+      "file": {
+        "filePath": "/home/runner/work/dark_factory/dark_factory/docs/scrum/index.html",
+        "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n  <meta name=\"color-scheme\" content=\"light\" />\n  <meta name=\"theme-color\" content=\"#1a5fb4\" />\n  <meta name=\"robots\" content=\"index,follow\" />\n  <title>Scrum Overview — Roles, Events, Artifacts</title>\n  <meta name=\"description\" content=\"A concise, plain-language overview of Scrum: roles (Product Owner, Scrum Master, Developers), the five events, artifacts including the Definition of Done, and the Sprint as a time-boxed container.\" />\n  <meta property=\"og:title\" content=\"Scrum Overview — Roles, Events, Artifacts\" />\n  <meta property=\"og:description\" content=\"A concise, plain-language overview of Scrum: roles, the five events, artifacts including the Definition of Done, and the Sprint as a time-boxed container.\" />\n  <meta property=\"og:type\" content=\"article\" />\n  <meta property=\"og:locale\" content=\"en_US\" />\n  <meta name=\"twitter:card\" content=\"summary\" />\n  <style>\n    :root {\n      --bg: #fdfdfc;\n      --surface: #ffffff;\n      --ink: #1d1d1f;\n      --muted: #555;\n      --accent: #1a5fb4;\n      --accent-soft: #eaf2fb;\n      --line: #e5e5e3;\n      --radius: 10px;\n      --maxw: 920px;\n    }\n    * { box-sizing: border-box; }\n    html { scroll-behavior: smooth; }\n    body {\n      margin: 0;\n      font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif;\n      color: var(--ink);\n      background: var(--bg);\n      line-height: 1.55;\n    }\n    a { color: var(--accent); }\n    a:hover { text-decoration: underline; }\n    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }\n\n    header.hero {\n      background: linear-gradient(180deg, var(--accent-soft), var(--bg));\n      padding: 3.5rem 0 2rem;\n      border-bottom: 1px solid var(--line);\n    }\n    h1 {\n      font-size: clamp(1.75rem, 4vw, 2.5rem);\n      margin: 0 0 0.5rem;\n      letter-spacing: -0.01em;\n    }\n    .subhead {\n      font-size: 1.125rem;\n      color: var(--muted);\n      margin: 0;\n      max-width: 60ch;\n    }\n\n    nav.anchors {\n      position: sticky;\n      top: 0;\n      z-index: 5;\n      background: var(--surface);\n      border-bottom: 1px solid var(--line);\n    }\n    nav.anchors ul {\n      list-style: none;\n      display: flex;\n      flex-wrap: wrap;\n      gap: 0.25rem 0.5rem;\n      padding: 0.5rem 1.25rem;\n      max-width: var(--maxw);\n      margin: 0 auto;\n    }\n    nav.anchors a {\n      display: inline-flex;\n      align-items: center;\n      min-height: 44px;\n      padding: 0.5rem 0.75rem;\n      border-radius: 6px;\n      text-decoration: none;\n      font-weight: 500;\n    }\n    nav.anchors a:hover { background: var(--accent-soft); }\n    a:focus-visible {\n      outline: 2px solid var(--accent);\n      outline-offset: 2px;\n      border-radius: 4px;\n    }\n\n    .skip-link {\n      position: absolute;\n      left: -9999px;\n      top: 0;\n      background: var(--ink);\n      color: #fff;\n      padding: 0.75rem 1rem;\n      font-weight: 600;\n      text-decoration: none;\n      z-index: 100;\n      border-radius: 0 0 6px 6px;\n    }\n    .skip-link:focus {\n      left: 1rem;\n      outline: 2px solid var(--accent);\n      outline-offset: 2px;\n    }\n\n    @media (prefers-reduced-motion: reduce) {\n      html { scroll-behavior: auto; }\n    }\n\n    main { padding: 2rem 0 3rem; }\n    section { padding: 2rem 0; border-bottom: 1px solid var(--line); }\n    section:last-of-type { border-bottom: none; }\n    h2 {\n      font-size: 1.5rem;\n      margin: 0 0 0.75rem;\n      letter-spacing: -0.005em;\n    }\n    h3 {\n      font-size: 1.05rem;\n      margin: 1.25rem 0 0.25rem;\n    }\n    p { margin: 0.5rem 0; }\n    .grid {\n      display: grid;\n      gap: 1rem;\n      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));\n      margin-top: 1rem;\n    }\n    .card {\n      background: var(--surface);\n      border: 1px solid var(--line);\n      border-radius: var(--radius);\n      padding: 1rem 1.1rem;\n    }\n    .card h3 { margin-top: 0; }\n    .lede { color: var(--muted); }\n\n    figure.flow {\n      margin: 1.25rem 0 0;\n      padding: 1rem;\n      background: var(--surface);\n      border: 1px solid var(--line);\n      border-radius: var(--radius);\n    }\n    figure.flow svg { width: 100%; height: auto; display: block; }\n    figcaption {\n      margin-top: 0.5rem;\n      color: var(--muted);\n      font-size: 0.9rem;\n    }\n\n    footer {\n      border-top: 1px solid var(--line);\n      padding: 1.5rem 0 2.5rem;\n      color: var(--muted);\n      font-size: 0.95rem;\n    }\n    footer .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; justify-content: space-between; }\n\n    @media print {\n      html { scroll-behavior: auto; }\n      body { background: #fff; color: #000; }\n      .skip-link, nav.anchors { display: none !important; }\n      header.hero {\n        background: none;\n        padding: 1rem 0;\n        border-bottom: 1px solid #000;\n      }\n      main { padding: 0; }\n      section {\n        padding: 0.75rem 0;\n        border-bottom: 1px solid #ccc;\n        break-inside: avoid;\n        page-break-inside: avoid;\n      }\n      .card,\n      figure.flow {\n        background: #fff;\n        border-color: #999;\n        break-inside: avoid;\n        page-break-inside: avoid;\n      }\n      figure.flow svg { max-width: 100%; }\n      a { color: #000; text-decoration: underline; }\n      a[href^=\"http\"]::after {\n        content: \" (\" attr(href) \")\";\n        font-size: 0.85em;\n        word-break: break-all;\n      }\n      footer {\n        border-top: 1px solid #000;\n        padding: 0.75rem 0;\n      }\n    }\n  </style>\n</head>\n<body>\n  <a class=\"skip-link\" href=\"#main\">Skip to main content</a>\n  <header class=\"hero\">\n    <div class=\"wrap\">\n      <h1>Scrum, in one page</h1>\n      <p class=\"subhead\">A plain-language overview of Scrum — the roles, the five events, the artifacts, and the Sprint that holds them together. Aligned with the current Scrum Guide.</p>\n    </div>\n  </header>\n\n  <nav class=\"anchors\" aria-label=\"Section navigation\">\n    <ul>\n      <li><a href=\"#roles\">Roles</a></li>\n      <li><a href=\"#events\">Events</a></li>\n      <li><a href=\"#artifacts\">Artifacts</a></li>\n      <li><a href=\"#sprint\">Sprint</a></li>\n    </ul>\n  </nav>\n\n  <main id=\"main\" class=\"wrap\">\n    <section id=\"what\">\n      <h2>What Scrum is</h2>\n      <p>Scrum is a lightweight framework that helps teams deliver value through iterative work, frequent inspection, and adaptation. It defines a small set of accountabilities, events, and artifacts — and leaves the details of how the work gets done to the team.</p>\n    </section>\n\n    <section id=\"when\">\n      <h2>When it helps</h2>\n      <p>Scrum fits complex problems where requirements and solutions are uncertain and need to be discovered through delivery. It helps when a team needs a steady cadence to ship something useful, learn from it, and adjust — rather than committing up front to a fixed plan.</p>\n    </section>\n\n    <section id=\"roles\">\n      <h2>Roles (accountabilities)</h2>\n      <p class=\"lede\">A Scrum Team has three accountabilities — together they own delivering value each Sprint.</p>\n      <div class=\"grid\">\n        <article class=\"card\">\n          <h3>Product Owner</h3>\n          <p>Accountable for maximizing the value of the product by managing the Product Backlog.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Scrum Master</h3>\n          <p>Accountable for the team's effectiveness and for establishing Scrum as defined in the Scrum Guide.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Developers</h3>\n          <p>Accountable for creating a usable Increment that meets the Definition of Done every Sprint.</p>\n        </article>\n      </div>\n    </section>\n\n    <section id=\"events\">\n      <h2>Events</h2>\n      <p class=\"lede\">Five time-boxed events create regularity and remove the need for other meetings.</p>\n      <div class=\"grid\">\n        <article class=\"card\">\n          <h3>Sprint</h3>\n          <p>A fixed, time-boxed container (one month or less) inside which all the other Scrum events happen and an Increment is created.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Sprint Planning</h3>\n          <p>Initiates the Sprint by defining why it is valuable, what can be done, and how the chosen work will get done.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Daily Scrum</h3>\n          <p>A 15-minute event for Developers to inspect progress toward the Sprint Goal and adapt the plan for the next day.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Sprint Review</h3>\n          <p>Inspects the outcome of the Sprint with stakeholders and determines future adaptations to the Product Backlog.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Sprint Retrospective</h3>\n          <p>Closes the Sprint by planning ways to increase quality and effectiveness in how the team works together.</p>\n        </article>\n      </div>\n    </section>\n\n    <section id=\"artifacts\">\n      <h2>Artifacts</h2>\n      <p class=\"lede\">Each artifact represents work or value, and each has a commitment that gives it focus.</p>\n      <div class=\"grid\">\n        <article class=\"card\">\n          <h3>Product Backlog</h3>\n          <p>An ordered list of what is needed to improve the product. Its commitment is the Product Goal.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Sprint Backlog</h3>\n          <p>The plan by and for the Developers — the Sprint Goal, the selected Product Backlog items, and how to deliver them.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Increment</h3>\n          <p>A concrete step toward the Product Goal. Each Increment is additive to all prior Increments and must be usable.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Definition of Done</h3>\n          <p>The shared standard of quality an Increment must meet to be considered complete and releasable.</p>\n        </article>\n      </div>\n    </section>\n\n    <section id=\"sprint\">\n      <h2>The Sprint: a time-boxed container</h2>\n      <p>The Sprint is the heartbeat of Scrum. It is a fixed-length cycle, one month or less, during which the team turns ideas into a usable Increment. Sprint Planning opens it, the Daily Scrum keeps it on track, and the Sprint Review and Retrospective close it — same length, same rhythm, every time.</p>\n\n      <figure class=\"flow\" aria-labelledby=\"flow-caption\">\n        <svg viewBox=\"0 0 720 260\" role=\"img\" aria-label=\"Diagram showing how Scrum Roles drive Events to produce Artifacts\">\n          <defs>\n            <marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"8\" markerHeight=\"8\" orient=\"auto-start-reverse\">\n              <path d=\"M0,0 L10,5 L0,10 z\" fill=\"#1a5fb4\" />\n            </marker>\n            <style>\n              .col-title { font: 600 14px -apple-system, \"Segoe UI\", Roboto, sans-serif; fill: #1d1d1f; }\n              .item { font: 500 12px -apple-system, \"Segoe UI\", Roboto, sans-serif; fill: #1d1d1f; }\n              .box { fill: #ffffff; stroke: #1a5fb4; stroke-width: 1.25; }\n              .lane { fill: #eaf2fb; stroke: #c7dcf3; stroke-width: 1; }\n              .conn { stroke: #1a5fb4; stroke-width: 1.5; fill: none; }\n            </style>\n          </defs>\n\n          <rect class=\"lane\" x=\"10\"  y=\"20\" width=\"220\" height=\"220\" rx=\"8\" />\n          <rect class=\"lane\" x=\"250\" y=\"20\" width=\"220\" height=\"220\" rx=\"8\" />\n          <rect class=\"lane\" x=\"490\" y=\"20\" width=\"220\" height=\"220\" rx=\"8\" />\n\n          <text class=\"col-title\" x=\"120\" y=\"42\" text-anchor=\"middle\">Roles</text>\n          <text class=\"col-title\" x=\"360\" y=\"42\" text-anchor=\"middle\">Events</text>\n          <text class=\"col-title\" x=\"600\" y=\"42\" text-anchor=\"middle\">Artifacts</text>\n\n          <rect class=\"box\" x=\"30\"  y=\"60\"  width=\"180\" height=\"32\" rx=\"6\" />\n          <text class=\"item\" x=\"120\" y=\"80\" text-anchor=\"middle\">Product Owner</text>\n          <rect class=\"box\" x=\"30\"  y=\"104\" width=\"180\" height=\"32\" rx=\"6\" />\n          <text class=\"item\" x=\"120\" y=\"124\" text-anchor=\"middle\">Scrum Master</text>\n          <rect class=\"box\" x=\"30\"  y=\"148\" width=\"180\" height=\"32\" rx=\"6\" />\n          <text class=\"item\" x=\"120\" y=\"168\" text-anchor=\"middle\">Developers</text>\n\n          <rect class=\"box\" x=\"270\" y=\"60\"  width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"360\" y=\"78\" text-anchor=\"middle\">Sprint Planning</text>\n          <rect class=\"box\" x=\"270\" y=\"94\"  width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"360\" y=\"112\" text-anchor=\"middle\">Daily Scrum</text>\n          <rect class=\"box\" x=\"270\" y=\"128\" width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"360\" y=\"146\" text-anchor=\"middle\">Sprint Review</text>\n          <rect class=\"box\" x=\"270\" y=\"162\" width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"360\" y=\"180\" text-anchor=\"middle\">Sprint Retrospective</text>\n          <rect class=\"box\" x=\"270\" y=\"196\" width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"360\" y=\"214\" text-anchor=\"middle\">(within the Sprint)</text>\n\n          <rect class=\"box\" x=\"510\" y=\"60\"  width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"600\" y=\"78\" text-anchor=\"middle\">Product Backlog</text>\n          <rect class=\"box\" x=\"510\" y=\"94\"  width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"600\" y=\"112\" text-anchor=\"middle\">Sprint Backlog</text>\n          <rect class=\"box\" x=\"510\" y=\"128\" width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"600\" y=\"146\" text-anchor=\"middle\">Increment</text>\n          <rect class=\"box\" x=\"510\" y=\"162\" width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"600\" y=\"180\" text-anchor=\"middle\">Definition of Done</text>\n\n          <path class=\"conn\" d=\"M210,124 C235,124 245,124 270,124\" marker-end=\"url(#arrow)\" />\n          <path class=\"conn\" d=\"M450,124 C475,124 485,124 510,124\" marker-end=\"url(#arrow)\" />\n        </svg>\n        <figcaption id=\"flow-caption\">Roles run the Events; the Events shape and produce the Artifacts. The Sprint is the time-boxed container around all of it.</figcaption>\n      </figure>\n    </section>\n  </main>\n\n  <footer>\n    <div class=\"wrap\">\n      <span>Read the source: <a href=\"https://scrumguides.org/\" rel=\"noopener external\">The Scrum Guide on scrumguides.org</a></span>\n      <span>Last updated <time datetime=\"2026-05-09\">May 9, 2026</time></span>\n    </div>\n  </footer>\n</body>\n</html>\n",
+        "numLines": 367,
+        "startLine": 1,
+        "totalLines": 367
+      }
+    }
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_01Ruc8MsvhuCey97S4fbbxno",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "EuECClkIDRgCKkDoQlwoVqJGVUOsW22oI5RZklXzF8VkrBYAg8H/EyFDE9hamJrsMw+Mn5VFcVJLd7kXTBWOqyNCrMaGH4LTTZsoMg9jbGF1ZGUtb3B1cy00LTc4ABIMrXgGohQZsl+GIzyQGgykChjufF0EFbbX6UoiMGopX+bWb2EW7naMgNpN5xi3cM0HuFPi+6mfZ+vGOWnj2iJL5u15LBZWLqXkuy9pKSq1AV9xOpxOZD6lkDy6LuDGuA6wSKq1hUIq3IfQVLLzYqKQOjRkTmpMc5ee3aIHhvhic8dpaZ56JIPkKOg0LuQkZWOKHmhCUOv0rq9ZMmDYaBf04lBBBhEhuhozI+FWuFio8ay1AU0/tqSOnvPKeRgYAc3+gnwKjKtRZiU2NUp68y4FGI8gE18vKjmApoL49kmReVJxPq7PCPUWKAyZ+lSS+8Bih+pyk50g2boob1kKV/LepZf04FwYAQ=="
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 6739,
+        "cache_read_input_tokens": 28111,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 6739
+        },
+        "output_tokens": 39,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "8fbb5926-e40e-44c1-b5a6-96b89ab55eb5"
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_01Ruc8MsvhuCey97S4fbbxno",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01YcTjZLQHgmCXfWm2A5YBM9",
+          "name": "Bash",
+          "input": {
+            "command": "ls /home/runner/work/dark_factory/dark_factory/spec/KAN-132/",
+            "description": "List KAN-132 contents"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 6739,
+        "cache_read_input_tokens": 28111,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 6739
+        },
+        "output_tokens": 39,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "78484c63-b6dc-438d-b53f-aad7ac8facd4"
+  },
+  {
+    "type": "user",
+    "message": {
+      "role": "user",
+      "content": [
+        {
+          "tool_use_id": "toolu_01YcTjZLQHgmCXfWm2A5YBM9",
+          "type": "tool_result",
+          "content": "runs\nspec.md\nstate.json\ntranscript.md",
+          "is_error": false
+        }
+      ]
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "110c4ac0-baec-4733-8979-407a2c8c9dbe",
+    "timestamp": "2026-05-09T18:20:52.150Z",
+    "tool_use_result": {
+      "stdout": "runs\nspec.md\nstate.json\ntranscript.md",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false,
+      "noOutputExpected": false
+    }
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_013j4eDmSdvjPL99J8pCAx7D",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01MUbFAog1PBQWxcXXadAsFz",
+          "name": "Read",
+          "input": {
+            "file_path": "/home/runner/work/dark_factory/dark_factory/spec/KAN-132/transcript.md"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 227,
+        "cache_read_input_tokens": 34850,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 227
+        },
+        "output_tokens": 66,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "2609bcee-a8ce-46a4-b423-85e2b46101d3"
+  },
+  {
+    "type": "user",
+    "message": {
+      "role": "user",
+      "content": [
+        {
+          "tool_use_id": "toolu_01MUbFAog1PBQWxcXXadAsFz",
+          "type": "tool_result",
+          "content": "1\t# KAN-132 Transcript\n2\t"
+        }
+      ]
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "7d321c12-4be6-419f-a746-1d36a51d5bfd",
+    "timestamp": "2026-05-09T18:20:58.126Z",
+    "tool_use_result": {
+      "type": "text",
+      "file": {
+        "filePath": "/home/runner/work/dark_factory/dark_factory/spec/KAN-132/transcript.md",
+        "content": "# KAN-132 Transcript\n",
+        "numLines": 2,
+        "startLine": 1,
+        "totalLines": 2
+      }
+    }
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_01CTLEV3eBDXaWGJ9bV9q38T",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "thinking",
+          "thinking": "",
+          "signature": "EqERClkIDRgCKkDHfHWvAGfCh/sWJzKrokyNo/4C9NWg1IknRGRGz+jOIMw/ur0ksXVcQ0lfcm0lnX0PQxsIvxd1tu84iwQHnMFlMg9jbGF1ZGUtb3B1cy00LTc4ABIMrRI8jGg08egt368IGgyYIFLZCLI4hw+cBzYiMIQQgJ9Q2+SqhHyQsmJzp7CsrJlPsAuopBUam81Qv86kpCHrcRskkC4XRResvDOYwCr1DxC5/sUi7bDjU8ODcI4mhwIWlmdCxjRZeG6GeCqZRUESXBgIRhKvF1okS+wROrFAoBmtK8BqHluq00ByoSapYdzKk7kMBi0nTPcC8uTJC4maFq6u9xzyjNDg5Kktdt/XfnOKVA8Re7cVOeED4CnsOLihywc3QzgDn5MpgjER4M9q+YU1BfWAggob89IUeARc/ZLFnlD6kuNFdEu+4hnejBwEpqQTER8NK6yxV4yF+F8vADD8sPqeNhJlF8cYrpBmBCaOU1VSLqv27ZFwOky+CbgIlma49rcqSYPLU5/OB+cL9qNwJGq12ghhtMd+HmpHONcwF6BONDE1NcGPoMiG3Qs4bKvqmICz2K+e4j0EnA0HZ9YM55SXONyhw6Y7uAi77qX4Govrjto+pgeq3feQNt0rf8uAQOGuwhradINTzPDR9Vkhu/ZTYxlPhpXWkReH57DUzJRg69ihHaUdQfdzfS7qlgmmfe85/o6AO1GWZpYH1rw3/9obxQVCQ3W/RgXxKsjvfuyZ1GPwJ6RBT4epLuGdamS63LKGc3riuCtsyENVcau6oOZDh6zMXZu/qKjY3zsEcvMV86d7vYIDI8J33Qyd97YThO0YSn5kcICleUbUnJ2ZVcg5ZOaFSd7CLH0/hOwOaok9Dn05m3Xirh/lKpSU5oS8O5gBlYBhRGKT9mYp3HZUEK6oeqO8dG9EHd3HhPQczAcWIhTUWA5k2Aqb7ldpmUVVcARpE0O3BZcFlDjlX1mTgssu/KMV9vxpc1YzMzbOmQeVbWpsSrX+viOUEGoBRMFoAKs8xFdxLne3Qp/N3AdpFSZwAnHMzIyt8GdBbCl6gQQtJ+piQt4cgTREQK518khIsNhkK3mI7l06nXorHzbiTfTl///Q/x3nQuLq8zuPcMcjy+BKlCX5FcfTWm7P6KW11lkBHtQgCRaod0F8gW2a8k5A3RmDSmYMdnm6/Zvpp3tErPajbfD5X9TkroGkC3OVkrR7YYWfwwDfuOnlMsTAQMTMxqXEzI0dkvK3q1ZUXTS1d9H3EYnS3JGSJiVcAhvrvkw9bsRlbcq3cmj9VrGLyB5809PIrA6PCEMuwJTZGStlKYRtOCDNeZlkn5Mhy9o1nNNs5lup9b6o7vdwTGC1PJgidGkQUSRD/D7vQq+qLlBrUtm0G/nvK+oM8C3p3gLWP/4+MV1SbDFUvH9cuO2bJ/zHnrcSJoiGm/lLsRnYGGKpTcubMT2ce9xeF+0CcTb1FV+Gc01GpoHK/u8AAM6m0VIaD/ll7a0DbHn7jSzfRHg4fEyqvTxU505ezKtXOR135GY5LuXpRSXk2uJwqfiPx1By6jGBtpItnO21sqGCJkjdXk+EUpiFo5yeKaYYuLOtbYuITPXPh5z2dz2HvPjB9ScF2oiyvEhAxzT1jJ1pYrm/jiGejXQCPecPKT/ouOnc8BIFaCCwmMzI9SICAIR6titFYMZXG13csSH+NJpbzg9aa0Q0zVG090RsCCOtVNaLlfzdvHDZmZ0YPJT/8X9ZzlxPkoRZZDGzKk36hEI719sdEeqtq71kvw0guvHe7evmi9J8p4FqemgwwAxWLV73qimbdyOG3id8Cb/YQMWjRYXiD9MpMYN7ecC8J8arh5TjTLggZGuP9jUfmTFhTlZyAKTgZ1Wy7rjJXHFnc64/XTZ9zuRMFsUek3FV/QzYeJkL5DyGppS08+giB0tarrylOD3TWb08jQBtvdldm4wg8Ey3fJ7le532Yefjw6NAsM852fR5jy0rcREqCL2Vx+HwfWZyZGUbAH2qCtfF+IWFAUeVh0f3XBRNogWCDbvuoPL2V0BPcQZ8/YO55QiSGfUUZcVdcr5R5N1siBzp8ajB+SYVb4wTyI+xW86otSqhd3sMBMA8AVReFIlcNllz0fb+V33PYr/Hzle89hR2LhSbrSaRds0ALHABunxWBYN5AxHTbz32Hoqiso9Nk4NoGZrmcKsQgSEWSeHrW6JHbr7fxULKFnJwA19d/cm/4euIq+xO0+I4Xx6pB5/gubwZsBOYivYHpxso2GBXQPFV3KharqqDnaCAzIra8+KRK51y0b5c0+0PimSxHNXzv+08g14w8nflrs26YlJKxLYcjwDA3kUD60ATHYWHJfSZn6N1hbwkt2+H2mg2yKMGRHJOzuBlnoNcAuXUD3N1H71RjTH9KgUxbvcNGE8H7uB6o8g0MAxYYdtItsZWzqCsk2sw1YSWhiAPxsju0zAYCKTOKT2KMvV/U/IBgEdO2z6xHD3P+fpP+P3T0Nd+KaGMT9LxsqYgsEFfaByV76IKrqqwqQEDjMFX/ULRsO5oytUdAs8r9o4ZU8mvUN5oM7sLQSfeZ0QyHqh5fdzBoYHNKTeWuZYsKmj3R+ZNoej4MTQT3Tdovwy/ybhdzJErQzLHNV3r4tyL5WDmQ11A0dY+9Zqoz8KiJrpV8EQ1XTeE/q8AUtnNSx/YChrOClJ31PVwPGMId7Xevg3cViNb3xvVoGTQEz9GA+sflKlHJLUIoEqfzWciPd5euWABVlGVvegOiuw/IRitc3RA43WdFSBsYEnr8Z6tgLd2MkBP+/qORDHmiC+tv9zSoSRMV2pB8o4IOSIsclJEs8OWrr1Hp8Z6ecBq6Vfhe9TcGTwivz7+ZPWckjCtaDjmMHxSs5GjTEoWgs2DIoImaJM4+/DY3+d8pxsKG67d5Fm11yKJ5cQVeLXBVLApCGo7thgB"
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 125,
+        "cache_read_input_tokens": 35077,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 125
+        },
+        "output_tokens": 59,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "4298d961-97b7-4c48-9ac0-657f3c814391"
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_01CTLEV3eBDXaWGJ9bV9q38T",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "Now I'll create the plan and implementation."
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 125,
+        "cache_read_input_tokens": 35077,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 125
+        },
+        "output_tokens": 59,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "473df529-5a31-4997-a8ad-4b15de1c24a2"
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_01CTLEV3eBDXaWGJ9bV9q38T",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01HE1UL1AKJxznnS3ToEfMct",
+          "name": "Write",
+          "input": {
+            "file_path": "/home/runner/work/dark_factory/dark_factory/spec/KAN-132/plan.md",
+            "content": "# KAN-132 Implementation Plan\n\n## Goal\nAdd a Myths block and a FAQ section to the Scrum landing page (`docs/scrum/index.html`) per §3.2 nice-to-have, without breaking existing anchor navigation or heading hierarchy.\n\n## Scope of changes\nSingle file edit: `docs/scrum/index.html`.\n\n### Anchor navigation\nAdd two new entries to `nav.anchors` after the existing four (`#roles`, `#events`, `#artifacts`, `#sprint`):\n- `#myths` → \"Myths\"\n- `#faq` → \"FAQ\"\n\nExisting anchors are preserved (no renames), so any external links / fragments continue to resolve.\n\n### New sections (appended in `<main>` after the Sprint section)\n\n**Myths** (`<section id=\"myths\">`, `h2`):\nThree myth-busting statements aligned with the Scrum Guide:\n1. \"Scrum is not a methodology with fixed scope agreed up front.\" — Scrum is a lightweight framework that embraces changing requirements; the Product Backlog is ordered and refined over time.\n2. \"The Scrum Master is not a project manager who assigns tasks.\" — The Scrum Master is a true leader who serves the team and coaches the organization; Developers self-manage how they deliver the Sprint work.\n3. \"The Daily Scrum is not a status meeting for managers.\" — It is a 15-minute event for the Developers to inspect progress toward the Sprint Goal and adapt the plan for the next day.\n\nRendered as `.card` items inside a `.grid`, matching the existing style.\n\n**FAQ** (`<section id=\"faq\">`, `h2`):\nFour items (within the 3–5 range required by AC), each as a small `<article>` with an `<h3>` question and `<p>` answer. Includes the three required topics plus one bonus on applicability beyond software:\n- \"How does Scrum relate to Agile?\" — Agile is the broader mindset (the Agile Manifesto's values and principles). Scrum is one specific lightweight framework that embodies Agile; using Scrum well means living the Agile values, not just running the events.\n- \"How is Scrum different from Kanban at a glance?\" — Scrum uses fixed-length Sprints, defined accountabilities, and a small set of events to inspect and adapt. Kanban focuses on visualizing flow and limiting work in progress, without prescribed roles or time-boxed iterations. Many teams blend the two.\n- \"Who decides what is built?\" — The Product Owner. They are accountable for ordering the Product Backlog and maximizing the value of the product. Developers decide how to build it; stakeholders inform but do not direct the order.\n- \"Can Scrum be used outside software?\" — Yes. Scrum is intentionally lightweight and applies to any complex work where empirical process control — transparency, inspection, and adaptation — helps.\n\nRendered as plain `<article>` blocks inside the section (no card grid) so it reads like an FAQ list.\n\n## Quality checks\n- Validate HTML opens cleanly (no broken tags, balanced sections).\n- Verify all anchor `href`s resolve to existing `id`s on the page.\n- Confirm heading hierarchy stays `h1 → h2 → h3` (no skips, no demotions in existing sections).\n- Confirm no statement contradicts the 2020 Scrum Guide (myths and FAQ wording cross-checked against accountabilities, events, artifacts, and the framework-not-methodology stance).\n\n## Risks\n- Visual: new sections inherit existing CSS so layout risk is low; not rendered in CI, so unverified visually.\n- Anchor nav row may wrap on narrow viewports with two extra items — existing CSS already uses `flex-wrap`, so this degrades gracefully.\n\n## Out of scope\n- No CSS changes.\n- No JS additions.\n- No content changes to existing sections.\n"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 125,
+        "cache_read_input_tokens": 35077,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 125
+        },
+        "output_tokens": 59,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "8a9af64d-aef0-4341-a9e9-83811f029c6c"
+  },
+  {
+    "type": "user",
+    "message": {
+      "role": "user",
+      "content": [
+        {
+          "tool_use_id": "toolu_01HE1UL1AKJxznnS3ToEfMct",
+          "type": "tool_result",
+          "content": "File created successfully at: /home/runner/work/dark_factory/dark_factory/spec/KAN-132/plan.md (file state is current in your context — no need to Read it back)"
+        }
+      ]
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "e55be41c-dce2-4a27-a9e3-df941950f04c",
+    "timestamp": "2026-05-09T18:21:35.078Z",
+    "tool_use_result": {
+      "type": "create",
+      "filePath": "/home/runner/work/dark_factory/dark_factory/spec/KAN-132/plan.md",
+      "content": "# KAN-132 Implementation Plan\n\n## Goal\nAdd a Myths block and a FAQ section to the Scrum landing page (`docs/scrum/index.html`) per §3.2 nice-to-have, without breaking existing anchor navigation or heading hierarchy.\n\n## Scope of changes\nSingle file edit: `docs/scrum/index.html`.\n\n### Anchor navigation\nAdd two new entries to `nav.anchors` after the existing four (`#roles`, `#events`, `#artifacts`, `#sprint`):\n- `#myths` → \"Myths\"\n- `#faq` → \"FAQ\"\n\nExisting anchors are preserved (no renames), so any external links / fragments continue to resolve.\n\n### New sections (appended in `<main>` after the Sprint section)\n\n**Myths** (`<section id=\"myths\">`, `h2`):\nThree myth-busting statements aligned with the Scrum Guide:\n1. \"Scrum is not a methodology with fixed scope agreed up front.\" — Scrum is a lightweight framework that embraces changing requirements; the Product Backlog is ordered and refined over time.\n2. \"The Scrum Master is not a project manager who assigns tasks.\" — The Scrum Master is a true leader who serves the team and coaches the organization; Developers self-manage how they deliver the Sprint work.\n3. \"The Daily Scrum is not a status meeting for managers.\" — It is a 15-minute event for the Developers to inspect progress toward the Sprint Goal and adapt the plan for the next day.\n\nRendered as `.card` items inside a `.grid`, matching the existing style.\n\n**FAQ** (`<section id=\"faq\">`, `h2`):\nFour items (within the 3–5 range required by AC), each as a small `<article>` with an `<h3>` question and `<p>` answer. Includes the three required topics plus one bonus on applicability beyond software:\n- \"How does Scrum relate to Agile?\" — Agile is the broader mindset (the Agile Manifesto's values and principles). Scrum is one specific lightweight framework that embodies Agile; using Scrum well means living the Agile values, not just running the events.\n- \"How is Scrum different from Kanban at a glance?\" — Scrum uses fixed-length Sprints, defined accountabilities, and a small set of events to inspect and adapt. Kanban focuses on visualizing flow and limiting work in progress, without prescribed roles or time-boxed iterations. Many teams blend the two.\n- \"Who decides what is built?\" — The Product Owner. They are accountable for ordering the Product Backlog and maximizing the value of the product. Developers decide how to build it; stakeholders inform but do not direct the order.\n- \"Can Scrum be used outside software?\" — Yes. Scrum is intentionally lightweight and applies to any complex work where empirical process control — transparency, inspection, and adaptation — helps.\n\nRendered as plain `<article>` blocks inside the section (no card grid) so it reads like an FAQ list.\n\n## Quality checks\n- Validate HTML opens cleanly (no broken tags, balanced sections).\n- Verify all anchor `href`s resolve to existing `id`s on the page.\n- Confirm heading hierarchy stays `h1 → h2 → h3` (no skips, no demotions in existing sections).\n- Confirm no statement contradicts the 2020 Scrum Guide (myths and FAQ wording cross-checked against accountabilities, events, artifacts, and the framework-not-methodology stance).\n\n## Risks\n- Visual: new sections inherit existing CSS so layout risk is low; not rendered in CI, so unverified visually.\n- Anchor nav row may wrap on narrow viewports with two extra items — existing CSS already uses `flex-wrap`, so this degrades gracefully.\n\n## Out of scope\n- No CSS changes.\n- No JS additions.\n- No content changes to existing sections.\n",
+      "structuredPatch": [],
+      "originalFile": null,
+      "userModified": false
+    }
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_01GdN5eiU5vbqA7V5GxbTAt9",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "Now I'll update the HTML — first the nav, then append the two new sections."
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 2249,
+        "cache_read_input_tokens": 35202,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2249
+        },
+        "output_tokens": 3,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "524d500c-440c-41ba-b103-638746c6ceb6"
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_01GdN5eiU5vbqA7V5GxbTAt9",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_015mUv8NPPEFd4NZFAQDaSuk",
+          "name": "Edit",
+          "input": {
+            "replace_all": false,
+            "file_path": "/home/runner/work/dark_factory/dark_factory/docs/scrum/index.html",
+            "old_string": "      <li><a href=\"#roles\">Roles</a></li>\n      <li><a href=\"#events\">Events</a></li>\n      <li><a href=\"#artifacts\">Artifacts</a></li>\n      <li><a href=\"#sprint\">Sprint</a></li>\n    </ul>",
+            "new_string": "      <li><a href=\"#roles\">Roles</a></li>\n      <li><a href=\"#events\">Events</a></li>\n      <li><a href=\"#artifacts\">Artifacts</a></li>\n      <li><a href=\"#sprint\">Sprint</a></li>\n      <li><a href=\"#myths\">Myths</a></li>\n      <li><a href=\"#faq\">FAQ</a></li>\n    </ul>"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 2249,
+        "cache_read_input_tokens": 35202,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2249
+        },
+        "output_tokens": 3,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "baedeb03-2e64-4691-8e62-c836110d9422"
+  },
+  {
+    "type": "user",
+    "message": {
+      "role": "user",
+      "content": [
+        {
+          "tool_use_id": "toolu_015mUv8NPPEFd4NZFAQDaSuk",
+          "type": "tool_result",
+          "content": "The file /home/runner/work/dark_factory/dark_factory/docs/scrum/index.html has been updated successfully. (file state is current in your context — no need to Read it back)"
+        }
+      ]
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "f08b27ac-5f74-442c-a6e8-c5df92b20d41",
+    "timestamp": "2026-05-09T18:21:42.795Z",
+    "tool_use_result": {
+      "filePath": "/home/runner/work/dark_factory/dark_factory/docs/scrum/index.html",
+      "oldString": "      <li><a href=\"#roles\">Roles</a></li>\n      <li><a href=\"#events\">Events</a></li>\n      <li><a href=\"#artifacts\">Artifacts</a></li>\n      <li><a href=\"#sprint\">Sprint</a></li>\n    </ul>",
+      "newString": "      <li><a href=\"#roles\">Roles</a></li>\n      <li><a href=\"#events\">Events</a></li>\n      <li><a href=\"#artifacts\">Artifacts</a></li>\n      <li><a href=\"#sprint\">Sprint</a></li>\n      <li><a href=\"#myths\">Myths</a></li>\n      <li><a href=\"#faq\">FAQ</a></li>\n    </ul>",
+      "originalFile": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n  <meta name=\"color-scheme\" content=\"light\" />\n  <meta name=\"theme-color\" content=\"#1a5fb4\" />\n  <meta name=\"robots\" content=\"index,follow\" />\n  <title>Scrum Overview — Roles, Events, Artifacts</title>\n  <meta name=\"description\" content=\"A concise, plain-language overview of Scrum: roles (Product Owner, Scrum Master, Developers), the five events, artifacts including the Definition of Done, and the Sprint as a time-boxed container.\" />\n  <meta property=\"og:title\" content=\"Scrum Overview — Roles, Events, Artifacts\" />\n  <meta property=\"og:description\" content=\"A concise, plain-language overview of Scrum: roles, the five events, artifacts including the Definition of Done, and the Sprint as a time-boxed container.\" />\n  <meta property=\"og:type\" content=\"article\" />\n  <meta property=\"og:locale\" content=\"en_US\" />\n  <meta name=\"twitter:card\" content=\"summary\" />\n  <style>\n    :root {\n      --bg: #fdfdfc;\n      --surface: #ffffff;\n      --ink: #1d1d1f;\n      --muted: #555;\n      --accent: #1a5fb4;\n      --accent-soft: #eaf2fb;\n      --line: #e5e5e3;\n      --radius: 10px;\n      --maxw: 920px;\n    }\n    * { box-sizing: border-box; }\n    html { scroll-behavior: smooth; }\n    body {\n      margin: 0;\n      font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif;\n      color: var(--ink);\n      background: var(--bg);\n      line-height: 1.55;\n    }\n    a { color: var(--accent); }\n    a:hover { text-decoration: underline; }\n    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }\n\n    header.hero {\n      background: linear-gradient(180deg, var(--accent-soft), var(--bg));\n      padding: 3.5rem 0 2rem;\n      border-bottom: 1px solid var(--line);\n    }\n    h1 {\n      font-size: clamp(1.75rem, 4vw, 2.5rem);\n      margin: 0 0 0.5rem;\n      letter-spacing: -0.01em;\n    }\n    .subhead {\n      font-size: 1.125rem;\n      color: var(--muted);\n      margin: 0;\n      max-width: 60ch;\n    }\n\n    nav.anchors {\n      position: sticky;\n      top: 0;\n      z-index: 5;\n      background: var(--surface);\n      border-bottom: 1px solid var(--line);\n    }\n    nav.anchors ul {\n      list-style: none;\n      display: flex;\n      flex-wrap: wrap;\n      gap: 0.25rem 0.5rem;\n      padding: 0.5rem 1.25rem;\n      max-width: var(--maxw);\n      margin: 0 auto;\n    }\n    nav.anchors a {\n      display: inline-flex;\n      align-items: center;\n      min-height: 44px;\n      padding: 0.5rem 0.75rem;\n      border-radius: 6px;\n      text-decoration: none;\n      font-weight: 500;\n    }\n    nav.anchors a:hover { background: var(--accent-soft); }\n    a:focus-visible {\n      outline: 2px solid var(--accent);\n      outline-offset: 2px;\n      border-radius: 4px;\n    }\n\n    .skip-link {\n      position: absolute;\n      left: -9999px;\n      top: 0;\n      background: var(--ink);\n      color: #fff;\n      padding: 0.75rem 1rem;\n      font-weight: 600;\n      text-decoration: none;\n      z-index: 100;\n      border-radius: 0 0 6px 6px;\n    }\n    .skip-link:focus {\n      left: 1rem;\n      outline: 2px solid var(--accent);\n      outline-offset: 2px;\n    }\n\n    @media (prefers-reduced-motion: reduce) {\n      html { scroll-behavior: auto; }\n    }\n\n    main { padding: 2rem 0 3rem; }\n    section { padding: 2rem 0; border-bottom: 1px solid var(--line); }\n    section:last-of-type { border-bottom: none; }\n    h2 {\n      font-size: 1.5rem;\n      margin: 0 0 0.75rem;\n      letter-spacing: -0.005em;\n    }\n    h3 {\n      font-size: 1.05rem;\n      margin: 1.25rem 0 0.25rem;\n    }\n    p { margin: 0.5rem 0; }\n    .grid {\n      display: grid;\n      gap: 1rem;\n      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));\n      margin-top: 1rem;\n    }\n    .card {\n      background: var(--surface);\n      border: 1px solid var(--line);\n      border-radius: var(--radius);\n      padding: 1rem 1.1rem;\n    }\n    .card h3 { margin-top: 0; }\n    .lede { color: var(--muted); }\n\n    figure.flow {\n      margin: 1.25rem 0 0;\n      padding: 1rem;\n      background: var(--surface);\n      border: 1px solid var(--line);\n      border-radius: var(--radius);\n    }\n    figure.flow svg { width: 100%; height: auto; display: block; }\n    figcaption {\n      margin-top: 0.5rem;\n      color: var(--muted);\n      font-size: 0.9rem;\n    }\n\n    footer {\n      border-top: 1px solid var(--line);\n      padding: 1.5rem 0 2.5rem;\n      color: var(--muted);\n      font-size: 0.95rem;\n    }\n    footer .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; justify-content: space-between; }\n\n    @media print {\n      html { scroll-behavior: auto; }\n      body { background: #fff; color: #000; }\n      .skip-link, nav.anchors { display: none !important; }\n      header.hero {\n        background: none;\n        padding: 1rem 0;\n        border-bottom: 1px solid #000;\n      }\n      main { padding: 0; }\n      section {\n        padding: 0.75rem 0;\n        border-bottom: 1px solid #ccc;\n        break-inside: avoid;\n        page-break-inside: avoid;\n      }\n      .card,\n      figure.flow {\n        background: #fff;\n        border-color: #999;\n        break-inside: avoid;\n        page-break-inside: avoid;\n      }\n      figure.flow svg { max-width: 100%; }\n      a { color: #000; text-decoration: underline; }\n      a[href^=\"http\"]::after {\n        content: \" (\" attr(href) \")\";\n        font-size: 0.85em;\n        word-break: break-all;\n      }\n      footer {\n        border-top: 1px solid #000;\n        padding: 0.75rem 0;\n      }\n    }\n  </style>\n</head>\n<body>\n  <a class=\"skip-link\" href=\"#main\">Skip to main content</a>\n  <header class=\"hero\">\n    <div class=\"wrap\">\n      <h1>Scrum, in one page</h1>\n      <p class=\"subhead\">A plain-language overview of Scrum — the roles, the five events, the artifacts, and the Sprint that holds them together. Aligned with the current Scrum Guide.</p>\n    </div>\n  </header>\n\n  <nav class=\"anchors\" aria-label=\"Section navigation\">\n    <ul>\n      <li><a href=\"#roles\">Roles</a></li>\n      <li><a href=\"#events\">Events</a></li>\n      <li><a href=\"#artifacts\">Artifacts</a></li>\n      <li><a href=\"#sprint\">Sprint</a></li>\n    </ul>\n  </nav>\n\n  <main id=\"main\" class=\"wrap\">\n    <section id=\"what\">\n      <h2>What Scrum is</h2>\n      <p>Scrum is a lightweight framework that helps teams deliver value through iterative work, frequent inspection, and adaptation. It defines a small set of accountabilities, events, and artifacts — and leaves the details of how the work gets done to the team.</p>\n    </section>\n\n    <section id=\"when\">\n      <h2>When it helps</h2>\n      <p>Scrum fits complex problems where requirements and solutions are uncertain and need to be discovered through delivery. It helps when a team needs a steady cadence to ship something useful, learn from it, and adjust — rather than committing up front to a fixed plan.</p>\n    </section>\n\n    <section id=\"roles\">\n      <h2>Roles (accountabilities)</h2>\n      <p class=\"lede\">A Scrum Team has three accountabilities — together they own delivering value each Sprint.</p>\n      <div class=\"grid\">\n        <article class=\"card\">\n          <h3>Product Owner</h3>\n          <p>Accountable for maximizing the value of the product by managing the Product Backlog.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Scrum Master</h3>\n          <p>Accountable for the team's effectiveness and for establishing Scrum as defined in the Scrum Guide.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Developers</h3>\n          <p>Accountable for creating a usable Increment that meets the Definition of Done every Sprint.</p>\n        </article>\n      </div>\n    </section>\n\n    <section id=\"events\">\n      <h2>Events</h2>\n      <p class=\"lede\">Five time-boxed events create regularity and remove the need for other meetings.</p>\n      <div class=\"grid\">\n        <article class=\"card\">\n          <h3>Sprint</h3>\n          <p>A fixed, time-boxed container (one month or less) inside which all the other Scrum events happen and an Increment is created.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Sprint Planning</h3>\n          <p>Initiates the Sprint by defining why it is valuable, what can be done, and how the chosen work will get done.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Daily Scrum</h3>\n          <p>A 15-minute event for Developers to inspect progress toward the Sprint Goal and adapt the plan for the next day.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Sprint Review</h3>\n          <p>Inspects the outcome of the Sprint with stakeholders and determines future adaptations to the Product Backlog.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Sprint Retrospective</h3>\n          <p>Closes the Sprint by planning ways to increase quality and effectiveness in how the team works together.</p>\n        </article>\n      </div>\n    </section>\n\n    <section id=\"artifacts\">\n      <h2>Artifacts</h2>\n      <p class=\"lede\">Each artifact represents work or value, and each has a commitment that gives it focus.</p>\n      <div class=\"grid\">\n        <article class=\"card\">\n          <h3>Product Backlog</h3>\n          <p>An ordered list of what is needed to improve the product. Its commitment is the Product Goal.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Sprint Backlog</h3>\n          <p>The plan by and for the Developers — the Sprint Goal, the selected Product Backlog items, and how to deliver them.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Increment</h3>\n          <p>A concrete step toward the Product Goal. Each Increment is additive to all prior Increments and must be usable.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Definition of Done</h3>\n          <p>The shared standard of quality an Increment must meet to be considered complete and releasable.</p>\n        </article>\n      </div>\n    </section>\n\n    <section id=\"sprint\">\n      <h2>The Sprint: a time-boxed container</h2>\n      <p>The Sprint is the heartbeat of Scrum. It is a fixed-length cycle, one month or less, during which the team turns ideas into a usable Increment. Sprint Planning opens it, the Daily Scrum keeps it on track, and the Sprint Review and Retrospective close it — same length, same rhythm, every time.</p>\n\n      <figure class=\"flow\" aria-labelledby=\"flow-caption\">\n        <svg viewBox=\"0 0 720 260\" role=\"img\" aria-label=\"Diagram showing how Scrum Roles drive Events to produce Artifacts\">\n          <defs>\n            <marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"8\" markerHeight=\"8\" orient=\"auto-start-reverse\">\n              <path d=\"M0,0 L10,5 L0,10 z\" fill=\"#1a5fb4\" />\n            </marker>\n            <style>\n              .col-title { font: 600 14px -apple-system, \"Segoe UI\", Roboto, sans-serif; fill: #1d1d1f; }\n              .item { font: 500 12px -apple-system, \"Segoe UI\", Roboto, sans-serif; fill: #1d1d1f; }\n              .box { fill: #ffffff; stroke: #1a5fb4; stroke-width: 1.25; }\n              .lane { fill: #eaf2fb; stroke: #c7dcf3; stroke-width: 1; }\n              .conn { stroke: #1a5fb4; stroke-width: 1.5; fill: none; }\n            </style>\n          </defs>\n\n          <rect class=\"lane\" x=\"10\"  y=\"20\" width=\"220\" height=\"220\" rx=\"8\" />\n          <rect class=\"lane\" x=\"250\" y=\"20\" width=\"220\" height=\"220\" rx=\"8\" />\n          <rect class=\"lane\" x=\"490\" y=\"20\" width=\"220\" height=\"220\" rx=\"8\" />\n\n          <text class=\"col-title\" x=\"120\" y=\"42\" text-anchor=\"middle\">Roles</text>\n          <text class=\"col-title\" x=\"360\" y=\"42\" text-anchor=\"middle\">Events</text>\n          <text class=\"col-title\" x=\"600\" y=\"42\" text-anchor=\"middle\">Artifacts</text>\n\n          <rect class=\"box\" x=\"30\"  y=\"60\"  width=\"180\" height=\"32\" rx=\"6\" />\n          <text class=\"item\" x=\"120\" y=\"80\" text-anchor=\"middle\">Product Owner</text>\n          <rect class=\"box\" x=\"30\"  y=\"104\" width=\"180\" height=\"32\" rx=\"6\" />\n          <text class=\"item\" x=\"120\" y=\"124\" text-anchor=\"middle\">Scrum Master</text>\n          <rect class=\"box\" x=\"30\"  y=\"148\" width=\"180\" height=\"32\" rx=\"6\" />\n          <text class=\"item\" x=\"120\" y=\"168\" text-anchor=\"middle\">Developers</text>\n\n          <rect class=\"box\" x=\"270\" y=\"60\"  width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"360\" y=\"78\" text-anchor=\"middle\">Sprint Planning</text>\n          <rect class=\"box\" x=\"270\" y=\"94\"  width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"360\" y=\"112\" text-anchor=\"middle\">Daily Scrum</text>\n          <rect class=\"box\" x=\"270\" y=\"128\" width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"360\" y=\"146\" text-anchor=\"middle\">Sprint Review</text>\n          <rect class=\"box\" x=\"270\" y=\"162\" width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"360\" y=\"180\" text-anchor=\"middle\">Sprint Retrospective</text>\n          <rect class=\"box\" x=\"270\" y=\"196\" width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"360\" y=\"214\" text-anchor=\"middle\">(within the Sprint)</text>\n\n          <rect class=\"box\" x=\"510\" y=\"60\"  width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"600\" y=\"78\" text-anchor=\"middle\">Product Backlog</text>\n          <rect class=\"box\" x=\"510\" y=\"94\"  width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"600\" y=\"112\" text-anchor=\"middle\">Sprint Backlog</text>\n          <rect class=\"box\" x=\"510\" y=\"128\" width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"600\" y=\"146\" text-anchor=\"middle\">Increment</text>\n          <rect class=\"box\" x=\"510\" y=\"162\" width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"600\" y=\"180\" text-anchor=\"middle\">Definition of Done</text>\n\n          <path class=\"conn\" d=\"M210,124 C235,124 245,124 270,124\" marker-end=\"url(#arrow)\" />\n          <path class=\"conn\" d=\"M450,124 C475,124 485,124 510,124\" marker-end=\"url(#arrow)\" />\n        </svg>\n        <figcaption id=\"flow-caption\">Roles run the Events; the Events shape and produce the Artifacts. The Sprint is the time-boxed container around all of it.</figcaption>\n      </figure>\n    </section>\n  </main>\n\n  <footer>\n    <div class=\"wrap\">\n      <span>Read the source: <a href=\"https://scrumguides.org/\" rel=\"noopener external\">The Scrum Guide on scrumguides.org</a></span>\n      <span>Last updated <time datetime=\"2026-05-09\">May 9, 2026</time></span>\n    </div>\n  </footer>\n</body>\n</html>\n",
+      "structuredPatch": [
+        {
+          "oldStart": 211,
+          "oldLines": 6,
+          "newStart": 211,
+          "newLines": 8,
+          "lines": [
+            "       <li><a href=\"#events\">Events</a></li>",
+            "       <li><a href=\"#artifacts\">Artifacts</a></li>",
+            "       <li><a href=\"#sprint\">Sprint</a></li>",
+            "+      <li><a href=\"#myths\">Myths</a></li>",
+            "+      <li><a href=\"#faq\">FAQ</a></li>",
+            "     </ul>",
+            "   </nav>",
+            " "
+          ]
+        }
+      ],
+      "userModified": false,
+      "replaceAll": false
+    }
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_01RJQxcfDVtQjXuT78QRd2Xp",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_014dbGvmv9NXpVg75uQ9eQmS",
+          "name": "Edit",
+          "input": {
+            "replace_all": false,
+            "file_path": "/home/runner/work/dark_factory/dark_factory/docs/scrum/index.html",
+            "old_string": "        <figcaption id=\"flow-caption\">Roles run the Events; the Events shape and produce the Artifacts. The Sprint is the time-boxed container around all of it.</figcaption>\n      </figure>\n    </section>\n  </main>",
+            "new_string": "        <figcaption id=\"flow-caption\">Roles run the Events; the Events shape and produce the Artifacts. The Sprint is the time-boxed container around all of it.</figcaption>\n      </figure>\n    </section>\n\n    <section id=\"myths\">\n      <h2>Myths</h2>\n      <p class=\"lede\">A few common misconceptions, set straight against the Scrum Guide.</p>\n      <div class=\"grid\">\n        <article class=\"card\">\n          <h3>Scrum is not a methodology with fixed scope agreed up front</h3>\n          <p>Scrum is a lightweight framework, not a fixed methodology. The Product Backlog is ordered and refined as the team learns; changing requirements are expected, not avoided.</p>\n        </article>\n        <article class=\"card\">\n          <h3>The Scrum Master is not a project manager who assigns tasks</h3>\n          <p>The Scrum Master is a true leader who serves the Scrum Team and the wider organization. Developers self-manage how the Sprint work gets done.</p>\n        </article>\n        <article class=\"card\">\n          <h3>The Daily Scrum is not a status meeting for managers</h3>\n          <p>It is a 15-minute event for the Developers to inspect progress toward the Sprint Goal and adapt the plan for the next day of work.</p>\n        </article>\n      </div>\n    </section>\n\n    <section id=\"faq\">\n      <h2>FAQ</h2>\n      <p class=\"lede\">Short answers to questions that come up most often.</p>\n      <article>\n        <h3>How does Scrum relate to Agile?</h3>\n        <p>Agile is the broader mindset described by the Agile Manifesto's values and principles. Scrum is one specific lightweight framework that embodies Agile. Using Scrum well means living those values, not just running the events.</p>\n      </article>\n      <article>\n        <h3>How is Scrum different from Kanban at a glance?</h3>\n        <p>Scrum uses fixed-length Sprints, three defined accountabilities, and a small set of events to inspect and adapt. Kanban focuses on visualizing flow and limiting work in progress, without prescribed roles or time-boxed iterations. Many teams blend ideas from both.</p>\n      </article>\n      <article>\n        <h3>Who decides what is built?</h3>\n        <p>The Product Owner. They are accountable for ordering the Product Backlog and maximizing the value of the product. Developers decide how to build the selected work; stakeholders inform decisions but do not set the order.</p>\n      </article>\n      <article>\n        <h3>Can Scrum be used outside software?</h3>\n        <p>Yes. Scrum is intentionally lightweight and applies to any complex work where empirical process control — transparency, inspection, and adaptation — helps a team deliver value.</p>\n      </article>\n    </section>\n  </main>"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 628,
+        "cache_read_input_tokens": 37451,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 628
+        },
+        "output_tokens": 72,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "a08c4e3a-c2af-46bb-a8f7-9e915be88622"
+  },
+  {
+    "type": "user",
+    "message": {
+      "role": "user",
+      "content": [
+        {
+          "tool_use_id": "toolu_014dbGvmv9NXpVg75uQ9eQmS",
+          "type": "tool_result",
+          "content": "The file /home/runner/work/dark_factory/dark_factory/docs/scrum/index.html has been updated successfully. (file state is current in your context — no need to Read it back)"
+        }
+      ]
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "2202196e-4f65-4e1e-af46-a2565d29e85a",
+    "timestamp": "2026-05-09T18:21:55.920Z",
+    "tool_use_result": {
+      "filePath": "/home/runner/work/dark_factory/dark_factory/docs/scrum/index.html",
+      "oldString": "        <figcaption id=\"flow-caption\">Roles run the Events; the Events shape and produce the Artifacts. The Sprint is the time-boxed container around all of it.</figcaption>\n      </figure>\n    </section>\n  </main>",
+      "newString": "        <figcaption id=\"flow-caption\">Roles run the Events; the Events shape and produce the Artifacts. The Sprint is the time-boxed container around all of it.</figcaption>\n      </figure>\n    </section>\n\n    <section id=\"myths\">\n      <h2>Myths</h2>\n      <p class=\"lede\">A few common misconceptions, set straight against the Scrum Guide.</p>\n      <div class=\"grid\">\n        <article class=\"card\">\n          <h3>Scrum is not a methodology with fixed scope agreed up front</h3>\n          <p>Scrum is a lightweight framework, not a fixed methodology. The Product Backlog is ordered and refined as the team learns; changing requirements are expected, not avoided.</p>\n        </article>\n        <article class=\"card\">\n          <h3>The Scrum Master is not a project manager who assigns tasks</h3>\n          <p>The Scrum Master is a true leader who serves the Scrum Team and the wider organization. Developers self-manage how the Sprint work gets done.</p>\n        </article>\n        <article class=\"card\">\n          <h3>The Daily Scrum is not a status meeting for managers</h3>\n          <p>It is a 15-minute event for the Developers to inspect progress toward the Sprint Goal and adapt the plan for the next day of work.</p>\n        </article>\n      </div>\n    </section>\n\n    <section id=\"faq\">\n      <h2>FAQ</h2>\n      <p class=\"lede\">Short answers to questions that come up most often.</p>\n      <article>\n        <h3>How does Scrum relate to Agile?</h3>\n        <p>Agile is the broader mindset described by the Agile Manifesto's values and principles. Scrum is one specific lightweight framework that embodies Agile. Using Scrum well means living those values, not just running the events.</p>\n      </article>\n      <article>\n        <h3>How is Scrum different from Kanban at a glance?</h3>\n        <p>Scrum uses fixed-length Sprints, three defined accountabilities, and a small set of events to inspect and adapt. Kanban focuses on visualizing flow and limiting work in progress, without prescribed roles or time-boxed iterations. Many teams blend ideas from both.</p>\n      </article>\n      <article>\n        <h3>Who decides what is built?</h3>\n        <p>The Product Owner. They are accountable for ordering the Product Backlog and maximizing the value of the product. Developers decide how to build the selected work; stakeholders inform decisions but do not set the order.</p>\n      </article>\n      <article>\n        <h3>Can Scrum be used outside software?</h3>\n        <p>Yes. Scrum is intentionally lightweight and applies to any complex work where empirical process control — transparency, inspection, and adaptation — helps a team deliver value.</p>\n      </article>\n    </section>\n  </main>",
+      "originalFile": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n  <meta name=\"color-scheme\" content=\"light\" />\n  <meta name=\"theme-color\" content=\"#1a5fb4\" />\n  <meta name=\"robots\" content=\"index,follow\" />\n  <title>Scrum Overview — Roles, Events, Artifacts</title>\n  <meta name=\"description\" content=\"A concise, plain-language overview of Scrum: roles (Product Owner, Scrum Master, Developers), the five events, artifacts including the Definition of Done, and the Sprint as a time-boxed container.\" />\n  <meta property=\"og:title\" content=\"Scrum Overview — Roles, Events, Artifacts\" />\n  <meta property=\"og:description\" content=\"A concise, plain-language overview of Scrum: roles, the five events, artifacts including the Definition of Done, and the Sprint as a time-boxed container.\" />\n  <meta property=\"og:type\" content=\"article\" />\n  <meta property=\"og:locale\" content=\"en_US\" />\n  <meta name=\"twitter:card\" content=\"summary\" />\n  <style>\n    :root {\n      --bg: #fdfdfc;\n      --surface: #ffffff;\n      --ink: #1d1d1f;\n      --muted: #555;\n      --accent: #1a5fb4;\n      --accent-soft: #eaf2fb;\n      --line: #e5e5e3;\n      --radius: 10px;\n      --maxw: 920px;\n    }\n    * { box-sizing: border-box; }\n    html { scroll-behavior: smooth; }\n    body {\n      margin: 0;\n      font-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif;\n      color: var(--ink);\n      background: var(--bg);\n      line-height: 1.55;\n    }\n    a { color: var(--accent); }\n    a:hover { text-decoration: underline; }\n    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.25rem; }\n\n    header.hero {\n      background: linear-gradient(180deg, var(--accent-soft), var(--bg));\n      padding: 3.5rem 0 2rem;\n      border-bottom: 1px solid var(--line);\n    }\n    h1 {\n      font-size: clamp(1.75rem, 4vw, 2.5rem);\n      margin: 0 0 0.5rem;\n      letter-spacing: -0.01em;\n    }\n    .subhead {\n      font-size: 1.125rem;\n      color: var(--muted);\n      margin: 0;\n      max-width: 60ch;\n    }\n\n    nav.anchors {\n      position: sticky;\n      top: 0;\n      z-index: 5;\n      background: var(--surface);\n      border-bottom: 1px solid var(--line);\n    }\n    nav.anchors ul {\n      list-style: none;\n      display: flex;\n      flex-wrap: wrap;\n      gap: 0.25rem 0.5rem;\n      padding: 0.5rem 1.25rem;\n      max-width: var(--maxw);\n      margin: 0 auto;\n    }\n    nav.anchors a {\n      display: inline-flex;\n      align-items: center;\n      min-height: 44px;\n      padding: 0.5rem 0.75rem;\n      border-radius: 6px;\n      text-decoration: none;\n      font-weight: 500;\n    }\n    nav.anchors a:hover { background: var(--accent-soft); }\n    a:focus-visible {\n      outline: 2px solid var(--accent);\n      outline-offset: 2px;\n      border-radius: 4px;\n    }\n\n    .skip-link {\n      position: absolute;\n      left: -9999px;\n      top: 0;\n      background: var(--ink);\n      color: #fff;\n      padding: 0.75rem 1rem;\n      font-weight: 600;\n      text-decoration: none;\n      z-index: 100;\n      border-radius: 0 0 6px 6px;\n    }\n    .skip-link:focus {\n      left: 1rem;\n      outline: 2px solid var(--accent);\n      outline-offset: 2px;\n    }\n\n    @media (prefers-reduced-motion: reduce) {\n      html { scroll-behavior: auto; }\n    }\n\n    main { padding: 2rem 0 3rem; }\n    section { padding: 2rem 0; border-bottom: 1px solid var(--line); }\n    section:last-of-type { border-bottom: none; }\n    h2 {\n      font-size: 1.5rem;\n      margin: 0 0 0.75rem;\n      letter-spacing: -0.005em;\n    }\n    h3 {\n      font-size: 1.05rem;\n      margin: 1.25rem 0 0.25rem;\n    }\n    p { margin: 0.5rem 0; }\n    .grid {\n      display: grid;\n      gap: 1rem;\n      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));\n      margin-top: 1rem;\n    }\n    .card {\n      background: var(--surface);\n      border: 1px solid var(--line);\n      border-radius: var(--radius);\n      padding: 1rem 1.1rem;\n    }\n    .card h3 { margin-top: 0; }\n    .lede { color: var(--muted); }\n\n    figure.flow {\n      margin: 1.25rem 0 0;\n      padding: 1rem;\n      background: var(--surface);\n      border: 1px solid var(--line);\n      border-radius: var(--radius);\n    }\n    figure.flow svg { width: 100%; height: auto; display: block; }\n    figcaption {\n      margin-top: 0.5rem;\n      color: var(--muted);\n      font-size: 0.9rem;\n    }\n\n    footer {\n      border-top: 1px solid var(--line);\n      padding: 1.5rem 0 2.5rem;\n      color: var(--muted);\n      font-size: 0.95rem;\n    }\n    footer .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; justify-content: space-between; }\n\n    @media print {\n      html { scroll-behavior: auto; }\n      body { background: #fff; color: #000; }\n      .skip-link, nav.anchors { display: none !important; }\n      header.hero {\n        background: none;\n        padding: 1rem 0;\n        border-bottom: 1px solid #000;\n      }\n      main { padding: 0; }\n      section {\n        padding: 0.75rem 0;\n        border-bottom: 1px solid #ccc;\n        break-inside: avoid;\n        page-break-inside: avoid;\n      }\n      .card,\n      figure.flow {\n        background: #fff;\n        border-color: #999;\n        break-inside: avoid;\n        page-break-inside: avoid;\n      }\n      figure.flow svg { max-width: 100%; }\n      a { color: #000; text-decoration: underline; }\n      a[href^=\"http\"]::after {\n        content: \" (\" attr(href) \")\";\n        font-size: 0.85em;\n        word-break: break-all;\n      }\n      footer {\n        border-top: 1px solid #000;\n        padding: 0.75rem 0;\n      }\n    }\n  </style>\n</head>\n<body>\n  <a class=\"skip-link\" href=\"#main\">Skip to main content</a>\n  <header class=\"hero\">\n    <div class=\"wrap\">\n      <h1>Scrum, in one page</h1>\n      <p class=\"subhead\">A plain-language overview of Scrum — the roles, the five events, the artifacts, and the Sprint that holds them together. Aligned with the current Scrum Guide.</p>\n    </div>\n  </header>\n\n  <nav class=\"anchors\" aria-label=\"Section navigation\">\n    <ul>\n      <li><a href=\"#roles\">Roles</a></li>\n      <li><a href=\"#events\">Events</a></li>\n      <li><a href=\"#artifacts\">Artifacts</a></li>\n      <li><a href=\"#sprint\">Sprint</a></li>\n      <li><a href=\"#myths\">Myths</a></li>\n      <li><a href=\"#faq\">FAQ</a></li>\n    </ul>\n  </nav>\n\n  <main id=\"main\" class=\"wrap\">\n    <section id=\"what\">\n      <h2>What Scrum is</h2>\n      <p>Scrum is a lightweight framework that helps teams deliver value through iterative work, frequent inspection, and adaptation. It defines a small set of accountabilities, events, and artifacts — and leaves the details of how the work gets done to the team.</p>\n    </section>\n\n    <section id=\"when\">\n      <h2>When it helps</h2>\n      <p>Scrum fits complex problems where requirements and solutions are uncertain and need to be discovered through delivery. It helps when a team needs a steady cadence to ship something useful, learn from it, and adjust — rather than committing up front to a fixed plan.</p>\n    </section>\n\n    <section id=\"roles\">\n      <h2>Roles (accountabilities)</h2>\n      <p class=\"lede\">A Scrum Team has three accountabilities — together they own delivering value each Sprint.</p>\n      <div class=\"grid\">\n        <article class=\"card\">\n          <h3>Product Owner</h3>\n          <p>Accountable for maximizing the value of the product by managing the Product Backlog.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Scrum Master</h3>\n          <p>Accountable for the team's effectiveness and for establishing Scrum as defined in the Scrum Guide.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Developers</h3>\n          <p>Accountable for creating a usable Increment that meets the Definition of Done every Sprint.</p>\n        </article>\n      </div>\n    </section>\n\n    <section id=\"events\">\n      <h2>Events</h2>\n      <p class=\"lede\">Five time-boxed events create regularity and remove the need for other meetings.</p>\n      <div class=\"grid\">\n        <article class=\"card\">\n          <h3>Sprint</h3>\n          <p>A fixed, time-boxed container (one month or less) inside which all the other Scrum events happen and an Increment is created.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Sprint Planning</h3>\n          <p>Initiates the Sprint by defining why it is valuable, what can be done, and how the chosen work will get done.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Daily Scrum</h3>\n          <p>A 15-minute event for Developers to inspect progress toward the Sprint Goal and adapt the plan for the next day.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Sprint Review</h3>\n          <p>Inspects the outcome of the Sprint with stakeholders and determines future adaptations to the Product Backlog.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Sprint Retrospective</h3>\n          <p>Closes the Sprint by planning ways to increase quality and effectiveness in how the team works together.</p>\n        </article>\n      </div>\n    </section>\n\n    <section id=\"artifacts\">\n      <h2>Artifacts</h2>\n      <p class=\"lede\">Each artifact represents work or value, and each has a commitment that gives it focus.</p>\n      <div class=\"grid\">\n        <article class=\"card\">\n          <h3>Product Backlog</h3>\n          <p>An ordered list of what is needed to improve the product. Its commitment is the Product Goal.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Sprint Backlog</h3>\n          <p>The plan by and for the Developers — the Sprint Goal, the selected Product Backlog items, and how to deliver them.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Increment</h3>\n          <p>A concrete step toward the Product Goal. Each Increment is additive to all prior Increments and must be usable.</p>\n        </article>\n        <article class=\"card\">\n          <h3>Definition of Done</h3>\n          <p>The shared standard of quality an Increment must meet to be considered complete and releasable.</p>\n        </article>\n      </div>\n    </section>\n\n    <section id=\"sprint\">\n      <h2>The Sprint: a time-boxed container</h2>\n      <p>The Sprint is the heartbeat of Scrum. It is a fixed-length cycle, one month or less, during which the team turns ideas into a usable Increment. Sprint Planning opens it, the Daily Scrum keeps it on track, and the Sprint Review and Retrospective close it — same length, same rhythm, every time.</p>\n\n      <figure class=\"flow\" aria-labelledby=\"flow-caption\">\n        <svg viewBox=\"0 0 720 260\" role=\"img\" aria-label=\"Diagram showing how Scrum Roles drive Events to produce Artifacts\">\n          <defs>\n            <marker id=\"arrow\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"8\" markerHeight=\"8\" orient=\"auto-start-reverse\">\n              <path d=\"M0,0 L10,5 L0,10 z\" fill=\"#1a5fb4\" />\n            </marker>\n            <style>\n              .col-title { font: 600 14px -apple-system, \"Segoe UI\", Roboto, sans-serif; fill: #1d1d1f; }\n              .item { font: 500 12px -apple-system, \"Segoe UI\", Roboto, sans-serif; fill: #1d1d1f; }\n              .box { fill: #ffffff; stroke: #1a5fb4; stroke-width: 1.25; }\n              .lane { fill: #eaf2fb; stroke: #c7dcf3; stroke-width: 1; }\n              .conn { stroke: #1a5fb4; stroke-width: 1.5; fill: none; }\n            </style>\n          </defs>\n\n          <rect class=\"lane\" x=\"10\"  y=\"20\" width=\"220\" height=\"220\" rx=\"8\" />\n          <rect class=\"lane\" x=\"250\" y=\"20\" width=\"220\" height=\"220\" rx=\"8\" />\n          <rect class=\"lane\" x=\"490\" y=\"20\" width=\"220\" height=\"220\" rx=\"8\" />\n\n          <text class=\"col-title\" x=\"120\" y=\"42\" text-anchor=\"middle\">Roles</text>\n          <text class=\"col-title\" x=\"360\" y=\"42\" text-anchor=\"middle\">Events</text>\n          <text class=\"col-title\" x=\"600\" y=\"42\" text-anchor=\"middle\">Artifacts</text>\n\n          <rect class=\"box\" x=\"30\"  y=\"60\"  width=\"180\" height=\"32\" rx=\"6\" />\n          <text class=\"item\" x=\"120\" y=\"80\" text-anchor=\"middle\">Product Owner</text>\n          <rect class=\"box\" x=\"30\"  y=\"104\" width=\"180\" height=\"32\" rx=\"6\" />\n          <text class=\"item\" x=\"120\" y=\"124\" text-anchor=\"middle\">Scrum Master</text>\n          <rect class=\"box\" x=\"30\"  y=\"148\" width=\"180\" height=\"32\" rx=\"6\" />\n          <text class=\"item\" x=\"120\" y=\"168\" text-anchor=\"middle\">Developers</text>\n\n          <rect class=\"box\" x=\"270\" y=\"60\"  width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"360\" y=\"78\" text-anchor=\"middle\">Sprint Planning</text>\n          <rect class=\"box\" x=\"270\" y=\"94\"  width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"360\" y=\"112\" text-anchor=\"middle\">Daily Scrum</text>\n          <rect class=\"box\" x=\"270\" y=\"128\" width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"360\" y=\"146\" text-anchor=\"middle\">Sprint Review</text>\n          <rect class=\"box\" x=\"270\" y=\"162\" width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"360\" y=\"180\" text-anchor=\"middle\">Sprint Retrospective</text>\n          <rect class=\"box\" x=\"270\" y=\"196\" width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"360\" y=\"214\" text-anchor=\"middle\">(within the Sprint)</text>\n\n          <rect class=\"box\" x=\"510\" y=\"60\"  width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"600\" y=\"78\" text-anchor=\"middle\">Product Backlog</text>\n          <rect class=\"box\" x=\"510\" y=\"94\"  width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"600\" y=\"112\" text-anchor=\"middle\">Sprint Backlog</text>\n          <rect class=\"box\" x=\"510\" y=\"128\" width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"600\" y=\"146\" text-anchor=\"middle\">Increment</text>\n          <rect class=\"box\" x=\"510\" y=\"162\" width=\"180\" height=\"28\" rx=\"6\" />\n          <text class=\"item\" x=\"600\" y=\"180\" text-anchor=\"middle\">Definition of Done</text>\n\n          <path class=\"conn\" d=\"M210,124 C235,124 245,124 270,124\" marker-end=\"url(#arrow)\" />\n          <path class=\"conn\" d=\"M450,124 C475,124 485,124 510,124\" marker-end=\"url(#arrow)\" />\n        </svg>\n        <figcaption id=\"flow-caption\">Roles run the Events; the Events shape and produce the Artifacts. The Sprint is the time-boxed container around all of it.</figcaption>\n      </figure>\n    </section>\n  </main>\n\n  <footer>\n    <div class=\"wrap\">\n      <span>Read the source: <a href=\"https://scrumguides.org/\" rel=\"noopener external\">The Scrum Guide on scrumguides.org</a></span>\n      <span>Last updated <time datetime=\"2026-05-09\">May 9, 2026</time></span>\n    </div>\n  </footer>\n</body>\n</html>\n",
+      "structuredPatch": [
+        {
+          "oldStart": 356,
+          "oldLines": 6,
+          "newStart": 356,
+          "newLines": 46,
+          "lines": [
+            "         <figcaption id=\"flow-caption\">Roles run the Events; the Events shape and produce the Artifacts. The Sprint is the time-boxed container around all of it.</figcaption>",
+            "       </figure>",
+            "     </section>",
+            "+",
+            "+    <section id=\"myths\">",
+            "+      <h2>Myths</h2>",
+            "+      <p class=\"lede\">A few common misconceptions, set straight against the Scrum Guide.</p>",
+            "+      <div class=\"grid\">",
+            "+        <article class=\"card\">",
+            "+          <h3>Scrum is not a methodology with fixed scope agreed up front</h3>",
+            "+          <p>Scrum is a lightweight framework, not a fixed methodology. The Product Backlog is ordered and refined as the team learns; changing requirements are expected, not avoided.</p>",
+            "+        </article>",
+            "+        <article class=\"card\">",
+            "+          <h3>The Scrum Master is not a project manager who assigns tasks</h3>",
+            "+          <p>The Scrum Master is a true leader who serves the Scrum Team and the wider organization. Developers self-manage how the Sprint work gets done.</p>",
+            "+        </article>",
+            "+        <article class=\"card\">",
+            "+          <h3>The Daily Scrum is not a status meeting for managers</h3>",
+            "+          <p>It is a 15-minute event for the Developers to inspect progress toward the Sprint Goal and adapt the plan for the next day of work.</p>",
+            "+        </article>",
+            "+      </div>",
+            "+    </section>",
+            "+",
+            "+    <section id=\"faq\">",
+            "+      <h2>FAQ</h2>",
+            "+      <p class=\"lede\">Short answers to questions that come up most often.</p>",
+            "+      <article>",
+            "+        <h3>How does Scrum relate to Agile?</h3>",
+            "+        <p>Agile is the broader mindset described by the Agile Manifesto's values and principles. Scrum is one specific lightweight framework that embodies Agile. Using Scrum well means living those values, not just running the events.</p>",
+            "+      </article>",
+            "+      <article>",
+            "+        <h3>How is Scrum different from Kanban at a glance?</h3>",
+            "+        <p>Scrum uses fixed-length Sprints, three defined accountabilities, and a small set of events to inspect and adapt. Kanban focuses on visualizing flow and limiting work in progress, without prescribed roles or time-boxed iterations. Many teams blend ideas from both.</p>",
+            "+      </article>",
+            "+      <article>",
+            "+        <h3>Who decides what is built?</h3>",
+            "+        <p>The Product Owner. They are accountable for ordering the Product Backlog and maximizing the value of the product. Developers decide how to build the selected work; stakeholders inform decisions but do not set the order.</p>",
+            "+      </article>",
+            "+      <article>",
+            "+        <h3>Can Scrum be used outside software?</h3>",
+            "+        <p>Yes. Scrum is intentionally lightweight and applies to any complex work where empirical process control — transparency, inspection, and adaptation — helps a team deliver value.</p>",
+            "+      </article>",
+            "+    </section>",
+            "   </main>",
+            " ",
+            "   <footer>"
+          ]
+        }
+      ],
+      "userModified": false,
+      "replaceAll": false
+    }
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_01HM6veagSRtein3tqDcB5xi",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "Now let me validate the HTML structure (anchor consistency, tag balance)."
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 1250,
+        "cache_read_input_tokens": 38079,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 1250
+        },
+        "output_tokens": 3,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "202f075c-0ba0-4678-b054-c1337ee78ef6"
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_01HM6veagSRtein3tqDcB5xi",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_016DfkGrEd7QsK8gEGkrXEJ6",
+          "name": "Bash",
+          "input": {
+            "command": "python3 -c \"\nimport re\nwith open('docs/scrum/index.html') as f:\n    html = f.read()\n# Find all anchor hrefs\nhrefs = re.findall(r'href=\\\"#([^\\\"]+)\\\"', html)\nids = re.findall(r'id=\\\"([^\\\"]+)\\\"', html)\nprint('hrefs:', hrefs)\nprint('ids:', ids)\nmissing = [h for h in hrefs if h not in ids]\nprint('MISSING TARGETS:', missing)\n# count section open/close\nsec_open = len(re.findall(r'<section\\b', html))\nsec_close = len(re.findall(r'</section>', html))\nart_open = len(re.findall(r'<article\\b', html))\nart_close = len(re.findall(r'</article>', html))\nprint(f'section: {sec_open} open / {sec_close} close')\nprint(f'article: {art_open} open / {art_close} close')\n\"\n",
+            "description": "Validate anchor targets and tag balance"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 1250,
+        "cache_read_input_tokens": 38079,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 1250
+        },
+        "output_tokens": 3,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "16198ee7-2e57-41dc-9557-e92fa0b23cd3"
+  },
+  {
+    "type": "user",
+    "message": {
+      "role": "user",
+      "content": [
+        {
+          "tool_use_id": "toolu_016DfkGrEd7QsK8gEGkrXEJ6",
+          "type": "tool_result",
+          "content": "hrefs: ['main', 'roles', 'events', 'artifacts', 'sprint', 'myths', 'faq']\nids: ['main', 'what', 'when', 'roles', 'events', 'artifacts', 'sprint', 'arrow', 'flow-caption', 'myths', 'faq']\nMISSING TARGETS: []\nsection: 8 open / 8 close\narticle: 19 open / 19 close",
+          "is_error": false
+        }
+      ]
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "1ce684de-bb6a-4361-baae-a359659c139c",
+    "timestamp": "2026-05-09T18:22:02.808Z",
+    "tool_use_result": {
+      "stdout": "hrefs: ['main', 'roles', 'events', 'artifacts', 'sprint', 'myths', 'faq']\nids: ['main', 'what', 'when', 'roles', 'events', 'artifacts', 'sprint', 'arrow', 'flow-caption', 'myths', 'faq']\nMISSING TARGETS: []\nsection: 8 open / 8 close\narticle: 19 open / 19 close",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false,
+      "noOutputExpected": false
+    }
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_018jaL7sZMjEnscJSQ3mGQ3V",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "All anchors resolve, tags balance. Now the response file."
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 575,
+        "cache_read_input_tokens": 39329,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 575
+        },
+        "output_tokens": 5,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "e7e678ae-9458-4c5d-9ebe-53d6c47008cc"
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_018jaL7sZMjEnscJSQ3mGQ3V",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "tool_use",
+          "id": "toolu_01UXApbSbL9FWAsBJ5Pv37wq",
+          "name": "Write",
+          "input": {
+            "file_path": "/home/runner/work/dark_factory/dark_factory/spec/KAN-132/response.md",
+            "content": "# KAN-132 — Myths and FAQ added to Scrum landing page\n\n## What changed\nAdded two new sections to `docs/scrum/index.html` and extended the sticky anchor nav.\n\n- **Myths** (`#myths`) — three myth-busting statements aligned with the 2020 Scrum Guide:\n  - Scrum is not a methodology with fixed scope agreed up front.\n  - The Scrum Master is not a project manager who assigns tasks.\n  - The Daily Scrum is not a status meeting for managers.\n- **FAQ** (`#faq`) — four items, covering the three required topics plus one bonus:\n  - How does Scrum relate to Agile?\n  - How is Scrum different from Kanban at a glance?\n  - Who decides what is built? (Product Owner)\n  - Can Scrum be used outside software?\n- **Anchor nav** — appended `Myths` and `FAQ` after the existing `Roles · Events · Artifacts · Sprint` entries. Existing anchors are unchanged.\n\n## Why\nImplements the §3.2 nice-to-have content from the Scrum-landing-page spec. Wording is plain-language and consistent with the Scrum Guide. Sections slot into the existing structure (`section > h2 > grid/cards`) so the page's heading hierarchy and styling stay consistent with the surrounding content.\n\n## Acceptance criteria\n- ✅ Myths block contains 3 myth-busting statements consistent with the Scrum Guide (≥ 2 required).\n- ✅ FAQ contains 4 items including Scrum vs. Agile, Scrum vs. Kanban, and who decides what is built.\n- ✅ New sections reachable via two added nav entries; no existing anchors removed or renamed.\n- ✅ No statement contradicts the Scrum Guide (cross-checked against accountabilities, events, and the framework-not-methodology stance).\n\n## Verification\n- Anchor `href`s and section `id`s cross-checked: every nav target resolves on the page.\n- `<section>` and `<article>` tags balance.\n- No CSS or JS changes; new content reuses existing `.grid` / `.card` / `.lede` classes.\n\n## Risks\n- Visual rendering not verified in CI — layout risk is low since new sections reuse existing styles, but the page is not screenshot-tested here.\n- Sticky nav now has 6 entries; existing `flex-wrap` handles narrow viewports gracefully.\n\n## Files touched\n- `docs/scrum/index.html`\n- `spec/KAN-132/plan.md` (implementation plan)\n- `spec/KAN-132/response.md` (this file)\n"
+          },
+          "caller": {
+            "type": "direct"
+          }
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 575,
+        "cache_read_input_tokens": 39329,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 575
+        },
+        "output_tokens": 5,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "8b5652b6-f1c8-4ebe-84d9-46d46232cacb"
+  },
+  {
+    "type": "user",
+    "message": {
+      "role": "user",
+      "content": [
+        {
+          "tool_use_id": "toolu_01UXApbSbL9FWAsBJ5Pv37wq",
+          "type": "tool_result",
+          "content": "File created successfully at: /home/runner/work/dark_factory/dark_factory/spec/KAN-132/response.md (file state is current in your context — no need to Read it back)"
+        }
+      ]
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "6a15cea7-2449-4458-9112-0edb2a0d0425",
+    "timestamp": "2026-05-09T18:22:18.543Z",
+    "tool_use_result": {
+      "type": "create",
+      "filePath": "/home/runner/work/dark_factory/dark_factory/spec/KAN-132/response.md",
+      "content": "# KAN-132 — Myths and FAQ added to Scrum landing page\n\n## What changed\nAdded two new sections to `docs/scrum/index.html` and extended the sticky anchor nav.\n\n- **Myths** (`#myths`) — three myth-busting statements aligned with the 2020 Scrum Guide:\n  - Scrum is not a methodology with fixed scope agreed up front.\n  - The Scrum Master is not a project manager who assigns tasks.\n  - The Daily Scrum is not a status meeting for managers.\n- **FAQ** (`#faq`) — four items, covering the three required topics plus one bonus:\n  - How does Scrum relate to Agile?\n  - How is Scrum different from Kanban at a glance?\n  - Who decides what is built? (Product Owner)\n  - Can Scrum be used outside software?\n- **Anchor nav** — appended `Myths` and `FAQ` after the existing `Roles · Events · Artifacts · Sprint` entries. Existing anchors are unchanged.\n\n## Why\nImplements the §3.2 nice-to-have content from the Scrum-landing-page spec. Wording is plain-language and consistent with the Scrum Guide. Sections slot into the existing structure (`section > h2 > grid/cards`) so the page's heading hierarchy and styling stay consistent with the surrounding content.\n\n## Acceptance criteria\n- ✅ Myths block contains 3 myth-busting statements consistent with the Scrum Guide (≥ 2 required).\n- ✅ FAQ contains 4 items including Scrum vs. Agile, Scrum vs. Kanban, and who decides what is built.\n- ✅ New sections reachable via two added nav entries; no existing anchors removed or renamed.\n- ✅ No statement contradicts the Scrum Guide (cross-checked against accountabilities, events, and the framework-not-methodology stance).\n\n## Verification\n- Anchor `href`s and section `id`s cross-checked: every nav target resolves on the page.\n- `<section>` and `<article>` tags balance.\n- No CSS or JS changes; new content reuses existing `.grid` / `.card` / `.lede` classes.\n\n## Risks\n- Visual rendering not verified in CI — layout risk is low since new sections reuse existing styles, but the page is not screenshot-tested here.\n- Sticky nav now has 6 entries; existing `flex-wrap` handles narrow viewports gracefully.\n\n## Files touched\n- `docs/scrum/index.html`\n- `spec/KAN-132/plan.md` (implementation plan)\n- `spec/KAN-132/response.md` (this file)\n",
+      "structuredPatch": [],
+      "originalFile": null,
+      "userModified": false
+    }
+  },
+  {
+    "type": "assistant",
+    "message": {
+      "model": "claude-opus-4-7",
+      "id": "msg_01XGtvgb4uCkzWPiBDPqm87y",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "text",
+          "text": "Added the Myths section (3 cards) and FAQ section (4 Q&A items) to `docs/scrum/index.html`, plus two new entries in the sticky anchor nav. All existing anchors preserved; tags balanced; every nav `href` resolves to an existing `id`. Plan and Jira-facing summary written to `spec/KAN-132/`."
+        }
+      ],
+      "stop_reason": null,
+      "stop_sequence": null,
+      "stop_details": null,
+      "usage": {
+        "input_tokens": 1,
+        "cache_creation_input_tokens": 1085,
+        "cache_read_input_tokens": 39904,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 1085
+        },
+        "output_tokens": 2,
+        "service_tier": "standard",
+        "inference_geo": "not_available"
+      },
+      "context_management": null
+    },
+    "parent_tool_use_id": null,
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "uuid": "f65b4718-073a-427f-bcf4-ab730ee40b70"
+  },
+  {
+    "type": "result",
+    "subtype": "success",
+    "is_error": false,
+    "api_error_status": null,
+    "duration_ms": 115490,
+    "duration_api_ms": 115756,
+    "num_turns": 13,
+    "result": "Added the Myths section (3 cards) and FAQ section (4 Q&A items) to `docs/scrum/index.html`, plus two new entries in the sticky anchor nav. All existing anchors preserved; tags balanced; every nav `href` resolves to an existing `id`. Plan and Jira-facing summary written to `spec/KAN-132/`.",
+    "stop_reason": "end_turn",
+    "session_id": "ba97b68a-e2cd-4d18-b0d2-15a8a6c58c14",
+    "total_cost_usd": 0.51609975,
+    "usage": {
+      "input_tokens": 17,
+      "cache_creation_input_tokens": 24439,
+      "cache_read_input_tokens": 412956,
+      "output_tokens": 6241,
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 24439,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [
+        {
+          "input_tokens": 1,
+          "output_tokens": 122,
+          "cache_read_input_tokens": 39904,
+          "cache_creation_input_tokens": 1085,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 1085
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard"
+    },
+    "modelUsage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 668,
+        "outputTokens": 20,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.000768,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000
+      },
+      "claude-opus-4-7": {
+        "inputTokens": 17,
+        "outputTokens": 6241,
+        "cacheReadInputTokens": 412956,
+        "cacheCreationInputTokens": 24439,
+        "webSearchRequests": 0,
+        "costUSD": 0.51533175,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 64000
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "uuid": "18ed250b-c960-46c3-a8b1-0d1effea812a"
+  }
+]
