@@ -5,8 +5,9 @@
 # `.squad/.init-prompt` and **Building:** / `identity/now.md` via squad-seed-bootstrap.mjs
 # (README-style “what I'm building” text for coordinator casting).
 #
-# Agent pack: when `apply_preset` is true, applies the SDK built-in preset `default` (fixed id —
-# cannot be the ticket title). Ticket wording only drives `.init-prompt`, not `--preset`.
+# Agent pack: when `apply_preset` is true, we apply SDK preset `default` via a dedicated Node step
+# (the CLI does not reliably await `applyPreset` after `runInit`, so `--preset` on `squad init` alone
+# can leave only scribe/ralph). Ticket wording still only drives `.init-prompt` / **Building:**.
 #
 # Optional ref: `squad_git_ref` / `client_payload.squad_ref` (default `dev`).
 #
@@ -94,6 +95,7 @@ jobs:
           npm run build
           npm install -g ./packages/squad-cli
           squad --version || true
+          echo "SQUAD_FORK_ROOT=${dest}" >> "${GITHUB_ENV}"
 
       - name: Squad init (non-interactive)
         env:
@@ -110,16 +112,32 @@ jobs:
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]] && [[ "${{ github.event.inputs.apply_preset }}" == "false" ]]; then
             APPLY_PRESET=false
           fi
+          echo "APPLY_PRESET=${APPLY_PRESET}" >> "${GITHUB_ENV}"
           extra=()
           if [[ "${INCLUDE_WORKFLOWS}" != "true" ]]; then
             extra+=(--no-workflows)
           fi
-          if [[ "${APPLY_PRESET}" == "true" ]]; then
-            extra+=(--preset default)
-          fi
+          # Do not pass --preset here: the CLI chains applyPreset after runInit without awaiting,
+          # so the process can exit before preset agents are installed. Apply preset in the next step.
           squad init "${extra[@]}"
 
+      - name: Apply Squad preset (awaited)
+        env:
+          APPLY_PRESET: ${{ env.APPLY_PRESET }}
+          SQUAD_FORK_ROOT: ${{ env.SQUAD_FORK_ROOT }}
+          PRESET_NAME: default
+        run: node .github/scripts/squad-apply-preset.mjs
+
+      - name: List Squad agents (debug)
+        shell: bash
+        run: |
+          set -euo pipefail
+          ls -la .squad/agents || true
+
       - name: Seed new-project context (optional)
+        env:
+          # After preset apply, team.md may already list scribe/ralph — force full roster from disk.
+          BOOTSTRAP_FORCE_MEMBERS_SYNC: ${{ env.APPLY_PRESET }}
         run: node .github/scripts/squad-seed-bootstrap.mjs
 
       - name: Verify with squad doctor

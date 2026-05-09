@@ -14,8 +14,6 @@
 |------|------|---------|--------|
 | Ralph | Ralph | [charter](agents/ralph/charter.md) | active |
 | Scribe | Scribe | [charter](agents/scribe/charter.md) | active |
-| Name | Role | Charter | Status |
-|------|------|---------|--------|
 
 ## Project Context
 

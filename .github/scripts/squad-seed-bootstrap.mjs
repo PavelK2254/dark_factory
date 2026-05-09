@@ -77,9 +77,13 @@ async function syncRosterFromAgents(teamPath) {
   if (!(await pathExists(agentsDir))) return;
 
   let teamMd = await readFile(teamPath, "utf8");
-  if (!membersSectionNeedsSeed(teamMd)) {
+  const forceMembersSync = process.env.BOOTSTRAP_FORCE_MEMBERS_SYNC === "true";
+  if (!forceMembersSync && !membersSectionNeedsSeed(teamMd)) {
     console.log("team.md ## Members already has rows; skipping roster sync.");
     return;
+  }
+  if (forceMembersSync) {
+    console.log("BOOTSTRAP_FORCE_MEMBERS_SYNC: rewriting ## Members from .squad/agents.");
   }
 
   const entries = await readdir(agentsDir, { withFileTypes: true });
@@ -117,7 +121,15 @@ async function syncRosterFromAgents(teamPath) {
   const replacement = tableLines.join("\n");
 
   if (/## Members\r?\n/.test(teamMd)) {
-    teamMd = teamMd.replace(/## Members\r?\n[\s\S]*?(?=\r?\n## |\r?\n*$)/m, replacement.trimEnd());
+    // Prefer stopping at ## Project Context so we never swallow or duplicate following sections.
+    if (/\r?\n## Project Context\r?\n/.test(teamMd)) {
+      teamMd = teamMd.replace(
+        /## Members\r?\n[\s\S]*?(?=\r?\n## Project Context\r?\n)/m,
+        replacement.trimEnd() + "\n\n",
+      );
+    } else {
+      teamMd = teamMd.replace(/## Members\r?\n[\s\S]*?(?=\r?\n## |\r?\n*$)/m, replacement.trimEnd());
+    }
   } else {
     teamMd += "\n" + replacement;
   }
