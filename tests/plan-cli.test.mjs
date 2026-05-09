@@ -35,6 +35,12 @@ test("plan command uses explicit source and writes output", async () => {
   assert.ok(plan.epics.length >= 1);
   assert.ok(Array.isArray(plan.open_questions));
   assert.ok(plan.open_questions.length >= 1);
+  for (const epic of plan.epics) {
+    const e2eTasks = epic.tasks.filter((task) => task.title === `E2E: ${epic.title}`);
+    assert.equal(e2eTasks.length, 1);
+    assert.ok(Array.isArray(e2eTasks[0].acceptance_criteria));
+    assert.ok(e2eTasks[0].acceptance_criteria.length >= 1);
+  }
 });
 
 test("apply command without approve does not require jira credentials", async () => {

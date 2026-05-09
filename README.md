@@ -52,6 +52,8 @@ npx tsx scripts/dark-factory.ts apply output/generated-plan.json --project KAN
 npx tsx scripts/dark-factory.ts apply output/generated-plan.json --project KAN --approve --out output/applied-issues.json
 ```
 
+Plan/apply behavior includes one generated `E2E: <Epic title>` task per epic, with idempotent reuse on reruns.
+
 Required env vars for Jira apply:
 
 ```bash
