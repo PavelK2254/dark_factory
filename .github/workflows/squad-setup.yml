@@ -1,5 +1,12 @@
 # Bootstrap Squad from https://github.com/PavelK2254/squad (clone, build CLI, squad init).
 # Optional ref: workflow input `squad_git_ref` or dispatch `client_payload.squad_ref` (default branch `dev`).
+# Optional new-project line: input `building` or `client_payload.building` (e.g. Jira ticket title) → seeds
+# `.squad/team.md` (**Building:**) and `.squad/identity/now.md` after init.
+#
+# Local Cursor: open the **Squad** agent and send:
+#   squad => I'm starting a new project. Set up the team. I'm building: [Jira ticket title]
+# (Coordinator runs Init Mode from `.github/agents/squad.agent.md` until the roster is confirmed.)
+#
 # Run once (or when you want to refresh scaffold); idempotent — existing files are skipped.
 name: Squad Setup
 
@@ -18,6 +25,11 @@ on:
         required: false
         default: false
         type: boolean
+      building:
+        description: "What you're building (e.g. Jira issue title). Optional; seeds Squad project context after init."
+        required: false
+        default: ""
+        type: string
 
 permissions:
   contents: write
@@ -32,6 +44,7 @@ jobs:
     timeout-minutes: 25
     env:
       SQUAD_GIT_REF: ${{ github.event.client_payload.squad_ref || github.event.inputs.squad_git_ref || 'dev' }}
+      BOOTSTRAP_BUILDING: ${{ github.event.client_payload.building || github.event.inputs.building || '' }}
 
     steps:
       - name: Checkout
@@ -77,6 +90,9 @@ jobs:
           else
             squad init --no-workflows
           fi
+
+      - name: Seed new-project context (optional)
+        run: node .github/scripts/squad-seed-bootstrap.mjs
 
       - name: Verify with squad doctor
         env:
