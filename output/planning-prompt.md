@@ -80,12 +80,23 @@ these.
 - Typically 2–4 bullets per Task. More only when the surface is genuinely
   multi-faceted.
 
-### E2E coverage
+### E2E coverage — REQUIRED, one per Epic
 
-- Add an E2E Task **only** when integration testing is the actual delivery
-  surface (e.g. "verify the existing flow still works after refactor").
-- Do **NOT** auto-add an E2E task to every Epic. The previous version of this
-  planner did that and it was wrong.
+- Every Epic MUST contain at least one Task whose title starts with `E2E:` and
+  whose purpose is end-to-end verification of the user-facing behaviour the
+  Epic delivers.
+- The E2E Task is a real piece of work, not boilerplate. Write its
+  `description` and `acceptance_criteria` against the actual flow being
+  exercised — what the user does, what the system shows, what state changes,
+  what evidence is captured (screenshots, logs, recorded run).
+- If the Epic only has one feature Task, the Epic still has 2 Tasks total:
+  the feature Task plus the `E2E:` Task that verifies it end-to-end.
+- The E2E Task usually `depends_on` the feature Tasks in the same Epic. List
+  those Task titles in `dependencies`.
+- Do not put E2E coverage inside subtasks. It is its own Task so the executor
+  can ship the E2E run as a separate PR with its own evidence trail.
+- For pure-refactor Epics that have no observable user-facing surface, the
+  `E2E:` Task verifies that the existing flows still pass after the refactor.
 
 ### `source_sections`
 
@@ -111,22 +122,40 @@ these.
 
 ## Calibration examples (internalize, do NOT echo in output)
 
+Every example below already includes the mandatory `E2E:` Task per Epic.
+
 ```
 Spec: "Add an uppercase button that uppercases the input field on click."
-Plan: 1 Epic, 1 Task, 0 subtasks, 0 open questions.
+Plan: 1 Epic, 2 Tasks:
+       - "Add uppercase button to input field"
+       - "E2E: Uppercase button uppercases input on click"
+      0 subtasks, 0 open questions.
 
 Spec: "Build a Scrum landing page (~10 sections, hero, FAQ, mobile responsive)."
-Plan: 1 Epic ("Scrum landing page"), 3-5 Tasks (page scaffold, content
-      sections, responsive + a11y polish, optional FAQ), 0-2 open questions.
+Plan: 1 Epic ("Scrum landing page"), 4-6 Tasks:
+       - page scaffold
+       - content sections
+       - responsive + a11y polish
+       - (optional) FAQ
+       - "E2E: Scrum landing page renders end-to-end on desktop and mobile"
+      0-2 open questions.
 
 Spec: "Migrate auth from session cookies to JWT and add Okta SSO."
-Plan: 2 Epics ("Auth backend migration", "Okta SSO integration"),
-      3-5 Tasks each, 0-2 subtasks per Task only where seams matter.
+Plan: 2 Epics, each with its own E2E Task:
+       Epic "Auth backend migration":
+         - JWT issuer + verifier
+         - Replace cookie middleware
+         - "E2E: Existing auth-protected flows still work post-migration"
+       Epic "Okta SSO integration":
+         - Okta OIDC client
+         - Login redirect + callback
+         - "E2E: User can sign in via Okta and reach the dashboard"
 
 Spec: "Triage all open bugs."
-Plan: 0 Epics is invalid — return one Epic with one Task ("Triage open bug
-      backlog") and one open question asking for the actual priorities,
-      because the spec is a directive without scope.
+Plan: 1 Epic, 2 Tasks:
+       - "Triage open bug backlog"
+       - "E2E: Triage output is actionable for the next sprint"
+      Plus 1 open question asking for actual priorities.
 ```
 
 ## Constraints
@@ -146,48 +175,122 @@ Before you write your final `output/generated-plan.json`, ask yourself:
    PR for it? For each Task, the answer must be yes.
 2. Did I add any subtasks that are just "Implement X" / "Validate X"? If yes,
    delete them.
-3. Did I add an E2E task to an Epic just because there's an Epic? If yes,
-   delete it unless integration is genuinely the delivery surface.
-4. Does `source_sections` for every item point to a real heading in the spec?
-5. Is the JSON valid against the schema?
+3. **Does every Epic contain at least one Task whose title starts with
+   `E2E:` ?** This is mandatory. The E2E Task must verify the actual
+   user-facing behaviour the Epic delivers (or, for pure-refactor Epics, that
+   existing flows still pass). Reject your own draft if any Epic is missing
+   it.
+4. For each `E2E:` Task, are its `acceptance_criteria` written against the
+   real flow (what the user does, what the system shows, what evidence is
+   captured) — not generic "tests pass"?
+5. Does `source_sections` for every item point to a real heading in the spec?
+6. Is the JSON valid against the schema?
 
-If all five are yes, write the file.
+If all six are yes, write the file.
 
 
 ## Requirements content (from output/requirements-from-jira.md)
 
-# Create a single file html to demonstrate the scrum ceremonies with a second tab that explains why each is important
+# Scrum landing page — developer specification 
 
 ## Ticket Metadata
 
-- Jira key: KAN-125
+- Jira key: KAN-124
 - Status: To Do
 - Priority: Medium
 - Assignee: -
-- Reporter: Roland Abou Younes
+- Reporter: Artjoms
 - Labels: -
 - Components: -
 
 ## Requirements
 
-### Summary
+## 1. Goal
 
-Create a single file HTML to demonstrate scrum ceremonies. Include a second tab that explains the importance of each ceremony.
+Build a **single, static landing page** that gives a clear, accurate introduction to **Scrum** for people who are new to it (for example stakeholders or new team members). The page should be easy to scan in **two to five minutes** and encourage further learning. It does not replace formal training or the [Scrum Guide](https://scrumguides.org/).
 
-### Context
+## 2. Audience and tone
 
-This issue involves developing an HTML file that showcases scrum ceremonies. The goal is to educate users on the significance of these ceremonies.
+- **Primary:** Non-experts who need a correct mental model of Scrum.
+- **Tone:** Plain language, confident, neutral; avoid jargon without a one-line definition.
+- **Voice:** Third person or inclusive “teams”; avoid heavy marketing hype.
 
-### Acceptance criteria
+## 3. Content requirements
 
-- A single file HTML is created.
-- The HTML demonstrates scrum ceremonies.
-- A second tab is included that explains the importance of each ceremony.
-- The work is split into at least two steps, ideally as separate tasks.
+### 3.1 Must include (accurate, high level)
 
-### Critical instruction
+1. **What Scrum is** — Lightweight framework for developing, delivering, and sustaining complex products; empirical process control (transparency, inspection, adaptation). One short paragraph; optional link to the official Scrum Guide (external).
+2. **When it helps** — Complex work, need for feedback and learning; not a guarantee of success.
+3. **Roles (accountabilities)** — Product Owner, Scrum Master, Developers (one line each: main responsibility).
+4. **Events** — Sprint, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective (purpose of each in one sentence).
+5. **Artifacts** — Product Backlog, Sprint Backlog, Increment (plus Definition of Done as the quality commitment for the Increment). Short definitions only.
+6. **Sprint** — Time-boxed container; goal is a usable Increment that meets the Definition of Done.
+7. **Visual summary** — Simple diagram or structured list showing **Roles → Events → Artifacts** (implementer’s choice: structured HTML or graphic).
 
-This is a test and I want it done in a multi step flow at the least 2 tasks
+### 3.2 Nice to have
+
+- Short **Myths** block (for example: Scrum is not a methodology with fixed scope agreed up front).
+- **FAQ** (three to five items): relationship to Agile, difference from Kanban at a glance, who decides what is built.
+
+### 3.3 Out of scope
+
+- Full agile manifesto history, detailed scaling (LeSS, SAFe, etc.), tool-specific instructions (for example Jira), or certification prep.
+
+## 4. Functional requirements
+
+ID
+Requirement
+F1  
+Single primary URL or route; no login; all content reachable without authentication. 
+F2  
+**Hero** section: headline and subheadline stating what the page is (Scrum overview). 
+F3  
+**Anchor navigation** or clear sections so users can jump to Roles, Events, Artifacts, Sprint. 
+F4  
+**Footer** with optional link to the Scrum Guide and “Last updated” or content version date. 
+F5  
+**Responsive:** Readable and navigable from **320px** width upward; adequate tap targets on mobile. 
+F6  
+**Print-friendly (optional):** Sections do not clip badly when printed or saved as PDF (basic CSS acceptable). 
+
+## 5. Non-functional requirements
+
+ID
+Requirement
+N1  
+**Accessibility:** Semantic headings (`h1` → `h3`), meaningful link text, sufficient color contrast (target WCAG 2.1 AA). 
+N2  
+**Performance:** Minimal dependencies; avoid blocking heavy assets above the fold; target **LCP under 2.5s** on typical broadband for a simple static page. 
+N3  
+**SEO basics:** `<title>` and meta description; one clear `h1`. 
+N4  
+**Accuracy:** Terminology aligns with the current **Scrum Guide** (Product Owner, Scrum Master, Developers, events, commitments). Content should be easy to update in one place when the guide changes. 
+
+## 6. UX and UI guidance
+
+- **Layout:** Vertical flow; card or column layout acceptable for Roles / Events / Artifacts.
+- **Hierarchy:** Limit to roughly three heading levels on this page.
+- **Visual identity:** Neutral professional palette; one accent color is acceptable. No requirement for illustration unless the team adds simple icons.
+- **Language:** Prefer official wording (“accountabilities” vs informal “roles”) where it matches the Scrum Guide; a separate glossary is not required if terms are defined inline.
+
+## 7. Technical constraints
+
+- **Stack:** Team choice (static HTML/CSS or any simple framework). Prefer **static output** where possible (easy hosting: GitHub Pages, Netlify, and similar).
+- **Dependencies:** Keep to a minimum; document build steps in README if not zero-build.
+- **Assets:** Optimized images if any; SVG preferred for simple diagrams.
+
+## 8. Acceptance criteria (definition of done for delivery)
+
+1. All **Must include** items in §3.1 are present with **no statements that contradict** the Scrum Guide at time of publication.
+2. Navigation works on desktop and mobile; no layout-driven horizontal scroll on standard viewports.
+3. Page passes automated **axe** or Lighthouse accessibility checks with **no critical** issues, or documented exceptions.
+4. Content is maintainable (for example one config, markdown file, or component per major section).
+
+## 9. Open decisions
+
+- Scrum Guide language variant (English default).
+- Diagram as inline SVG versus exported raster image.
+- Branding (logo, colors) versus default neutral styling.
 
 ## Comments
 

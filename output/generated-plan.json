@@ -1,43 +1,108 @@
 {
   "source_file": "output/requirements-from-jira.md",
-  "summary": "Build a single-file HTML page (KAN-125) that demonstrates Scrum ceremonies via two tabs: a 'Ceremonies' overview tab and a 'Why It Matters' explanatory tab. Delivered in two tasks per the ticket's explicit multi-step requirement.",
-  "open_questions": [],
+  "summary": "Build a single static Scrum landing page (KAN-124) that introduces Scrum to non-experts. Covers all §3.1 must-include sections (roles, events, artifacts, visual summary), functional requirements (hero, anchor nav, footer, responsive), and non-functional requirements (WCAG 2.1 AA, LCP < 2.5s, SEO basics). Optional Myths/FAQ sections are a separate lower-priority task.",
+  "open_questions": [
+    "Should the visual summary diagram (Roles→Events→Artifacts) be implemented as inline SVG or as a structured HTML table/list? This affects how easily content can be updated when the Scrum Guide changes. (§9 open decision)",
+    "Are the Myths and FAQ sections (§3.2 nice-to-have) considered in-scope for this delivery, or should they be deferred to a follow-up ticket?"
+  ],
   "epics": [
     {
-      "title": "Scrum Ceremonies Single-File HTML Demo",
-      "description": "Produce one self-contained HTML file that educates users on Scrum ceremonies through two browser tabs: a 'Scrum Ceremonies' overview tab and a 'Why It Matters' explanation tab. Delivery is split into two sequential tasks per the ticket's critical instruction.",
-      "source_sections": ["Summary", "Requirements", "Acceptance criteria", "Critical instruction"],
+      "title": "Scrum landing page",
+      "description": "A single static page that introduces Scrum to non-experts: all must-include content sections (roles, events, artifacts, sprint, visual summary), functional requirements (hero, anchor navigation, footer), non-functional requirements (responsive, accessible, SEO-ready), and optional Myths/FAQ content.",
+      "source_sections": [
+        "1. Goal",
+        "2. Audience and tone",
+        "3. Content requirements",
+        "4. Functional requirements",
+        "5. Non-functional requirements",
+        "6. UX and UI guidance",
+        "7. Technical constraints",
+        "8. Acceptance criteria"
+      ],
       "tasks": [
         {
-          "title": "HTML scaffold and Scrum Ceremonies overview tab",
-          "description": "Create the single-file HTML (`scrum-ceremonies.html`) with a two-tab navigation shell and populate the first tab ('Scrum Ceremonies') with a section for each of the five core Scrum ceremonies (Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, Backlog Refinement), each containing its name, cadence, participants, and a short description. The file must be fully self-contained (inline CSS and JS, no external dependencies) and render correctly when opened from the local filesystem.",
+          "title": "Build Scrum landing page: scaffold, core content sections, and visual summary",
+          "description": "Create a static HTML/CSS page at a single primary URL with no login requirement. Implement: hero section (headline + subheadline explaining what the page is, F2), anchor navigation to Roles/Events/Artifacts/Sprint sections (F3), all §3.1 must-include content (What Scrum Is, When It Helps, Roles/accountabilities with one line each, all five Events with one-sentence purpose each, Artifacts including Definition of Done, Sprint as time-boxed container), a visual summary showing Roles→Events→Artifacts (inline SVG or structured HTML, implementer's choice), and a footer with a Scrum Guide link and last-updated date (F4). Include <title>, meta description, and one clear h1 (N3). Use semantic headings (h1→h3) and plain-language copy aligned with Scrum Guide terminology (N4). Prefer zero-build static output; document build steps in README only if a build step is required (§7).",
           "acceptance_criteria": [
-            "File `scrum-ceremonies.html` exists in the repository root.",
-            "Opening the file in a browser shows two clickable tabs; the first tab is active by default.",
-            "The first tab displays all five Scrum ceremonies, each with name, cadence, participants, and a short description.",
-            "No external network requests are made (all styles and scripts are inline).",
-            "HTML is valid and renders without console errors in a modern browser."
+            "All seven §3.1 must-include content items are present with terminology matching the current Scrum Guide: Product Owner, Scrum Master, Developers, Sprint, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective, Product Backlog, Sprint Backlog, Increment, Definition of Done.",
+            "Hero section displays a clear headline and subheadline identifying this as a Scrum overview.",
+            "Anchor navigation links resolve correctly to Roles, Events, Artifacts, and Sprint sections without full-page reload.",
+            "Footer contains a link to scrumguides.org with meaningful link text and a last-updated or content version date.",
+            "Page has exactly one h1, a <title>, and a meta description.",
+            "Visual summary accurately maps Roles, Events, and Artifacts in a single diagram or structured element."
           ],
           "dependencies": [],
           "priority": "high",
-          "complexity": "small",
-          "source_sections": ["Summary", "Acceptance criteria", "Critical instruction"],
+          "complexity": "medium",
+          "source_sections": [
+            "1. Goal",
+            "2. Audience and tone",
+            "3.1 Must include (accurate, high level)",
+            "4. Functional requirements",
+            "6. UX and UI guidance",
+            "7. Technical constraints"
+          ],
           "subtasks": []
         },
         {
-          "title": "Add 'Why It Matters' second tab to the Scrum Ceremonies HTML",
-          "description": "Extend `scrum-ceremonies.html` to populate the second tab ('Why It Matters') with an explanation of the importance of each of the five ceremonies covered in the first tab. Each entry should state the team and business value delivered by the ceremony, written for someone new to Scrum. Tab-switching behavior must work correctly after this addition, and the file must remain fully self-contained.",
+          "title": "Apply responsive design, accessibility, and SEO hardening",
+          "description": "Polish the Scrum landing page to satisfy all non-functional requirements. Make the layout readable and navigable from 320px width upward with adequate tap targets on mobile (F5). Add basic print-friendly CSS so sections do not clip when printed or saved as PDF (F6). Verify semantic heading hierarchy (h1→h3), meaningful link text, and WCAG 2.1 AA color contrast (N1). Minimize render-blocking resources to target LCP under 2.5s for a static page (N2). Confirm <title> and meta description are in place (N3).",
           "acceptance_criteria": [
-            "Clicking the second tab displays a 'Why It Matters' view covering all five ceremonies.",
-            "Each ceremony has a distinct importance section explaining its team and business value.",
-            "Switching between tabs works without page reload and without JavaScript errors.",
-            "The file remains a single self-contained HTML file with no external dependencies.",
-            "Content on the second tab is distinct from (not a repetition of) the first tab's descriptions."
+            "Page layout has no horizontal scroll on viewports from 320px to 1440px wide.",
+            "Tap targets (links, nav items) are at least 44×44 CSS pixels on a 375px mobile viewport.",
+            "Color contrast ratios meet WCAG 2.1 AA (4.5:1 for normal text, 3:1 for large text) verified by Lighthouse or a contrast checker.",
+            "Lighthouse or axe audit reports zero critical accessibility violations.",
+            "No render-blocking scripts or stylesheets appear above the fold; LCP on simulated fast-3G throttle is under 2.5s or as low as the zero-dependency static page allows."
           ],
-          "dependencies": ["HTML scaffold and Scrum Ceremonies overview tab"],
+          "dependencies": [
+            "Build Scrum landing page: scaffold, core content sections, and visual summary"
+          ],
           "priority": "medium",
           "complexity": "small",
-          "source_sections": ["Summary", "Acceptance criteria", "Critical instruction"],
+          "source_sections": [
+            "4. Functional requirements",
+            "5. Non-functional requirements"
+          ],
+          "subtasks": []
+        },
+        {
+          "title": "Add Myths and FAQ sections to Scrum landing page",
+          "description": "Implement the §3.2 nice-to-have content: a short Myths block (e.g. 'Scrum is not a methodology with fixed scope agreed up front') and a FAQ section with three to five items covering the relationship between Scrum and Agile, the difference from Kanban at a glance, and who decides what is built. Content must use plain language consistent with the Scrum Guide. New sections should slot into the existing page structure without breaking anchor navigation or heading hierarchy.",
+          "acceptance_criteria": [
+            "Myths block contains at least two myth-busting statements consistent with the Scrum Guide.",
+            "FAQ section contains three to five items including: Scrum vs. Agile, Scrum vs. Kanban, and who decides what is built (the Product Owner).",
+            "New sections are reachable via updated anchor navigation or a new nav entry without breaking existing anchors.",
+            "No statement in Myths or FAQ contradicts the Scrum Guide."
+          ],
+          "dependencies": [
+            "Build Scrum landing page: scaffold, core content sections, and visual summary"
+          ],
+          "priority": "low",
+          "complexity": "small",
+          "source_sections": [
+            "3.2 Nice to have"
+          ],
+          "subtasks": []
+        },
+        {
+          "title": "E2E: Scrum landing page renders end-to-end on desktop and mobile",
+          "description": "Run a full end-to-end verification of the locally served or deployed Scrum landing page. Exercise the golden path: open the page, read the hero, use anchor navigation to jump to Roles, Events, Artifacts, and Sprint sections, and confirm all required content is present and correct. Repeat on a 375px-wide mobile viewport. Run Lighthouse or axe against the served URL. Commit screenshots and the accessibility report as evidence artifacts to spec/KAN-124/. Write a checklist in spec/KAN-124/e2e-summary.md mapping each §8 acceptance criterion to pass/fail with evidence.",
+          "acceptance_criteria": [
+            "Screenshot shows hero, all §3.1 content sections, visual summary, and footer on a 1280px desktop viewport with no layout breakage or overflow.",
+            "Screenshot shows all content navigable on a 375px mobile viewport with no horizontal scroll.",
+            "Anchor navigation links (Roles, Events, Artifacts, Sprint) each scroll to the correct section — confirmed by a screenshot sequence or recorded run.",
+            "Lighthouse or axe report shows zero critical accessibility violations; the report file is committed to spec/KAN-124/.",
+            "spec/KAN-124/e2e-summary.md maps all four §8 acceptance criteria to pass/fail with a one-line evidence note for each."
+          ],
+          "dependencies": [
+            "Build Scrum landing page: scaffold, core content sections, and visual summary",
+            "Apply responsive design, accessibility, and SEO hardening"
+          ],
+          "priority": "medium",
+          "complexity": "small",
+          "source_sections": [
+            "8. Acceptance criteria (definition of done for delivery)"
+          ],
           "subtasks": []
         }
       ]
