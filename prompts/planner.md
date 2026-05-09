@@ -78,12 +78,23 @@ these.
 - Typically 2–4 bullets per Task. More only when the surface is genuinely
   multi-faceted.
 
-### E2E coverage
+### E2E coverage — REQUIRED, one per Epic
 
-- Add an E2E Task **only** when integration testing is the actual delivery
-  surface (e.g. "verify the existing flow still works after refactor").
-- Do **NOT** auto-add an E2E task to every Epic. The previous version of this
-  planner did that and it was wrong.
+- Every Epic MUST contain at least one Task whose title starts with `E2E:` and
+  whose purpose is end-to-end verification of the user-facing behaviour the
+  Epic delivers.
+- The E2E Task is a real piece of work, not boilerplate. Write its
+  `description` and `acceptance_criteria` against the actual flow being
+  exercised — what the user does, what the system shows, what state changes,
+  what evidence is captured (screenshots, logs, recorded run).
+- If the Epic only has one feature Task, the Epic still has 2 Tasks total:
+  the feature Task plus the `E2E:` Task that verifies it end-to-end.
+- The E2E Task usually `depends_on` the feature Tasks in the same Epic. List
+  those Task titles in `dependencies`.
+- Do not put E2E coverage inside subtasks. It is its own Task so the executor
+  can ship the E2E run as a separate PR with its own evidence trail.
+- For pure-refactor Epics that have no observable user-facing surface, the
+  `E2E:` Task verifies that the existing flows still pass after the refactor.
 
 ### `source_sections`
 
@@ -109,22 +120,40 @@ these.
 
 ## Calibration examples (internalize, do NOT echo in output)
 
+Every example below already includes the mandatory `E2E:` Task per Epic.
+
 ```
 Spec: "Add an uppercase button that uppercases the input field on click."
-Plan: 1 Epic, 1 Task, 0 subtasks, 0 open questions.
+Plan: 1 Epic, 2 Tasks:
+       - "Add uppercase button to input field"
+       - "E2E: Uppercase button uppercases input on click"
+      0 subtasks, 0 open questions.
 
 Spec: "Build a Scrum landing page (~10 sections, hero, FAQ, mobile responsive)."
-Plan: 1 Epic ("Scrum landing page"), 3-5 Tasks (page scaffold, content
-      sections, responsive + a11y polish, optional FAQ), 0-2 open questions.
+Plan: 1 Epic ("Scrum landing page"), 4-6 Tasks:
+       - page scaffold
+       - content sections
+       - responsive + a11y polish
+       - (optional) FAQ
+       - "E2E: Scrum landing page renders end-to-end on desktop and mobile"
+      0-2 open questions.
 
 Spec: "Migrate auth from session cookies to JWT and add Okta SSO."
-Plan: 2 Epics ("Auth backend migration", "Okta SSO integration"),
-      3-5 Tasks each, 0-2 subtasks per Task only where seams matter.
+Plan: 2 Epics, each with its own E2E Task:
+       Epic "Auth backend migration":
+         - JWT issuer + verifier
+         - Replace cookie middleware
+         - "E2E: Existing auth-protected flows still work post-migration"
+       Epic "Okta SSO integration":
+         - Okta OIDC client
+         - Login redirect + callback
+         - "E2E: User can sign in via Okta and reach the dashboard"
 
 Spec: "Triage all open bugs."
-Plan: 0 Epics is invalid — return one Epic with one Task ("Triage open bug
-      backlog") and one open question asking for the actual priorities,
-      because the spec is a directive without scope.
+Plan: 1 Epic, 2 Tasks:
+       - "Triage open bug backlog"
+       - "E2E: Triage output is actionable for the next sprint"
+      Plus 1 open question asking for actual priorities.
 ```
 
 ## Constraints
@@ -144,9 +173,15 @@ Before you write your final `{{PLAN_FILE}}`, ask yourself:
    PR for it? For each Task, the answer must be yes.
 2. Did I add any subtasks that are just "Implement X" / "Validate X"? If yes,
    delete them.
-3. Did I add an E2E task to an Epic just because there's an Epic? If yes,
-   delete it unless integration is genuinely the delivery surface.
-4. Does `source_sections` for every item point to a real heading in the spec?
-5. Is the JSON valid against the schema?
+3. **Does every Epic contain at least one Task whose title starts with
+   `E2E:` ?** This is mandatory. The E2E Task must verify the actual
+   user-facing behaviour the Epic delivers (or, for pure-refactor Epics, that
+   existing flows still pass). Reject your own draft if any Epic is missing
+   it.
+4. For each `E2E:` Task, are its `acceptance_criteria` written against the
+   real flow (what the user does, what the system shows, what evidence is
+   captured) — not generic "tests pass"?
+5. Does `source_sections` for every item point to a real heading in the spec?
+6. Is the JSON valid against the schema?
 
-If all five are yes, write the file.
+If all six are yes, write the file.
