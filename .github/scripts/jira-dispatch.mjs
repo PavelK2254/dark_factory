@@ -204,6 +204,9 @@ function determineKind(issue) {
 
 async function prepareDispatch() {
   initJira();
+  console.log(`[debug] baseUrl length=${jiraBaseUrl.length} starts=${jiraBaseUrl.slice(0,8)} ends=${jiraBaseUrl.slice(-12)}`);
+  console.log(`[debug] baseUrl charCodes first10=${[...jiraBaseUrl].slice(0,10).map(c=>c.charCodeAt(0)).join(',')}`);
+  console.log(`[debug] ISSUE_KEY env raw length=${process.env.ISSUE_KEY?.length} value=[${process.env.ISSUE_KEY}]`);
   const key = normalizeIssueKey(requireEnv("ISSUE_KEY"));
 
   const issue = await fetchJson(
